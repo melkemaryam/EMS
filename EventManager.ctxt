@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=EventManager
+comment1.params=
+comment1.target=void\ getRoomList()
+comment2.params=Address\ RoomNo\ Size
+comment2.target=void\ addRoom(java.lang.String,\ int,\ int)
+comment3.params=
+comment3.target=void\ createEvent()
+comment4.params=
+comment4.target=void\ cancelEvent()
+comment5.params=
+comment5.target=void\ searchEvent()
+comment6.params=
+comment6.target=void\ viewAllEvents()
+comment7.params=
+comment7.target=void\ editEvent()
+comment8.params=
+comment8.target=void\ viewOwnEvents()
+numComments=9

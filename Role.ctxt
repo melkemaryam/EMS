@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Role
+comment0.text=\n-------------------------------------------------\n\nProject\:\ Eventmanagementsystem\nGroup\:\ Hexterminators\n\nFile\ name\:\ Role.java\n\nCreated\:\ 1st\ May\ 2020\n\n-------------------------------------------------\n
+comment1.params=
+comment1.target=Role()
+comment2.params=
+comment2.target=int\ getId()
+comment3.params=id
+comment3.target=void\ setId(int)
+comment4.params=
+comment4.target=java.lang.String\ getFirstName()
+comment5.params=firstName
+comment5.target=void\ setFirstName(java.lang.String)
+comment6.params=
+comment6.target=java.lang.String\ getLastName()
+comment7.params=lastName
+comment7.target=void\ setLastName(java.lang.String)
+comment8.params=
+comment8.target=int\ getRoleNum()
+comment9.params=roleNum
+comment9.target=void\ setRoleNum(int)
+numComments=10

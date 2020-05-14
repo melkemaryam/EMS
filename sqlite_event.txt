@@ -1,0 +1,28 @@
+CREATE TABLE Users (
+    UserID int PRIMARY KEY NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255) NOT NULL,
+    StudentID int,
+    PostCode varchar(255) NOT NULL,
+    AddressLine varchar(255) NOT NULL,
+    UserType int NOT NULL,
+    EmailAddress varchar(255) NOT NULL UNIQUE
+);
+CREATE TABLE Rooms (
+    RoomID int PRIMARY KEY NOT NULL,
+    RoomNo int NOT NULL UNIQUE,
+    Size int NOT NULL,
+    RoomAddress varchar(255) NOT NULL
+);
+CREATE TABLE Bookings (
+    BookID int PRIMARY KEY NOT NULL,
+    EventName varchar(255) NOT NULL UNIQUE,
+    EventDescription varchar(255) NOT NULL,
+    EventDate date NOT NULL,
+    StartTime float NOT NULL,
+    EndTime float NOT NULL,
+    UserID int NOT NULL,
+    RoomID int NOT NULL,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID) ON UPDATE CASCADE ON DELETE RESTRICT,
+    FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID) ON UPDATE CASCADE ON DELETE RESTRICT
+);

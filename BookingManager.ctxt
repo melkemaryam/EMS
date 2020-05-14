@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=BookingManager
+comment1.params=EventName\ EventDescription\ EventDate\ StartTime\ EndTime\ UserID\ RoomID\ isNew\ isVisible
+comment1.target=void\ addBooking(java.lang.String,\ java.lang.String,\ int,\ float,\ float,\ int,\ int,\ int,\ int)
+comment2.params=
+comment2.target=void\ cancelBooking()
+comment3.params=
+comment3.target=void\ viewAllBookings()
+comment4.params=
+comment4.target=void\ confirmBooking()
+numComments=5

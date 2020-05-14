@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=AccountManager
+comment1.params=
+comment1.target=AccountManager()
+comment2.params=playerOne
+comment2.target=void\ addUser(Student)
+comment3.params=playerOne
+comment3.target=int\ logIn(Student)
+comment4.params=playerOne
+comment4.target=int\ logOut(Student)
+comment5.params=playerOne
+comment5.target=void\ retrieveUser(Student)
+comment6.params=playerOne
+comment6.target=void\ grantPermission(Student)
+comment7.params=playerOne
+comment7.target=void\ revokeRights(Student)
+numComments=8
