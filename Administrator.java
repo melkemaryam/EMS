@@ -14,7 +14,7 @@ Created: 1st May 2020
  
 
 public class Administrator {
-
+    int test;
     int adminId;
     int universityId; // not sure if needed
     String password;
