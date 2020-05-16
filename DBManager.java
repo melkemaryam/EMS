@@ -49,8 +49,5 @@ public class DBManager {
 
     //main method for DBManager
     public static void main(String[] args) {
-        Student playerOne = new Student();
-        //DBManager gameOne = new DBManager();
-        AccountManager.addUser(playerOne);
     }
 }

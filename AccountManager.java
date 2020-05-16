@@ -13,12 +13,14 @@ Created: 1st May 2020
 
  
 
-
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
 import java.sql.PreparedStatement;
 //import Model.*;
 
@@ -121,16 +123,39 @@ public class AccountManager {
         DBManager.disconnect();
     }
 
+
     // Function name: grantPermission()
     // Task: grants a student the permission to act as an EventOrganiser
     public void grantPermission(Student playerOne) {
-
+        String sql = "UPDATE UserType IN Users WHERE UserID =?";
+        int userId = playerOne.getStudentId();    
+        String userType = "eventOrganizer";
+        try (Connection conn = DBManager.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+                pstmt.setString(1, userType);
+                pstmt.setInt(2, userId);
+            ResultSet rs = pstmt.executeQuery(sql);
+        }catch (SQLException e) {
+            System.err.print("No DB connection");
+        }
+        DBManager.disconnect();
     }
 
     // Function name: revokeRights()
     // Task: revokes then rights from an EventOrganiser
     public void revokeRights(Student playerOne) {
-
+        String sql = "UPDATE UserType IN Users WHERE UserID =?";
+        int userId = playerOne.getStudentId();    
+        String userType = "student";
+        try (Connection conn = DBManager.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+                pstmt.setString(1, userType);
+                pstmt.setInt(2, userId);
+            ResultSet rs = pstmt.executeQuery(sql);
+        }catch (SQLException e) {
+            System.err.print("No DB connection");
+        }
+        DBManager.disconnect();
     }
 
 }
