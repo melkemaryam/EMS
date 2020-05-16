@@ -18,44 +18,47 @@ import javax.swing.*;
 public class LogInForm extends JFrame {
 
 	private JMenuBar menuBar;
+	private JLabel LogIn;
 	private JButton LogInButton;
-	private JTextField LogInID;
-	private JTextField LogInPass;
-	private JLabel label1;
-	private JLabel label2;
-	private JLabel label3;
+	private JLabel NewUserLabel;
+	private JTextField Password;
+	private JLabel PasswordLabel;
+	private JButton RegisterButton;
+	private JTextField StudentID;
+	private JLabel StudentIDLavel;
 
 	//Constructor 
 	public LogInForm(){
 
 		this.setTitle("LogInForm");
-		this.setSize(445,350);
+		this.setSize(500,400);
 		//menu generate method
 		generateMenu();
 		this.setJMenuBar(menuBar);
 
 		//pane with null layout
 		JPanel contentPane = new JPanel(null);
-		contentPane.setPreferredSize(new Dimension(445,350));
+		contentPane.setPreferredSize(new Dimension(500,400));
 		contentPane.setBackground(new Color(192,192,192));
 
 
+		LogIn = new JLabel();
+		LogIn.setBounds(201,24,90,35);
+		LogIn.setBackground(new Color(214,217,223));
+		LogIn.setForeground(new Color(0,0,0));
+		LogIn.setEnabled(true);
+		LogIn.setFont(new Font("SansSerif",0,20));
+		LogIn.setText("Log In");
+		LogIn.setVisible(true);
+
 		LogInButton = new JButton();
-		LogInButton.setBounds(165,242,90,35);
+		LogInButton.setBounds(201,201,90,35);
 		LogInButton.setBackground(new Color(214,217,223));
 		LogInButton.setForeground(new Color(0,0,0));
 		LogInButton.setEnabled(true);
 		LogInButton.setFont(new Font("sansserif",0,12));
 		LogInButton.setText("Log In");
 		LogInButton.setVisible(true);
-		//Set action for button click
-		//Call defined method
-		LogInButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				loginnow(evt);
-			}
-		});
-
 		//Set methods for mouse events
 		//Call defined methods
 		LogInButton.addMouseListener(new MouseAdapter() {
@@ -65,58 +68,77 @@ public class LogInForm extends JFrame {
 		});
 
 
-		LogInID = new JTextField();
-		LogInID.setBounds(203,101,90,35);
-		LogInID.setBackground(new Color(255,255,255));
-		LogInID.setForeground(new Color(0,0,0));
-		LogInID.setEnabled(true);
-		LogInID.setFont(new Font("sansserif",0,12));
-		LogInID.setText("");
-		LogInID.setVisible(true);
+		NewUserLabel = new JLabel();
+		NewUserLabel.setBounds(188,286,132,28);
+		NewUserLabel.setBackground(new Color(214,217,223));
+		NewUserLabel.setForeground(new Color(0,0,0));
+		NewUserLabel.setEnabled(true);
+		NewUserLabel.setFont(new Font("sansserif",0,12));
+		NewUserLabel.setText("Are you a new user?");
+		NewUserLabel.setVisible(true);
 
-		LogInPass = new JTextField();
-		LogInPass.setBounds(206,151,90,35);
-		LogInPass.setBackground(new Color(255,255,255));
-		LogInPass.setForeground(new Color(0,0,0));
-		LogInPass.setEnabled(true);
-		LogInPass.setFont(new Font("sansserif",0,12));
-		LogInPass.setText("");
-		LogInPass.setVisible(true);
+		Password = new JTextField();
+		Password.setBounds(258,138,90,35);
+		Password.setBackground(new Color(255,255,255));
+		Password.setForeground(new Color(0,0,0));
+		Password.setEnabled(true);
+		Password.setFont(new Font("sansserif",0,12));
+		Password.setText("");
+		Password.setVisible(true);
 
-		label1 = new JLabel();
-		label1.setBounds(98,102,90,35);
-		label1.setBackground(new Color(214,217,223));
-		label1.setForeground(new Color(0,0,0));
-		label1.setEnabled(true);
-		label1.setFont(new Font("sansserif",0,12));
-		label1.setText("Student ID");
-		label1.setVisible(true);
+		PasswordLabel = new JLabel();
+		PasswordLabel.setBounds(120,140,90,35);
+		PasswordLabel.setBackground(new Color(214,217,223));
+		PasswordLabel.setForeground(new Color(0,0,0));
+		PasswordLabel.setEnabled(true);
+		PasswordLabel.setFont(new Font("sansserif",0,12));
+		PasswordLabel.setText("Password");
+		PasswordLabel.setVisible(true);
 
-		label2 = new JLabel();
-		label2.setBounds(97,153,90,35);
-		label2.setBackground(new Color(214,217,223));
-		label2.setForeground(new Color(0,0,0));
-		label2.setEnabled(true);
-		label2.setFont(new Font("sansserif",0,12));
-		label2.setText("Password");
-		label2.setVisible(true);
+		RegisterButton = new JButton();
+		RegisterButton.setBounds(201,325,90,35);
+		RegisterButton.setBackground(new Color(214,217,223));
+		RegisterButton.setForeground(new Color(0,0,0));
+		RegisterButton.setEnabled(true);
+		RegisterButton.setFont(new Font("sansserif",0,12));
+		RegisterButton.setText("Register");
+		RegisterButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		RegisterButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				register(evt);
+			}
+		});
 
-		label3 = new JLabel();
-		label3.setBounds(126,26,215,28);
-		label3.setBackground(new Color(214,217,223));
-		label3.setForeground(new Color(0,0,0));
-		label3.setEnabled(true);
-		label3.setFont(new Font("SansSerif",0,20));
-		label3.setText("Log In to the EMS");
-		label3.setVisible(true);
+
+		StudentID = new JTextField();
+		StudentID.setBounds(257,91,90,35);
+		StudentID.setBackground(new Color(255,255,255));
+		StudentID.setForeground(new Color(0,0,0));
+		StudentID.setEnabled(true);
+		StudentID.setFont(new Font("sansserif",0,12));
+		StudentID.setText("");
+		StudentID.setVisible(true);
+
+		StudentIDLavel = new JLabel();
+		StudentIDLavel.setBounds(123,92,90,35);
+		StudentIDLavel.setBackground(new Color(214,217,223));
+		StudentIDLavel.setForeground(new Color(0,0,0));
+		StudentIDLavel.setEnabled(true);
+		StudentIDLavel.setFont(new Font("sansserif",0,12));
+		StudentIDLavel.setText("Student ID");
+		StudentIDLavel.setVisible(true);
 
 		//adding components to contentPane panel
+		contentPane.add(LogIn);
 		contentPane.add(LogInButton);
-		contentPane.add(LogInID);
-		contentPane.add(LogInPass);
-		contentPane.add(label1);
-		contentPane.add(label2);
-		contentPane.add(label3);
+		contentPane.add(NewUserLabel);
+		contentPane.add(Password);
+		contentPane.add(PasswordLabel);
+		contentPane.add(RegisterButton);
+		contentPane.add(StudentID);
+		contentPane.add(StudentIDLavel);
 
 		//adding panel to JFrame and seting of window position and close operation
 		this.add(contentPane);
@@ -126,13 +148,13 @@ public class LogInForm extends JFrame {
 		this.setVisible(true);
 	}
 
-	//Method actionPerformed for LogInButton
-	private void loginnow (ActionEvent evt) {
+	//Method mouseClicked for LogInButton
+	private void logIn (MouseEvent evt) {
 			//TODO
 	}
 
-	//Method mouseClicked for LogInButton
-	private void logIn (MouseEvent evt) {
+	//Method actionPerformed for RegisterButton
+	private void register (ActionEvent evt) {
 			//TODO
 	}
 
