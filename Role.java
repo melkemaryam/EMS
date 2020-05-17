@@ -20,20 +20,20 @@ public class Role {
     //2 = event organiser
     //3 = administator
 
-    private int id;
+    private int userId;
     private String firstName;
     private String lastName;
-    private int roleNum;
+    private int role;
     
     public Role() {
     }
     
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
     
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int id) {
+        this.userId = userId;
     }
     
     public String getFirstName() {
@@ -52,12 +52,12 @@ public class Role {
         this.lastName = lastName;
     }
     
-    public int getRoleNum() {
-        return roleNum;
+    public int getRole() {
+        return role;
     }
     
-    public void setRoleNum(int roleNum) {
-        this.roleNum = roleNum;
+    public void setRoleNum(int role) {
+        this.role = role;
     }
     
     

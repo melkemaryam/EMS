@@ -15,13 +15,13 @@ Created: 1st May 2020
 
 public class Student {
 
-    int studentId;
+    int userId;
     int universityId;
     String password;
     String firstName;
     String lastName;
     String email;
-    String role; // same as in EventOrganiser
+    int role; // same as in EventOrganiser
 
     //Constructor
     //public Student (int studentId, int universityId, String password, String firstName, String lastName, String email, String role) {
@@ -38,12 +38,12 @@ public class Student {
 
     //getter and setter methods
 
-    public int getStudentId() {
-        return studentId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getUniId() {
@@ -86,11 +86,11 @@ public class Student {
         this.email = email;
     }
 
-    public String getRole() {
+    public int getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(int role) {
         this.role = role;
     }
 

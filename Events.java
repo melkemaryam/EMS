@@ -23,7 +23,7 @@ public class Events {
     String date;
     float time;
     String location;
-    int roomNumber;
+    int roomNo;
     String place;
     boolean bookingRequired;
     int hello;
@@ -100,12 +100,12 @@ public class Events {
         this.location = location;
     }
 
-    public int getRoomNumber() {
-        return roomNumber;
+    public int getRoomNo() {
+        return roomNo;
     }
 
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
+    public void setRoomNo(int roomNo) {
+        this.roomNo = roomNo;
     }
 
     public String getPlace() {

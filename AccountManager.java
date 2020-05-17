@@ -45,7 +45,7 @@ public class AccountManager {
             pstmt.setString(1, playerOne.getFirstName());
             pstmt.setString(2, playerOne.getLastName());
             pstmt.setString(3, playerOne.getEmail());
-            pstmt.setString(4, playerOne.getRole());
+            pstmt.setInt(4, playerOne.getRole());
             pstmt.setInt(5, playerOne.getUniId());
             pstmt.setString(6, playerOne.getPassword());
             pstmt.executeUpdate();
@@ -61,13 +61,13 @@ public class AccountManager {
     // Function name: logIn()
     // Task: logs a user into the system
     public int logIn(Student playerOne) {
-        String sql = "SELECT FirstName, LastName, Email, UserType, StudentID FROM Users WHERE UserID =? AND password=?";
+        String sql = "SELECT UserID FROM Users WHERE StudentID =? AND password=?";
         int logInStatus = 0;
-        int studentId = playerOne.getStudentId();    
+        int universityId = playerOne.getUniId();    
         String password = playerOne.getPassword();
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
-                pstmt.setInt(1, studentId);
+                pstmt.setInt(1, universityId);
                 pstmt.setString(2, password);
             ResultSet rs = pstmt.executeQuery(sql);
 
@@ -103,11 +103,11 @@ public class AccountManager {
     // Task: method to retrive user information
     public void retrieveUser(Student playerOne) {
         String sql = "SELECT FirstName, LastName, Email, UserType, StudentID FROM Users WHERE UserID =?";
-        int studentId = playerOne.getStudentId();
+        int universityId = playerOne.getUniId();
 
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
-                pstmt.setInt(1, studentId);
+                pstmt.setInt(1, universityId);
             ResultSet rs = pstmt.executeQuery(sql);
 
             while (rs.next()){
@@ -115,7 +115,7 @@ public class AccountManager {
                 playerOne.setFirstName(rs.getString("FirstName"));
                 playerOne.setLastName(rs.getString("LastName"));
                 playerOne.setEmail(rs.getString("Email"));
-                playerOne.setRole(rs.getString("UserType")); 
+                playerOne.setRole(rs.getInt("UserType")); 
             }
         }catch (SQLException e) {
             System.err.print("No such user");
@@ -127,12 +127,12 @@ public class AccountManager {
     // Function name: grantPermission()
     // Task: grants a student the permission to act as an EventOrganiser
     public void grantPermission(Student playerOne) {
-        String sql = "UPDATE UserType IN Users WHERE UserID =?";
-        int userId = playerOne.getStudentId();    
-        String userType = "eventOrganizer";
+        String sql = "UPDATE Users " + "SET UserType = ? " + "WHERE UserID = ?";
+        int userId = playerOne.getUserId();    
+        int userType = 2;
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
-                pstmt.setString(1, userType);
+                pstmt.setInt(1, userType);
                 pstmt.setInt(2, userId);
             ResultSet rs = pstmt.executeQuery(sql);
         }catch (SQLException e) {
@@ -144,12 +144,12 @@ public class AccountManager {
     // Function name: revokeRights()
     // Task: revokes then rights from an EventOrganiser
     public void revokeRights(Student playerOne) {
-        String sql = "UPDATE UserType IN Users WHERE UserID =?";
-        int userId = playerOne.getStudentId();    
-        String userType = "student";
+        String sql = "UPDATE Users " + "SET UserType = ? " + "WHERE UserID = ?";
+        int userId = playerOne.getUserId();    
+        int userType = 1;
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
-                pstmt.setString(1, userType);
+                pstmt.setInt(1, userType);
                 pstmt.setInt(2, userId);
             ResultSet rs = pstmt.executeQuery(sql);
         }catch (SQLException e) {
