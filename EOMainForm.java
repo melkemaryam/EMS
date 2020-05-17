@@ -74,6 +74,14 @@ public class EOMainForm extends JFrame {
 		BookEOButton.setFont(new Font("sansserif",0,12));
 		BookEOButton.setText("Book");
 		BookEOButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		BookEOButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				bookEO(evt);
+			}
+		});
+
 
 		BookReqBoxEO = new JCheckBox();
 		BookReqBoxEO.setBounds(524,203,90,35);
@@ -101,6 +109,14 @@ public class EOMainForm extends JFrame {
 		CancelEOButton.setFont(new Font("sansserif",0,12));
 		CancelEOButton.setText("Cancel");
 		CancelEOButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		CancelEOButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				cancelEO(evt);
+			}
+		});
+
 
 		CatEOBox = new JComboBox();
 		CatEOBox.setBounds(527,239,90,35);
@@ -127,6 +143,14 @@ public class EOMainForm extends JFrame {
 		CreateEventEOButton.setFont(new Font("sansserif",0,12));
 		CreateEventEOButton.setText("Create New Event");
 		CreateEventEOButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		CreateEventEOButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				createEventEO(evt);
+			}
+		});
+
 
 		DateLabel = new JLabel();
 		DateLabel.setBounds(376,136,90,35);
@@ -154,6 +178,14 @@ public class EOMainForm extends JFrame {
 		DeleteEOButton.setFont(new Font("sansserif",0,12));
 		DeleteEOButton.setText("Delete");
 		DeleteEOButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		DeleteEOButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				deleteEO(evt);
+			}
+		});
+
 
 		DescEOField = new JTextField();
 		DescEOField.setBounds(534,103,90,35);
@@ -181,6 +213,14 @@ public class EOMainForm extends JFrame {
 		ExitEOButton.setFont(new Font("sansserif",0,12));
 		ExitEOButton.setText("Exit");
 		ExitEOButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		ExitEOButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				exitEO(evt);
+			}
+		});
+
 
 		HourEOField = new JTextField();
 		HourEOField.setBounds(469,174,84,24);
@@ -217,6 +257,14 @@ public class EOMainForm extends JFrame {
 		LogOutEOButton.setFont(new Font("sansserif",0,12));
 		LogOutEOButton.setText("Log Out");
 		LogOutEOButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		LogOutEOButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				logOutEO(evt);
+			}
+		});
+
 
 		MinutesEOField = new JTextField();
 		MinutesEOField.setBounds(576,175,71,24);
@@ -235,6 +283,14 @@ public class EOMainForm extends JFrame {
 		ModifyEOButton.setFont(new Font("sansserif",0,12));
 		ModifyEOButton.setText("Modify");
 		ModifyEOButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		ModifyEOButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				modifyEO(evt);
+			}
+		});
+
 
 		MonthEOField = new JTextField();
 		MonthEOField.setBounds(531,142,68,24);
@@ -253,6 +309,14 @@ public class EOMainForm extends JFrame {
 		MyEventsEOButton.setFont(new Font("sansserif",0,12));
 		MyEventsEOButton.setText("See My Events");
 		MyEventsEOButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		MyEventsEOButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				seeOwnEventsEO(evt);
+			}
+		});
+
 
 		PlacesEOField = new JTextField();
 		PlacesEOField.setBounds(529,346,90,35);
@@ -298,6 +362,14 @@ public class EOMainForm extends JFrame {
 		SeeAllEventsEOButton.setFont(new Font("sansserif",0,12));
 		SeeAllEventsEOButton.setText("See All Events");
 		SeeAllEventsEOButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		SeeAllEventsEOButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				seeAllEventsEO(evt);
+			}
+		});
+
 
 		ShowEventsEO = new JTextArea();
 		ShowEventsEO.setBounds(202,75,151,267);
@@ -394,6 +466,51 @@ public class EOMainForm extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.pack();
 		this.setVisible(true);
+	}
+
+	//Method actionPerformed for BookEOButton
+	private void bookEO (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for CancelEOButton
+	private void cancelEO (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for CreateEventEOButton
+	private void createEventEO (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for DeleteEOButton
+	private void deleteEO (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for ExitEOButton
+	private void exitEO (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for LogOutEOButton
+	private void logOutEO (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for ModifyEOButton
+	private void modifyEO (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for MyEventsEOButton
+	private void seeOwnEventsEO (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for SeeAllEventsEOButton
+	private void seeAllEventsEO (ActionEvent evt) {
+			//TODO
 	}
 
 	//method for generate menu

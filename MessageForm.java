@@ -44,6 +44,14 @@ public class MessageForm extends JFrame {
 		OkMessButton.setFont(new Font("sansserif",0,12));
 		OkMessButton.setText("OK");
 		OkMessButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		OkMessButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				goBack(evt);
+			}
+		});
+
 
 		label1 = new JLabel();
 		label1.setBounds(93,60,254,36);
@@ -64,6 +72,11 @@ public class MessageForm extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.pack();
 		this.setVisible(true);
+	}
+
+	//Method actionPerformed for OkMessButton
+	private void goBack (ActionEvent evt) {
+			//TODO
 	}
 
 	//method for generate menu

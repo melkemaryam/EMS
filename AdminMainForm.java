@@ -68,6 +68,14 @@ public class AdminMainForm extends JFrame {
 		AdminAdButton.setFont(new Font("sansserif",0,12));
 		AdminAdButton.setText("Student Administration");
 		AdminAdButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		AdminAdButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				studentAdministrationAd(evt);
+			}
+		});
+
 
 		BookReqCheckAd = new JCheckBox();
 		BookReqCheckAd.setBounds(517,205,90,35);
@@ -95,6 +103,14 @@ public class AdminMainForm extends JFrame {
 		CancelAdButton.setFont(new Font("sansserif",0,12));
 		CancelAdButton.setText("Cancel");
 		CancelAdButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		CancelAdButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				cancelAd(evt);
+			}
+		});
+
 
 		CatAdField = new JTextField();
 		CatAdField.setBounds(513,237,100,30);
@@ -158,6 +174,14 @@ public class AdminMainForm extends JFrame {
 		ExitAdButton.setFont(new Font("sansserif",0,12));
 		ExitAdButton.setText("Exit");
 		ExitAdButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		ExitAdButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				exitAd(evt);
+			}
+		});
+
 
 		LocLabel = new JLabel();
 		LocLabel.setBounds(378,266,90,35);
@@ -185,6 +209,14 @@ public class AdminMainForm extends JFrame {
 		LogOutAdButton.setFont(new Font("sansserif",0,12));
 		LogOutAdButton.setText("Log Out");
 		LogOutAdButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		LogOutAdButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				logOutAd(evt);
+			}
+		});
+
 
 		PlacesAdField = new JTextField();
 		PlacesAdField.setBounds(514,340,94,29);
@@ -230,6 +262,14 @@ public class AdminMainForm extends JFrame {
 		SeeAllBookAdButton.setFont(new Font("sansserif",0,12));
 		SeeAllBookAdButton.setText("See All Bookings");
 		SeeAllBookAdButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		SeeAllBookAdButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				seeAllBookingsAd(evt);
+			}
+		});
+
 
 		SeeAllEventsAdButton = new JButton();
 		SeeAllEventsAdButton.setBounds(37,90,120,37);
@@ -239,6 +279,14 @@ public class AdminMainForm extends JFrame {
 		SeeAllEventsAdButton.setFont(new Font("sansserif",0,12));
 		SeeAllEventsAdButton.setText("See All Events");
 		SeeAllEventsAdButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		SeeAllEventsAdButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				seeAllEventsAd(evt);
+			}
+		});
+
 
 		ShowEventsAd = new JTextArea();
 		ShowEventsAd.setBounds(205,86,157,284);
@@ -329,6 +377,36 @@ public class AdminMainForm extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.pack();
 		this.setVisible(true);
+	}
+
+	//Method actionPerformed for AdminAdButton
+	private void studentAdministrationAd (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for CancelAdButton
+	private void cancelAd (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for ExitAdButton
+	private void exitAd (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for LogOutAdButton
+	private void logOutAd (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for SeeAllBookAdButton
+	private void seeAllBookingsAd (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for SeeAllEventsAdButton
+	private void seeAllEventsAd (ActionEvent evt) {
+			//TODO
 	}
 
 	//method for generate menu

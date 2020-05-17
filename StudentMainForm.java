@@ -69,6 +69,14 @@ public class StudentMainForm extends JFrame {
 		BookButton.setFont(new Font("sansserif",0,12));
 		BookButton.setText("Book");
 		BookButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		BookButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				bookStu(evt);
+			}
+		});
+
 
 		BookReqLabel = new JLabel();
 		BookReqLabel.setBounds(380,228,118,33);
@@ -87,6 +95,14 @@ public class StudentMainForm extends JFrame {
 		CancelBookButton.setFont(new Font("sansserif",0,12));
 		CancelBookButton.setText("Cancel");
 		CancelBookButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		CancelBookButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				cancelStu(evt);
+			}
+		});
+
 
 		CatFieldStu = new JComboBox();
 		CatFieldStu.setBounds(537,263,90,35);
@@ -158,6 +174,14 @@ public class StudentMainForm extends JFrame {
 		ExitStuButton.setFont(new Font("sansserif",0,12));
 		ExitStuButton.setText("Exit");
 		ExitStuButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		ExitStuButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				exitStu(evt);
+			}
+		});
+
 
 		LocLabel = new JLabel();
 		LocLabel.setBounds(376,298,90,35);
@@ -185,6 +209,14 @@ public class StudentMainForm extends JFrame {
 		LogOutStuButton.setFont(new Font("sansserif",0,12));
 		LogOutStuButton.setText("Log Out");
 		LogOutStuButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		LogOutStuButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				logOutStu(evt);
+			}
+		});
+
 
 		PlacesFieldStu = new JTextField();
 		PlacesFieldStu.setBounds(540,373,90,35);
@@ -212,6 +244,14 @@ public class StudentMainForm extends JFrame {
 		RightsStuButton.setFont(new Font("sansserif",0,12));
 		RightsStuButton.setText("Ask For Editing Rights");
 		RightsStuButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		RightsStuButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				askForRightsStu(evt);
+			}
+		});
+
 
 		RoomNoFieldStu = new JTextField();
 		RoomNoFieldStu.setBounds(536,335,90,35);
@@ -239,6 +279,14 @@ public class StudentMainForm extends JFrame {
 		SeeAllBookStuButton.setFont(new Font("sansserif",0,12));
 		SeeAllBookStuButton.setText("See All My Bookings");
 		SeeAllBookStuButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		SeeAllBookStuButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				seeAllBookingsStu(evt);
+			}
+		});
+
 
 		SeeAllEventsStuButton = new JButton();
 		SeeAllEventsStuButton.setBounds(23,74,127,37);
@@ -248,6 +296,14 @@ public class StudentMainForm extends JFrame {
 		SeeAllEventsStuButton.setFont(new Font("sansserif",0,12));
 		SeeAllEventsStuButton.setText("See All Events");
 		SeeAllEventsStuButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		SeeAllEventsStuButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				seeAllEventsStu(evt);
+			}
+		});
+
 
 		ShowEventsStuBox = new JTextArea();
 		ShowEventsStuBox.setBounds(208,85,156,275);
@@ -339,6 +395,41 @@ public class StudentMainForm extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.pack();
 		this.setVisible(true);
+	}
+
+	//Method actionPerformed for BookButton
+	private void bookStu (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for CancelBookButton
+	private void cancelStu (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for ExitStuButton
+	private void exitStu (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for LogOutStuButton
+	private void logOutStu (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for RightsStuButton
+	private void askForRightsStu (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for SeeAllBookStuButton
+	private void seeAllBookingsStu (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for SeeAllEventsStuButton
+	private void seeAllEventsStu (ActionEvent evt) {
+			//TODO
 	}
 
 	//method for generate menu
