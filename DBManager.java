@@ -10,9 +10,7 @@ Created: 1st May 2020
 
 -------------------------------------------------
 */
-
- 
-
+import java.nio.file.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -27,9 +25,11 @@ public class DBManager {
         
         Connection conn = null;
         try {
-            String url = "jdbc:sqlite:C:/users/worek/eventmanagement/ribbentrop_molotov.db";
-            
-            // create a connection to the database via relative address
+            Path currentRelativePath = Paths.get("");
+            String s = currentRelativePath.toAbsolutePath().toString();
+            String url = ("jdbc:sqlite:" + s + "\\ribbentrop_molotov.db");
+                       
+            // create a connection to the database via hybrid-relative address
             conn = DriverManager.getConnection(url);
                     
             } catch (SQLException e ) {
