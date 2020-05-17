@@ -16,33 +16,29 @@ Created: 1st May 2020
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
 public class BookingManager {
 
     // Function name: addBooking()
     // Task: adds a new booking to the DB
-    public void addBooking(String EventName, String EventDescription, int EventDate, float StartTime, float EndTime, int UserID, int RoomID, int isNew, int isVisible) {
-        String sql = "INSERT INTO Bookings(EventName, EventDescription, EventDate, StartTime, EndTime, UserID, RoomID, isNew, isVisible) VALUES (?,?,?,?,?,?,?,?)";
+    public void addBooking(Student playerOne, int eventID) {
+        String sql = "INSERT INTO Bookings(EventName, UserID) VALUES (?,?)";
         
         try (Connection conn = DBManager.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)){
-            pstmt.setString(1, EventName);
-            pstmt.setString(2, EventDescription);
-            pstmt.setInt(3, EventDate);
-            pstmt.setFloat(4, StartTime);
-            pstmt.setFloat(5, EndTime);
-            pstmt.setInt(6, UserID);
-            pstmt.setInt(7, RoomID);
-            pstmt.setInt(8, isNew);
-            pstmt.setInt(9, isVisible);
+            pstmt.setInt(1, eventID);
+            pstmt.setInt(2, playerOne.getUserId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.err.print("Something went wrong, Event was not added to the DB");
+            System.err.print("Something went wrong, Booking was not added to the DB");
         }
         DBManager.disconnect();
 
-        System.out.println("You have successfully booked this event.");
+        System.out.println("You have successfully booked a spot for this event.");
         //GUI: show message, show in bookingsWindow
     }
 
@@ -57,8 +53,32 @@ public class BookingManager {
 
     // Function name: viewAllBookings()
     // Task: shows all bookings
-    public void viewAllBookings() {
-        //GUI: happens on mouse click, change of window?
+    public ArrayList<Bookings> viewAllBookings(Student playerOne) {
+        String sql = "SELECT * FROM Events WHERE IsVisible = 1 WHERE UserID = ?";
+        
+        int userId = playerOne.getUserId();  
+        //need a structure for remembering which user goes into participants in db, a table
+        ArrayList<Bookings> eventsList = new ArrayList<>();
+        try(Connection conn = DBManager.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+                pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery(sql);      
+
+            while (rs.next()){
+                Bookings allBookings = new Bookings();
+                int i = 1;
+                allBookings.setBookingId(rs.getInt(1));
+                allBookings.setStatus(rs.getString(2));
+                allBookings.setDateOfBooking(rs.getInt(3));
+                eventsList.add(i, allBookings);
+                i++;
+                }
+            
+        }catch (SQLException e) {
+            System.err.print("No bookings in DB");
+        }
+        DBManager.disconnect();
+        return eventsList;
     }
 
     // Function name: confirmBooking()

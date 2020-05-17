@@ -61,7 +61,28 @@ public class EventManager {
 
     // Function name: createEvent()
     // Task: creates a new event in the system
-    public void createEvent() {
+    public void createEvent(String EventName, String EventDescription, int EventDate, float StartTime, float EndTime, int UserID, int RoomID) {
+        String sql = "INSERT INTO Events(EventName, EventDescription, EventDate, StartTime, EndTime, UserID, RoomID, isNew, isVisible) VALUES (?,?,?,?,?,?,?,?)";
+        
+        try (Connection conn = DBManager.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setString(1, EventName);
+            pstmt.setString(2, EventDescription);
+            pstmt.setInt(3, EventDate);
+            pstmt.setFloat(4, StartTime);
+            pstmt.setFloat(5, EndTime);
+            pstmt.setInt(6, UserID);
+            pstmt.setInt(7, RoomID);
+            pstmt.setInt(8, 1);
+            pstmt.setInt(9, 1);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.print("Something went wrong, Event was not added to the DB");
+        }
+        DBManager.disconnect();
+
+        System.out.println("You have successfully created this event.");
+        //GUI: show message, show in bookingsWindow
         //GUI: show empty window to put values into the empty boxes
     }
 
