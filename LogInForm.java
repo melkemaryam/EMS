@@ -202,7 +202,7 @@ public class LogInForm extends JFrame {
                 
                     if ("student".equalsIgnoreCase(usertype)) 
                     {
-                    //conn = dbConnection.getConnection();
+                    conn = DBManager.getConnection();
                     System.out.println("Database Connected");
                     pst = conn.prepareStatement("SELECT * FROM userstudent where studentID=? and password=?");
                     pst.setString(1, studentid);
@@ -223,7 +223,7 @@ public class LogInForm extends JFrame {
                         StudentID.requestFocus();
                     }
                 } else if ("event organiser".equalsIgnoreCase(usertype)) {
-                    //conn = dbConnection.getConnection();
+                    conn = DBManager.getConnection();
                     System.out.println("Database Connected");
                     pst = conn.prepareStatement("SELECT * FROM usersorganiser where organiserID=? and organiserName=? and password=?");
                     pst.setString(1, studentid);
@@ -243,7 +243,7 @@ public class LogInForm extends JFrame {
                         StudentID.requestFocus();
                     }
                 } else if ("administrator".equalsIgnoreCase(usertype)) {
-                    //conn = dbConnection.getConnection();
+                    conn = DBManager.getConnection();
                     System.out.println("Database Connected");
                     pst = conn.prepareStatement("SELECT * FROM usersadmin where adminID=? and adminName=? and password=?");
                     pst.setString(1, studentid);
