@@ -35,6 +35,7 @@ public class LogInForm extends JFrame {
 	private JLabel StudentIDLabel;
 	private JComboBox UserTypeBox;
 	private JLabel UserTypeLabel;
+	int hello;
 	
 	Connection conn;
 	PreparedStatement pst;
