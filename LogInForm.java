@@ -157,6 +157,7 @@ public class LogInForm extends JFrame {
 		UserTypeBox.setEnabled(true);
 		UserTypeBox.setFont(new Font("sansserif",0,12));
 		UserTypeBox.setVisible(true);
+		UserTypeBox.setModel(new DefaultComboBoxModel<>(new String[] {"Student","Event Organiser","Administrator"} ));
 
 		UserTypeLabel = new JLabel();
 		UserTypeLabel.setBounds(117,193,90,35);
@@ -196,30 +197,75 @@ public class LogInForm extends JFrame {
             } else {
 
                 String studentid = StudentID.getText();
-                
+                String usertype = UserTypeBox.getSelectedItem().toString();
                 String password = String.valueOf(PassFieldLogIn.getPassword());
                 
-                    conn = dbConnection.getConnection();
+                    if ("student".equalsIgnoreCase(usertype)) 
+                    {
+                    //conn = dbConnection.getConnection();
                     System.out.println("Database Connected");
                     pst = conn.prepareStatement("SELECT * FROM userstudent where studentID=? and password=?");
                     pst.setString(1, studentid);
                     pst.setString(2, password);
+                    //pst.setString(3, usertype);
                     rs = pst.executeQuery();
 
                     if (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Welcome " + studentID + " to the student menu");
+                        JOptionPane.showMessageDialog(null, "Welcome " + "studentID" + " to the student menu");
                         StudentMainForm ms = new StudentMainForm();
                         this.dispose();
                         ms.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "User or Password does not match or account does not exist");
                         StudentID.setText("");
-                        
                         PassFieldLogIn.setText("");
-                        
+                        UserTypeBox.setSelectedIndex(-1);
                         StudentID.requestFocus();
                     }
-                } 
+                } else if ("event organiser".equalsIgnoreCase(usertype)) {
+                    //conn = dbConnection.getConnection();
+                    System.out.println("Database Connected");
+                    pst = conn.prepareStatement("SELECT * FROM usersorganiser where organiserID=? and organiserName=? and password=?");
+                    pst.setString(1, studentid);
+                    pst.setString(2, password);
+                    rs = pst.executeQuery();
+
+                    if (rs.next()) {
+                        JOptionPane.showMessageDialog(null, "Welcome " + "studentIDorganiser" + " to the Event Organiser menu");
+                        EventOrganiser mo = new EventOrganiser();
+                        this.dispose();
+                        mo.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "User or Password does not match or account does not exist");
+                        StudentID.setText("");
+                        PassFieldLogIn.setText("");
+                        UserTypeBox.setSelectedIndex(-1);
+                        StudentID.requestFocus();
+                    }
+                } else if ("administrator".equalsIgnoreCase(usertype)) {
+                    //conn = dbConnection.getConnection();
+                    System.out.println("Database Connected");
+                    pst = conn.prepareStatement("SELECT * FROM usersadmin where adminID=? and adminName=? and password=?");
+                    pst.setString(1, studentid);
+                    pst.setString(2, password);
+                    rs = pst.executeQuery();
+
+                    if (rs.next()) {
+                        JOptionPane.showMessageDialog(null, "Welcome " + "admin" + " to the Admin menu");
+                        AdminMainForm ma = new AdminMainForm();
+                        this.dispose();
+                        ma.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "User or Password does not match or account does not exist");
+                        StudentID.setText("");
+                        PassFieldLogIn.setText("");
+                        UserTypeBox.setSelectedIndex(-1);
+                        StudentID.requestFocus();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "User or Password does not match or account does not exist");
+                }
+            }
               
             
             conn.close();
@@ -244,7 +290,10 @@ public class LogInForm extends JFrame {
 	//Method actionPerformed for RegisterButton
 
 	private void goToRegister (ActionEvent evt) {
-			//TODO
+			
+			RegisterForm m = new RegisterForm();
+			this.dispose();
+			m.setVisible(true);
 
 	}
 
