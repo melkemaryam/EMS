@@ -3,7 +3,6 @@
 */
 import javax.swing.UIManager.LookAndFeelInfo;
 import java.awt.*;
-import java.awt.event.ActionPerformed;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -25,15 +24,19 @@ import java.sql.ResultSet;
 
 public class LogInForm extends JFrame {
 
-	private javax.swing.JMenuBar menuBar;
-	private javax.swing.JLabel LogIn;
-	private javax.swing.JButton LogInButton;
-	private javax.swing.JLabel NewUserLabel;
-	private javax.swing.JTextField txtPassword;
-	private javax.swing.JLabel PasswordLabel;
-	private javax.swing.JButton RegisterButton;
-	private javax.swing.JTextField StudentID;
-	private javax.swing.JLabel StudentIDLavel;
+        private JMenuBar menuBar;
+	private JLabel LogIn;
+	private JButton LogInButton;
+	private JLabel NewUserLabel;
+	private JPasswordField PassFieldLogIn;
+	private JLabel PasswordLabel;
+	private JButton RegisterButton;
+	private JTextField StudentID;
+	private JLabel StudentIDLabel;
+	private JComboBox UserTypeBox;
+	private JLabel UserTypeLabel;
+	int hello;
+
 	
 	Connection conn;
 	PreparedStatement pst;
@@ -68,7 +71,7 @@ public class LogInForm extends JFrame {
 		LogIn.setVisible(true);
 
 		LogInButton = new JButton();
-		LogInButton.setBounds(201,201,90,35);
+		LogInButton.setBounds(199,244,90,35);
 		LogInButton.setBackground(new Color(214,217,223));
 		LogInButton.setForeground(new Color(0,0,0));
 		LogInButton.setEnabled(true);
@@ -93,14 +96,13 @@ public class LogInForm extends JFrame {
 		NewUserLabel.setText("Are you a new user?");
 		NewUserLabel.setVisible(true);
 
-		txtPassword = new JTextField();
-		txtPassword.setBounds(258,138,90,35);
-		txtPassword.setBackground(new Color(255,255,255));
-		txtPassword.setForeground(new Color(0,0,0));
-		txtPassword.setEnabled(true);
-		txtPassword.setFont(new Font("sansserif",0,12));
-		txtPassword.setText("");
-		txtPassword.setVisible(true);
+		PassFieldLogIn = new JPasswordField();
+		PassFieldLogIn.setBounds(259,136,90,35);
+		PassFieldLogIn.setBackground(new Color(214,217,223));
+		PassFieldLogIn.setForeground(new Color(0,0,0));
+		PassFieldLogIn.setEnabled(true);
+		PassFieldLogIn.setFont(new Font("sansserif",0,12));
+		PassFieldLogIn.setVisible(true);
 
 		PasswordLabel = new JLabel();
 		PasswordLabel.setBounds(120,140,90,35);
@@ -121,9 +123,11 @@ public class LogInForm extends JFrame {
 		RegisterButton.setVisible(true);
 		//Set action for button click
 		//Call defined method
-		RegisterButton.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent evt) {
-				register(evt);
+
+		RegisterButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				goToRegister(evt);
+
 			}
 		});
                         
@@ -137,24 +141,43 @@ public class LogInForm extends JFrame {
 		StudentID.setText("");
 		StudentID.setVisible(true);
 
-		StudentIDLavel = new JLabel();
-		StudentIDLavel.setBounds(123,92,90,35);
-		StudentIDLavel.setBackground(new Color(214,217,223));
-		StudentIDLavel.setForeground(new Color(0,0,0));
-		StudentIDLavel.setEnabled(true);
-		StudentIDLavel.setFont(new Font("sansserif",0,12));
-		StudentIDLavel.setText("Student ID");
-		StudentIDLavel.setVisible(true);
+		StudentIDLabel = new JLabel();
+		StudentIDLabel.setBounds(123,92,90,35);
+		StudentIDLabel.setBackground(new Color(214,217,223));
+		StudentIDLabel.setForeground(new Color(0,0,0));
+		StudentIDLabel.setEnabled(true);
+		StudentIDLabel.setFont(new Font("sansserif",0,12));
+		StudentIDLabel.setText("Student ID");
+		StudentIDLabel.setVisible(true);
+		
+		UserTypeBox = new JComboBox();
+		UserTypeBox.setBounds(265,191,90,35);
+		UserTypeBox.setBackground(new Color(214,217,223));
+		UserTypeBox.setForeground(new Color(0,0,0));
+		UserTypeBox.setEnabled(true);
+		UserTypeBox.setFont(new Font("sansserif",0,12));
+		UserTypeBox.setVisible(true);
+
+		UserTypeLabel = new JLabel();
+		UserTypeLabel.setBounds(117,193,90,35);
+		UserTypeLabel.setBackground(new Color(214,217,223));
+		UserTypeLabel.setForeground(new Color(0,0,0));
+		UserTypeLabel.setEnabled(true);
+		UserTypeLabel.setFont(new Font("sansserif",0,12));
+		UserTypeLabel.setText("User Type");
+		UserTypeLabel.setVisible(true);
 
 		//adding components to contentPane panel
 		contentPane.add(LogIn);
 		contentPane.add(LogInButton);
 		contentPane.add(NewUserLabel);
-		contentPane.add(txtPassword);
+		contentPane.add(PassFieldLogIn);
 		contentPane.add(PasswordLabel);
 		contentPane.add(RegisterButton);
 		contentPane.add(StudentID);
-		contentPane.add(StudentIDLavel);
+		contentPane.add(StudentIDLabel);
+		contentPane.add(UserTypeBox);
+		contentPane.add(UserTypeLabel);
 
 		//adding panel to JFrame and seting of window position and close operation
 		this.add(contentPane);
@@ -168,13 +191,13 @@ public class LogInForm extends JFrame {
 	private void logIn (MouseEvent evt) {
 		 try {
 
-            if (StudentID.getText().isEmpty() || txtPassword.getPassword().length == 0 ) {
+            if (StudentID.getText().isEmpty() || PassFieldLogIn.getPassword().length == 0 ) {
                 JOptionPane.showMessageDialog(this, "Student ID or Password empty");
             } else {
 
                 String studentid = StudentID.getText();
                 
-                String password = String.valueOf(txtPassword.getPassword());
+                String password = String.valueOf(PassFieldLogIn.getPassword());
                 
                     conn = dbConnection.getConnection();
                     System.out.println("Database Connected");
@@ -184,7 +207,7 @@ public class LogInForm extends JFrame {
                     rs = pst.executeQuery();
 
                     if (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Welcome " + username + " to the student menu");
+                        JOptionPane.showMessageDialog(null, "Welcome " + studentID + " to the student menu");
                         StudentMainForm ms = new StudentMainForm();
                         this.dispose();
                         ms.setVisible(true);
@@ -192,7 +215,7 @@ public class LogInForm extends JFrame {
                         JOptionPane.showMessageDialog(null, "User or Password does not match or account does not exist");
                         StudentID.setText("");
                         
-                        txtPassword.setText("");
+                        PassFieldLogIn.setText("");
                         
                         StudentID.requestFocus();
                     }
@@ -203,27 +226,26 @@ public class LogInForm extends JFrame {
             System.out.println("Database is closed");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, ex + " First error Ups something got wrong.....");
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LogInForm.class.getName()).log(Level.SEVERE, null, ex);
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException ex1) {
-                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
+                    Logger.getLogger(LogInForm.class.getName()).log(Level.SEVERE, null, ex1);
                     JOptionPane.showMessageDialog(this, ex + " Second Error Ups something got wrong.....");
                 }
             }
         }
 
-    }
+    
 	
 	}
 
 	//Method actionPerformed for RegisterButton
-	private void register(MouseEvent evt) {
-		 RegisterForm rf = new RegisterForm();
-		 this.dispose();
-		 rf.setVisible(true);
-		 
+
+	private void goToRegister (ActionEvent evt) {
+			//TODO
+
 	}
 
 	//method for generate menu
