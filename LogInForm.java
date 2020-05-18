@@ -28,7 +28,7 @@ public class LogInForm extends JFrame {
 	private JLabel LogIn;
 	private JButton LogInButton;
 	private JLabel NewUserLabel;
-	private JTextField txtPassword;
+	private JPasswordField PassFieldLogIn;
 	private JLabel PasswordLabel;
 	private JButton RegisterButton;
 	private JTextField StudentID;
@@ -69,7 +69,7 @@ public class LogInForm extends JFrame {
 		LogIn.setVisible(true);
 
 		LogInButton = new JButton();
-		LogInButton.setBounds(201,201,90,35);
+		LogInButton.setBounds(199,244,90,35);
 		LogInButton.setBackground(new Color(214,217,223));
 		LogInButton.setForeground(new Color(0,0,0));
 		LogInButton.setEnabled(true);
@@ -94,14 +94,13 @@ public class LogInForm extends JFrame {
 		NewUserLabel.setText("Are you a new user?");
 		NewUserLabel.setVisible(true);
 
-		txtPassword = new JTextField();
-		txtPassword.setBounds(258,138,90,35);
-		txtPassword.setBackground(new Color(255,255,255));
-		txtPassword.setForeground(new Color(0,0,0));
-		txtPassword.setEnabled(true);
-		txtPassword.setFont(new Font("sansserif",0,12));
-		txtPassword.setText("");
-		txtPassword.setVisible(true);
+		PassFieldLogIn = new JPasswordField();
+		PassFieldLogIn.setBounds(259,136,90,35);
+		PassFieldLogIn.setBackground(new Color(214,217,223));
+		PassFieldLogIn.setForeground(new Color(0,0,0));
+		PassFieldLogIn.setEnabled(true);
+		PassFieldLogIn.setFont(new Font("sansserif",0,12));
+		PassFieldLogIn.setVisible(true);
 
 		PasswordLabel = new JLabel();
 		PasswordLabel.setBounds(120,140,90,35);
@@ -168,7 +167,7 @@ public class LogInForm extends JFrame {
 		contentPane.add(LogIn);
 		contentPane.add(LogInButton);
 		contentPane.add(NewUserLabel);
-		contentPane.add(txtPassword);
+		contentPane.add(PassFieldLogIn);
 		contentPane.add(PasswordLabel);
 		contentPane.add(RegisterButton);
 		contentPane.add(StudentID);

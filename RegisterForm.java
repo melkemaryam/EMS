@@ -19,30 +19,33 @@ public class RegisterForm extends JFrame {
 
 	private JMenuBar menuBar;
 	private JLabel ConPassLabelReg;
-	private JTextField ConPassRegField;
+	private JPasswordField ConPassRegField;
 	private JLabel FNameLabel;
 	private JTextField FNameRegField;
 	private JLabel IDLabelReg;
 	private JTextField LNameRegField;
 	private JLabel LNameRegLabel;
-	private JTextField PassRegField;
+	private JPasswordField PassRegField;
 	private JLabel PasswordLabelReg;
 	private JButton RegRegisterButton;
 	private JLabel RegisterLabel;
 	private JTextField StuIDRegField;
+	private JComboBox UserTypeBoxReg;
+	private JLabel UserTypeLabelReg;
+	
 
 	//Constructor 
 	public RegisterForm(){
 
 		this.setTitle("RegisterForm");
-		this.setSize(500,400);
+		this.setSize(500,444);
 		//menu generate method
 		generateMenu();
 		this.setJMenuBar(menuBar);
 
 		//pane with null layout
 		JPanel contentPane = new JPanel(null);
-		contentPane.setPreferredSize(new Dimension(500,400));
+		contentPane.setPreferredSize(new Dimension(500,444));
 		contentPane.setBackground(new Color(192,192,192));
 
 
@@ -55,13 +58,12 @@ public class RegisterForm extends JFrame {
 		ConPassLabelReg.setText("Confirm Password");
 		ConPassLabelReg.setVisible(true);
 
-		ConPassRegField = new JTextField();
-		ConPassRegField.setBounds(265,176,90,35);
-		ConPassRegField.setBackground(new Color(255,255,255));
+		ConPassRegField = new JPasswordField();
+		ConPassRegField.setBounds(266,177,90,35);
+		ConPassRegField.setBackground(new Color(214,217,223));
 		ConPassRegField.setForeground(new Color(0,0,0));
 		ConPassRegField.setEnabled(true);
 		ConPassRegField.setFont(new Font("sansserif",0,12));
-		ConPassRegField.setText("");
 		ConPassRegField.setVisible(true);
 
 		FNameLabel = new JLabel();
@@ -109,13 +111,12 @@ public class RegisterForm extends JFrame {
 		LNameRegLabel.setText("Last Name");
 		LNameRegLabel.setVisible(true);
 
-		PassRegField = new JTextField();
-		PassRegField.setBounds(264,134,90,35);
-		PassRegField.setBackground(new Color(255,255,255));
+		PassRegField = new JPasswordField();
+		PassRegField.setBounds(264,135,90,35);
+		PassRegField.setBackground(new Color(214,217,223));
 		PassRegField.setForeground(new Color(0,0,0));
 		PassRegField.setEnabled(true);
 		PassRegField.setFont(new Font("sansserif",0,12));
-		PassRegField.setText("");
 		PassRegField.setVisible(true);
 
 		PasswordLabelReg = new JLabel();
@@ -128,7 +129,7 @@ public class RegisterForm extends JFrame {
 		PasswordLabelReg.setVisible(true);
 
 		RegRegisterButton = new JButton();
-		RegRegisterButton.setBounds(195,326,90,35);
+		RegRegisterButton.setBounds(205,392,90,35);
 		RegRegisterButton.setBackground(new Color(214,217,223));
 		RegRegisterButton.setForeground(new Color(0,0,0));
 		RegRegisterButton.setEnabled(true);
@@ -161,6 +162,23 @@ public class RegisterForm extends JFrame {
 		StuIDRegField.setFont(new Font("sansserif",0,12));
 		StuIDRegField.setText("");
 		StuIDRegField.setVisible(true);
+		
+		UserTypeBoxReg = new JComboBox();
+		UserTypeBoxReg.setBounds(266,317,90,35);
+		UserTypeBoxReg.setBackground(new Color(214,217,223));
+		UserTypeBoxReg.setForeground(new Color(0,0,0));
+		UserTypeBoxReg.setEnabled(true);
+		UserTypeBoxReg.setFont(new Font("sansserif",0,12));
+		UserTypeBoxReg.setVisible(true);
+
+		UserTypeLabelReg = new JLabel();
+		UserTypeLabelReg.setBounds(91,310,90,35);
+		UserTypeLabelReg.setBackground(new Color(214,217,223));
+		UserTypeLabelReg.setForeground(new Color(0,0,0));
+		UserTypeLabelReg.setEnabled(true);
+		UserTypeLabelReg.setFont(new Font("sansserif",0,12));
+		UserTypeLabelReg.setText("User Type");
+		UserTypeLabelReg.setVisible(true);
 
 		//adding components to contentPane panel
 		contentPane.add(ConPassLabelReg);
@@ -175,6 +193,8 @@ public class RegisterForm extends JFrame {
 		contentPane.add(RegRegisterButton);
 		contentPane.add(RegisterLabel);
 		contentPane.add(StuIDRegField);
+		contentPane.add(UserTypeBoxReg);
+		contentPane.add(UserTypeLabelReg);
 
 		//adding panel to JFrame and seting of window position and close operation
 		this.add(contentPane);
