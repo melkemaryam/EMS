@@ -13,7 +13,14 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import javax.swing.border.Border;
 import javax.swing.*;
-
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.DriverManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 
 public class LogInForm extends JFrame {
 
@@ -21,11 +28,19 @@ public class LogInForm extends JFrame {
 	private JLabel LogIn;
 	private JButton LogInButton;
 	private JLabel NewUserLabel;
-	private JTextField Password;
+	private JTextField txtPassword;
 	private JLabel PasswordLabel;
 	private JButton RegisterButton;
 	private JTextField StudentID;
 	private JLabel StudentIDLavel;
+	
+	Connection conn;
+	PreparedStatement pst;
+	ResultSet rs;
+	
+	
+	
+	
 
 	//Constructor 
 	public LogInForm(){
@@ -77,14 +92,14 @@ public class LogInForm extends JFrame {
 		NewUserLabel.setText("Are you a new user?");
 		NewUserLabel.setVisible(true);
 
-		Password = new JTextField();
-		Password.setBounds(258,138,90,35);
-		Password.setBackground(new Color(255,255,255));
-		Password.setForeground(new Color(0,0,0));
-		Password.setEnabled(true);
-		Password.setFont(new Font("sansserif",0,12));
-		Password.setText("");
-		Password.setVisible(true);
+		txtPassword = new JTextField();
+		txtPassword.setBounds(258,138,90,35);
+		txtPassword.setBackground(new Color(255,255,255));
+		txtPassword.setForeground(new Color(0,0,0));
+		txtPassword.setEnabled(true);
+		txtPassword.setFont(new Font("sansserif",0,12));
+		txtPassword.setText("");
+		txtPassword.setVisible(true);
 
 		PasswordLabel = new JLabel();
 		PasswordLabel.setBounds(120,140,90,35);
@@ -134,7 +149,7 @@ public class LogInForm extends JFrame {
 		contentPane.add(LogIn);
 		contentPane.add(LogInButton);
 		contentPane.add(NewUserLabel);
-		contentPane.add(Password);
+		contentPane.add(txtPassword);
 		contentPane.add(PasswordLabel);
 		contentPane.add(RegisterButton);
 		contentPane.add(StudentID);
@@ -150,7 +165,56 @@ public class LogInForm extends JFrame {
 
 	//Method mouseClicked for LogInButton
 	private void logIn (MouseEvent evt) {
-			//TODO
+		 try {
+
+            if (StudentID.getText().isEmpty() || txtPassword.getPassword().length == 0 ) {
+                JOptionPane.showMessageDialog(this, "Student ID or Password empty");
+            } else {
+
+                String studentid = StudentID.getText();
+                
+                String password = String.valueOf(txtPassword.getPassword());
+                
+                    conn = dbConnection.getConnection();
+                    System.out.println("Database Connected");
+                    pst = conn.prepareStatement("SELECT * FROM userstudent where studentID=? and password=?");
+                    pst.setString(1, studentid);
+                    pst.setString(2, password);
+                    rs = pst.executeQuery();
+
+                    if (rs.next()) {
+                        JOptionPane.showMessageDialog(null, "Welcome " + username + " to the student menu");
+                        StudentMainForm ms = new StudentMainForm();
+                        this.dispose();
+                        ms.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "User or Password does not match or account does not exist");
+                        StudentID.setText("");
+                        
+                        txtPassword.setText("");
+                        
+                        StudentID.requestFocus();
+                    }
+                } 
+              
+            
+            conn.close();
+            System.out.println("Database is closed");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, ex + " First error Ups something got wrong.....");
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex1) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
+                    JOptionPane.showMessageDialog(this, ex + " Second Error Ups something got wrong.....");
+                }
+            }
+        }
+
+    }
+	
 	}
 
 	//Method actionPerformed for RegisterButton
@@ -196,4 +260,4 @@ public class LogInForm extends JFrame {
 		});
 	}
 
-}
+} 
