@@ -23,6 +23,7 @@ public class Rooms{
     private int roomNo;
     private String roomAddress;
     private int capacity;
+    
     // Function name: retrieveRooms()
     // Task: method to retrive rooms information
     public void setRoomNo(int roomNo) {

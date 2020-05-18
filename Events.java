@@ -26,8 +26,7 @@ public class Events {
     int roomNo;
     String place;
     boolean bookingRequired;
-    int hello;
-    int anotherTEs;
+    
 
     //Constructor
     //public Events(int eventId, String eventName, String description, String category, String date, float time, String location, int roomNumber, String place, boolean bookingRequired){
