@@ -187,6 +187,7 @@ public class RegisterForm extends JFrame {
 	//Method actionPerformed for RegRegisterButton
 	private void register (ActionEvent evt) {
 			//TODO
+			
 	}
 
 	//method for generate menu

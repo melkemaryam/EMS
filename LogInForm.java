@@ -3,6 +3,7 @@
 */
 import javax.swing.UIManager.LookAndFeelInfo;
 import java.awt.*;
+import java.awt.event.ActionPerformed;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -24,15 +25,15 @@ import java.sql.ResultSet;
 
 public class LogInForm extends JFrame {
 
-	private JMenuBar menuBar;
-	private JLabel LogIn;
-	private JButton LogInButton;
-	private JLabel NewUserLabel;
-	private JTextField txtPassword;
-	private JLabel PasswordLabel;
-	private JButton RegisterButton;
-	private JTextField StudentID;
-	private JLabel StudentIDLavel;
+	private javax.swing.JMenuBar menuBar;
+	private javax.swing.JLabel LogIn;
+	private javax.swing.JButton LogInButton;
+	private javax.swing.JLabel NewUserLabel;
+	private javax.swing.JTextField txtPassword;
+	private javax.swing.JLabel PasswordLabel;
+	private javax.swing.JButton RegisterButton;
+	private javax.swing.JTextField StudentID;
+	private javax.swing.JLabel StudentIDLavel;
 	
 	Connection conn;
 	PreparedStatement pst;
@@ -120,12 +121,12 @@ public class LogInForm extends JFrame {
 		RegisterButton.setVisible(true);
 		//Set action for button click
 		//Call defined method
-		RegisterButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
+		RegisterButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
 				register(evt);
 			}
 		});
-
+                        
 
 		StudentID = new JTextField();
 		StudentID.setBounds(257,91,90,35);
@@ -218,8 +219,11 @@ public class LogInForm extends JFrame {
 	}
 
 	//Method actionPerformed for RegisterButton
-	private void register (ActionEvent evt) {
-			//TODO
+	private void register(MouseEvent evt) {
+		 RegisterForm rf = new RegisterForm();
+		 this.dispose();
+		 rf.setVisible(true);
+		 
 	}
 
 	//method for generate menu
@@ -255,7 +259,7 @@ public class LogInForm extends JFrame {
 		System.setProperty("swing.defaultlaf", "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new LogInForm();
+				new LogInForm().setVisible(true);
 			}
 		});
 	}
