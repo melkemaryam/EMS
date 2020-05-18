@@ -32,7 +32,9 @@ public class LogInForm extends JFrame {
 	private JLabel PasswordLabel;
 	private JButton RegisterButton;
 	private JTextField StudentID;
-	private JLabel StudentIDLavel;
+	private JLabel StudentIDLabel;
+	private JComboBox UserTypeBox;
+	private JLabel UserTypeLabel;
 	
 	Connection conn;
 	PreparedStatement pst;
@@ -122,7 +124,7 @@ public class LogInForm extends JFrame {
 		//Call defined method
 		RegisterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				register(evt);
+				goToRegister(evt);
 			}
 		});
 
@@ -136,14 +138,31 @@ public class LogInForm extends JFrame {
 		StudentID.setText("");
 		StudentID.setVisible(true);
 
-		StudentIDLavel = new JLabel();
-		StudentIDLavel.setBounds(123,92,90,35);
-		StudentIDLavel.setBackground(new Color(214,217,223));
-		StudentIDLavel.setForeground(new Color(0,0,0));
-		StudentIDLavel.setEnabled(true);
-		StudentIDLavel.setFont(new Font("sansserif",0,12));
-		StudentIDLavel.setText("Student ID");
-		StudentIDLavel.setVisible(true);
+		StudentIDLabel = new JLabel();
+		StudentIDLabel.setBounds(123,92,90,35);
+		StudentIDLabel.setBackground(new Color(214,217,223));
+		StudentIDLabel.setForeground(new Color(0,0,0));
+		StudentIDLabel.setEnabled(true);
+		StudentIDLabel.setFont(new Font("sansserif",0,12));
+		StudentIDLabel.setText("Student ID");
+		StudentIDLabel.setVisible(true);
+		
+		UserTypeBox = new JComboBox();
+		UserTypeBox.setBounds(265,191,90,35);
+		UserTypeBox.setBackground(new Color(214,217,223));
+		UserTypeBox.setForeground(new Color(0,0,0));
+		UserTypeBox.setEnabled(true);
+		UserTypeBox.setFont(new Font("sansserif",0,12));
+		UserTypeBox.setVisible(true);
+
+		UserTypeLabel = new JLabel();
+		UserTypeLabel.setBounds(117,193,90,35);
+		UserTypeLabel.setBackground(new Color(214,217,223));
+		UserTypeLabel.setForeground(new Color(0,0,0));
+		UserTypeLabel.setEnabled(true);
+		UserTypeLabel.setFont(new Font("sansserif",0,12));
+		UserTypeLabel.setText("User Type");
+		UserTypeLabel.setVisible(true);
 
 		//adding components to contentPane panel
 		contentPane.add(LogIn);
@@ -153,7 +172,9 @@ public class LogInForm extends JFrame {
 		contentPane.add(PasswordLabel);
 		contentPane.add(RegisterButton);
 		contentPane.add(StudentID);
-		contentPane.add(StudentIDLavel);
+		contentPane.add(StudentIDLabel);
+		contentPane.add(UserTypeBox);
+		contentPane.add(UserTypeLabel);
 
 		//adding panel to JFrame and seting of window position and close operation
 		this.add(contentPane);
@@ -213,12 +234,12 @@ public class LogInForm extends JFrame {
             }
         }
 
-    }
+    
 	
 	}
 
 	//Method actionPerformed for RegisterButton
-	private void register (ActionEvent evt) {
+	private void goToRegister (ActionEvent evt) {
 			//TODO
 	}
 
