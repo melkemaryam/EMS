@@ -26,7 +26,7 @@ public class BookingManager {
     // Function name: addBooking()
     // Task: adds a new booking to the DB
     public void addBooking(Student playerOne, int eventID) {
-        String sql = "INSERT INTO Bookings(EventName, UserID) VALUES (?,?)";
+        String sql = "INSERT INTO Bookings(EventID, UserID) VALUES (?,?)";
         
         try (Connection conn = DBManager.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)){
@@ -52,9 +52,9 @@ public class BookingManager {
     }
 
     // Function name: viewAllBookings()
-    // Task: shows all bookings
+    // Task: shows all bookings for certain user
     public ArrayList<Bookings> viewAllBookings(Student playerOne) {
-        String sql = "SELECT * FROM Events WHERE IsVisible = 1 WHERE UserID = ?";
+        String sql = "SELECT EventID FROM Bookings WHERE UserID = ?";
         
         int userId = playerOne.getUserId();  
         //need a structure for remembering which user goes into participants in db, a table
@@ -67,9 +67,7 @@ public class BookingManager {
             while (rs.next()){
                 Bookings allBookings = new Bookings();
                 int i = 1;
-                allBookings.setBookingId(rs.getInt(1));
-                allBookings.setStatus(rs.getString(2));
-                allBookings.setDateOfBooking(rs.getInt(3));
+                allBookings.setEventId(rs.getInt(1));
                 eventsList.add(i, allBookings);
                 i++;
                 }

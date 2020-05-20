@@ -12,7 +12,7 @@ Created: 1st May 2020
 */
 
  
-
+import java.util.ArrayList;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -88,8 +88,17 @@ public class EventManager {
 
     // Function name: cancelEvent()
     // Task: cancels and event in the system
-    public void cancelEvent() {
-
+    public void cancelEvent(int EventId) {
+        String sql = "UPDATE Events isVisible VALUE 0 WHERE EventId= ?";
+        
+        try (Connection conn = DBManager.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setInt(1, EventId);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.print("Something went wrong, Event was not cancelled");
+        }
+        DBManager.disconnect();
         //GUI: ARE YOU SURE? window appears on mouse click
         System.out.println("You have successfully cancelled the event.");
         //GUI: show message
@@ -103,8 +112,31 @@ public class EventManager {
 
     // Function name: viewAllEvents()
     // Task: shows all events
-    public void viewAllEvents() {
+    public ArrayList<Events> viewAllEvents() {
+        String sql = "SELECT EventId, EventName, EventDescription, EventDate, StartTime RoomID FROM Events WHERE isVisible = 1";
+        ArrayList<Events> eventsList = new ArrayList<>();
+        try(Connection conn = DBManager.connect();
+            Statement stmt = conn.prepareStatement(sql)){
+            ResultSet rs = stmt.executeQuery(sql);      
 
+            while (rs.next()){
+                Events allEvents = new Events();
+                int i = 1;
+                allEvents.setEventId(rs.getInt(1));
+                allEvents.setEventName(rs.getString(2));
+                allEvents.setDescription(rs.getString(3));
+                allEvents.setDate(rs.getString(4));
+                allEvents.setTime(rs.getFloat(5));
+                allEvents.setRoomNo(rs.getInt(6));
+                eventsList.add(i, allEvents);
+                i++;
+                }
+            
+        }catch (SQLException e) {
+            System.err.print("No events in DB");
+        }
+        DBManager.disconnect();
+        return eventsList;
     }
 
     // Function name: editEvent()

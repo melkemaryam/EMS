@@ -16,7 +16,8 @@ Created: 1st May 2020
 public class Bookings {
 
     int bookingId;
-    int dateOfBooking;
+    int eventId;
+    int userId;
     String status; // or int status if every status has a number: e.g. 1 = cancelled, etc...
 
     //Constructor
@@ -37,12 +38,12 @@ public class Bookings {
         this.bookingId = bookingId;
     }
 
-    public int getDateOfBooking() {
-        return dateOfBooking;
+    public int getEventId() {
+        return eventId;
     }
 
-    public void setDateOfBooking(int dateOfBooking) {
-        this.dateOfBooking = dateOfBooking;
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 
     public String getStatus(){
