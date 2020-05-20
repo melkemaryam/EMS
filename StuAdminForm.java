@@ -24,10 +24,10 @@ public class StuAdminForm extends JFrame {
 	private JTextArea PermissionField;
 	private JLabel PermissionLabel;
 	private JLabel RoleLabel;
-	private JButton SeeOrganisers;
+	private JButton SeeOrganisersButton;
 	private JButton SeeRequestsButton;
 	private JButton SeeStudentsButton;
-	private JButton Seee;
+	private JButton SeeAllUsersButton;
 	private JLabel StuAdminLabel;
 	private JTextArea UserRoleField;
 	private JTextArea UsernameField;
@@ -56,6 +56,14 @@ public class StuAdminForm extends JFrame {
 		ApplyButton.setFont(new Font("sansserif",0,12));
 		ApplyButton.setText("Apply");
 		ApplyButton.setVisible(true);
+		
+		//Set action for button click
+		//Call defined method
+		ApplyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				applyChanges(evt);
+			}
+		});
 
 		DiscardButton = new JButton();
 		DiscardButton.setBounds(605,156,90,35);
@@ -65,6 +73,14 @@ public class StuAdminForm extends JFrame {
 		DiscardButton.setFont(new Font("sansserif",0,12));
 		DiscardButton.setText("Discard");
 		DiscardButton.setVisible(true);
+		
+		//Set action for button click
+		//Call defined method
+		DiscardButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				discard(evt);
+			}
+		});
 
 		DoneButton = new JButton();
 		DoneButton.setBounds(605,201,90,35);
@@ -74,6 +90,14 @@ public class StuAdminForm extends JFrame {
 		DoneButton.setFont(new Font("sansserif",0,12));
 		DoneButton.setText("Done");
 		DoneButton.setVisible(true);
+		
+		//Set action for button click
+		//Call defined method
+		DoneButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				done(evt);
+			}
+		});
 
 		PermissionField = new JTextArea();
 		PermissionField.setBounds(497,106,90,275);
@@ -103,14 +127,22 @@ public class StuAdminForm extends JFrame {
 		RoleLabel.setText("Role");
 		RoleLabel.setVisible(true);
 
-		SeeOrganisers = new JButton();
-		SeeOrganisers.setBounds(26,200,146,34);
-		SeeOrganisers.setBackground(new Color(214,217,223));
-		SeeOrganisers.setForeground(new Color(0,0,0));
-		SeeOrganisers.setEnabled(true);
-		SeeOrganisers.setFont(new Font("sansserif",0,12));
-		SeeOrganisers.setText("See Organisers");
-		SeeOrganisers.setVisible(true);
+		SeeOrganisersButton = new JButton();
+		SeeOrganisersButton.setBounds(26,200,146,34);
+		SeeOrganisersButton.setBackground(new Color(214,217,223));
+		SeeOrganisersButton.setForeground(new Color(0,0,0));
+		SeeOrganisersButton.setEnabled(true);
+		SeeOrganisersButton.setFont(new Font("sansserif",0,12));
+		SeeOrganisersButton.setText("See Organisers");
+		SeeOrganisersButton.setVisible(true);
+		
+		//Set action for button click
+		//Call defined method
+		SeeOrganisersButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				seeOrganisers(evt);
+			}
+		});
 
 		SeeRequestsButton = new JButton();
 		SeeRequestsButton.setBounds(27,254,149,31);
@@ -120,6 +152,14 @@ public class StuAdminForm extends JFrame {
 		SeeRequestsButton.setFont(new Font("sansserif",0,12));
 		SeeRequestsButton.setText("See Requests");
 		SeeRequestsButton.setVisible(true);
+		
+		//Set action for button click
+		//Call defined method
+		SeeRequestsButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				seeRequests(evt);
+			}
+		});
 
 		SeeStudentsButton = new JButton();
 		SeeStudentsButton.setBounds(24,149,141,36);
@@ -129,15 +169,31 @@ public class StuAdminForm extends JFrame {
 		SeeStudentsButton.setFont(new Font("sansserif",0,12));
 		SeeStudentsButton.setText("See Students");
 		SeeStudentsButton.setVisible(true);
+		
+		//Set action for button click
+		//Call defined method
+		SeeStudentsButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				seeStudents(evt);
+			}
+		});
 
-		Seee = new JButton();
-		Seee.setBounds(24,99,145,33);
-		Seee.setBackground(new Color(214,217,223));
-		Seee.setForeground(new Color(0,0,0));
-		Seee.setEnabled(true);
-		Seee.setFont(new Font("sansserif",0,12));
-		Seee.setText("See All Users");
-		Seee.setVisible(true);
+		SeeAllUsersButton = new JButton();
+		SeeAllUsersButton.setBounds(24,99,145,33);
+		SeeAllUsersButton.setBackground(new Color(214,217,223));
+		SeeAllUsersButton.setForeground(new Color(0,0,0));
+		SeeAllUsersButton.setEnabled(true);
+		SeeAllUsersButton.setFont(new Font("sansserif",0,12));
+		SeeAllUsersButton.setText("See All Users");
+		SeeAllUsersButton.setVisible(true);
+		
+		//Set action for button click
+		//Call defined method
+		SeeAllUsersButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				seeAllUsers(evt);
+			}
+		});
 
 		StuAdminLabel = new JLabel();
 		StuAdminLabel.setBounds(243,14,269,31);
@@ -184,10 +240,10 @@ public class StuAdminForm extends JFrame {
 		contentPane.add(PermissionField);
 		contentPane.add(PermissionLabel);
 		contentPane.add(RoleLabel);
-		contentPane.add(SeeOrganisers);
+		contentPane.add(SeeOrganisersButton);
 		contentPane.add(SeeRequestsButton);
 		contentPane.add(SeeStudentsButton);
-		contentPane.add(Seee);
+		contentPane.add(SeeAllUsersButton);
 		contentPane.add(StuAdminLabel);
 		contentPane.add(UserRoleField);
 		contentPane.add(UsernameField);
@@ -199,6 +255,41 @@ public class StuAdminForm extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.pack();
 		this.setVisible(true);
+	}
+	
+	//Method actionPerformed
+	private void applyChanges (ActionEvent evt) {
+			//TODO
+	}
+	
+	//Method actionPerformed
+	private void discard (ActionEvent evt) {
+			//TODO
+	}
+	
+	//Method actionPerformed
+	private void done (ActionEvent evt) {
+			//TODO
+	}
+	
+	//Method actionPerformed
+	private void seeOrganisers (ActionEvent evt) {
+			//TODO
+	}
+	
+	//Method actionPerformed
+	private void seeRequests (ActionEvent evt) {
+			//TODO
+	}
+	
+	//Method actionPerformed
+	private void seeStudents (ActionEvent evt) {
+			//TODO
+	}
+	
+	//Method actionPerformed
+	private void seeAllUsers (ActionEvent evt) {
+			//TODO
 	}
 
 	//method for generate menu
