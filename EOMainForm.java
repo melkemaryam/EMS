@@ -43,13 +43,15 @@ public class EOMainForm extends JFrame {
 	private JLabel PlacesLabel;
 	private JTextField RoomNoEOField;
 	private JLabel RoomNoLabel;
+	private JButton SaveEOButton;
+	private JButton SeeAllBookEOButton;
 	private JButton SeeAllEventsEOButton;
 	private JTextArea ShowEventsEO;
 	private JLabel TimeLabel;
 	private JTextField TitleEOField;
 	private JLabel TitleLabel;
 	private JLabel Welcomelabel;
-	private JTextField YearEOFIeld;
+	private JTextField YearEOField;
 
 	//Constructor 
 	public EOMainForm(){
@@ -353,6 +355,38 @@ public class EOMainForm extends JFrame {
 		RoomNoLabel.setFont(new Font("sansserif",0,12));
 		RoomNoLabel.setText("Room No.");
 		RoomNoLabel.setVisible(true);
+		
+		SaveEOButton = new JButton();
+		SaveEOButton.setBounds(30,301,90,35);
+		SaveEOButton.setBackground(new Color(214,217,223));
+		SaveEOButton.setForeground(new Color(0,0,0));
+		SaveEOButton.setEnabled(true);
+		SaveEOButton.setFont(new Font("sansserif",0,12));
+		SaveEOButton.setText("Save");
+		SaveEOButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		SaveEOButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				saveChanges(evt);
+			}
+		});
+		
+		SeeAllBookEOButton = new JButton();
+		SeeAllBookEOButton.setBounds(30,30,137,35);
+		SeeAllBookEOButton.setBackground(new Color(214,217,223));
+		SeeAllBookEOButton.setForeground(new Color(0,0,0));
+		SeeAllBookEOButton.setEnabled(true);
+		SeeAllBookEOButton.setFont(new Font("sansserif",0,12));
+		SeeAllBookEOButton.setText("See All Bookings");
+		SeeAllBookEOButton.setVisible(true);
+		//Set action for button click
+		//Call defined method
+		SeeAllBookEOButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				seeAllBookingsEO(evt);
+			}
+		});
 
 		SeeAllEventsEOButton = new JButton();
 		SeeAllEventsEOButton.setBounds(29,71,130,33);
@@ -417,14 +451,14 @@ public class EOMainForm extends JFrame {
 		Welcomelabel.setText("Welcome");
 		Welcomelabel.setVisible(true);
 
-		YearEOFIeld = new JTextField();
-		YearEOFIeld.setBounds(611,142,67,25);
-		YearEOFIeld.setBackground(new Color(255,255,255));
-		YearEOFIeld.setForeground(new Color(0,0,0));
-		YearEOFIeld.setEnabled(true);
-		YearEOFIeld.setFont(new Font("sansserif",0,12));
-		YearEOFIeld.setText("");
-		YearEOFIeld.setVisible(true);
+		YearEOField = new JTextField();
+		YearEOField.setBounds(611,142,67,25);
+		YearEOField.setBackground(new Color(255,255,255));
+		YearEOField.setForeground(new Color(0,0,0));
+		YearEOField.setEnabled(true);
+		YearEOField.setFont(new Font("sansserif",0,12));
+		YearEOField.setText("");
+		YearEOField.setVisible(true);
 
 		//adding components to contentPane panel
 		contentPane.add(BookEOButton);
@@ -452,13 +486,15 @@ public class EOMainForm extends JFrame {
 		contentPane.add(PlacesLabel);
 		contentPane.add(RoomNoEOField);
 		contentPane.add(RoomNoLabel);
+		contentPane.add(SaveEOButton);
+		contentPane.add(SeeAllBookEOButton);
 		contentPane.add(SeeAllEventsEOButton);
 		contentPane.add(ShowEventsEO);
 		contentPane.add(TimeLabel);
 		contentPane.add(TitleEOField);
 		contentPane.add(TitleLabel);
 		contentPane.add(Welcomelabel);
-		contentPane.add(YearEOFIeld);
+		contentPane.add(YearEOField);
 
 		//adding panel to JFrame and seting of window position and close operation
 		this.add(contentPane);
@@ -505,6 +541,16 @@ public class EOMainForm extends JFrame {
 
 	//Method actionPerformed for MyEventsEOButton
 	private void seeOwnEventsEO (ActionEvent evt) {
+			//TODO
+	}
+	
+	//Method actionPerformed for SaveEOButton
+	private void saveChanges (ActionEvent evt) {
+			//TODO
+	}
+
+	//Method actionPerformed for SeeAllBookEOButton
+	private void seeAllBookingsEO (ActionEvent evt) {
 			//TODO
 	}
 
