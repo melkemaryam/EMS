@@ -110,8 +110,9 @@ public class EOMainForm extends JFrame {
 		CancelEOButton.setText("Cancel");
 		CancelEOButton.setVisible(true);
 		//Set action for button click
+	
 		//Call defined method
-		CancelEOButton.addActionListener(new ActionListener() {
+		CancelEOButton.addActionListener(new ActionListener()) {
 			public void actionPerformed(ActionEvent evt) {
 				cancelEO(evt);
 			}
@@ -470,17 +471,24 @@ public class EOMainForm extends JFrame {
 
 	//Method actionPerformed for BookEOButton
 	private void bookEO (ActionEvent evt) {
-			//TODO
+	         book m = new book();
+	         this.dispose();
+	         m.setVisible(true);
 	}
 
 	//Method actionPerformed for CancelEOButton
 	private void cancelEO (ActionEvent evt) {
-			//TODO
-	}
+		 cancel m = new cancel();
+                 this.dispose();
+                 m.setVisible(true);
+                }
+	
 
 	//Method actionPerformed for CreateEventEOButton
 	private void createEventEO (ActionEvent evt) {
-			//TODO
+		creatNewEvent m = new creatNewEvent();
+                this.dispose();
+                m.setVisible(true);
 	}
 
 	//Method actionPerformed for DeleteEOButton
