@@ -232,7 +232,7 @@ public class LogInForm extends JFrame {
 
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(null, "Welcome " + "studentIDorganiser" + " to the Event Organiser menu");
-                        EventOrganiser mo = new EventOrganiser();
+                        EOMainForm mo = new EOMainForm();
                         this.dispose();
                         mo.setVisible(true);
                     } else {
