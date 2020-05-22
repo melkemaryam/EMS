@@ -244,7 +244,7 @@ public class RegisterForm extends JFrame {
                 if ("student".equalsIgnoreCase(usertype)) // go to student data base
                 {
                     // create a connection to the database
-                    conn = DBManager.getConnection();
+                    conn = DBManager.connect();
                     System.out.println("Database Connected ");
 
                     pst = conn.prepareStatement("INSERT INTO userstudent(studentID,firstName, lastName,password)values(?,?,?,?)");
@@ -266,7 +266,7 @@ public class RegisterForm extends JFrame {
                    // JOptionPane.showMessageDialog(null, "Option disabled by Administrator, contact the admin to give you access!");
                                  
                 // create a connection to the database
-                conn = DBManager.getConnection();
+                conn = DBManager.connect();
                 System.out.println("Database Connected yes");
 
                 pst = conn.prepareStatement("INSERT INTO usersadmin(adminID,firstName,lastName,password)values(?,?,?,?)");
