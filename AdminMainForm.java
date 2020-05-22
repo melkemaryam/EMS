@@ -395,7 +395,9 @@ public class AdminMainForm extends JFrame {
 
     //Method actionPerformed for LogOutAdButton
     private void logOutAd (ActionEvent evt) {
-            //TODO
+        LogInForm lo = new LogInForm();
+        this.dispose();
+        lo.setVisible(true);
     }
 
     //Method actionPerformed for SeeAllBookAdButton

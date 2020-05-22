@@ -61,7 +61,7 @@ public class EventManager {
 
     // Function name: createEvent()
     // Task: creates a new event in the system
-    public void createEvent(String EventName, String EventDescription, int EventDate, float StartTime, float EndTime, int UserID, int RoomID) {
+    public static void createEvent(String EventName, String EventDescription, int EventDate, float StartTime, float EndTime, int UserID, int RoomID) {
         String sql = "INSERT INTO Events(EventName, EventDescription, EventDate, StartTime, EndTime, UserID, RoomID, isNew, isVisible) VALUES (?,?,?,?,?,?,?,?)";
         
         try (Connection conn = DBManager.connect();

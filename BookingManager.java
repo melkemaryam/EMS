@@ -25,7 +25,7 @@ public class BookingManager {
 
     // Function name: addBooking()
     // Task: adds a new booking to the DB
-    public void addBooking(Student playerOne, int eventID) {
+    public static void addBooking(Student playerOne, int eventID) {
         String sql = "INSERT INTO Bookings(EventID, UserID) VALUES (?,?)";
         
         try (Connection conn = DBManager.connect();
@@ -44,7 +44,7 @@ public class BookingManager {
 
     // Function name: cancelBooking()
     // Task: cancels a booking
-    public void cancelBooking() {
+    public static void cancelBooking() {
 
         System.out.println("You have successfully cancelled a booking.");
         //GUI: show message
