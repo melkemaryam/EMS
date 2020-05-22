@@ -22,17 +22,17 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
-//import Model.*;
+
 
 public class AccountManager {
 
     private static final Logger LOGGER = Logger.getLogger(DBManager.class.getName() );
 
-	private static final DBManager DATABASE = new DBManager();
+    private static final DBManager DATABASE = new DBManager();
     
     public AccountManager(){
-		//off
-		LOGGER.setLevel(Level.ALL);
+        //off
+        LOGGER.setLevel(Level.ALL);
     }
     
     // Function name: addUser()
@@ -140,7 +140,22 @@ public class AccountManager {
         }
         DBManager.disconnect();
     }
-
+    
+    // Function name: requestPermission()
+    // Task: leaves a request in db for the permission to act as an EventOrganiser
+    public void requestPermission(Student playerOne) {
+        String sql = "UPDATE Users SET roleRequest = 1 " + "WHERE UserID = ?";
+        int userId = playerOne.getUserId(); 
+        try (Connection conn = DBManager.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+                pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery(sql);
+        }catch (SQLException e) {
+            System.err.print("No DB connection");
+        }
+        DBManager.disconnect();
+    }
+    
     // Function name: revokeRights()
     // Task: revokes then rights from an EventOrganiser
     public void revokeRights(Student playerOne) {
@@ -158,4 +173,26 @@ public class AccountManager {
         DBManager.disconnect();
     }
 
+    // Function name: retrieveRequests()
+    // Task: method to retrive requests for Event Organiser rights
+    public ArrayList<Student> retrieveRequests() {
+        String sql = "SELECT UserID FROM Users WHERE roleRequest = 1";
+        ArrayList<Student> requestsList = new ArrayList<>();
+        try (Connection conn = DBManager.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+            ResultSet rs = pstmt.executeQuery(sql);
+
+            while (rs.next()){
+                int i = 1;
+                Student playerTwo = new Student();
+                playerTwo.setUserId(rs.getInt("StudentID"));
+                requestsList.add(i, playerTwo);
+                i++;
+            }
+        }catch (SQLException e) {
+            System.err.print("No such user");
+        }
+        DBManager.disconnect();
+        return requestsList;
+    }
 }

@@ -44,11 +44,35 @@ public class BookingManager {
 
     // Function name: cancelBooking()
     // Task: cancels a booking
-    public static void cancelBooking() {
-
+    public static void cancelBooking(Student playerOne, int eventId) {
+        String sql = "DELETE FROM Bookings WHERE EventID = ? AND UserID = ?";
+        try (Connection conn = DBManager.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setInt(1, eventId);
+            pstmt.setInt(2, playerOne.getUserId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.print("Something went wrong, Booking was not removed from the DB");
+        }
+        DBManager.disconnect();
+        
         System.out.println("You have successfully cancelled a booking.");
         //GUI: show message
 
+    }
+    
+    // Function name: cancelAllBookings()
+    // Task: cancels an event connected bookings
+    public static void cancelAllBookings(int eventId) {
+        String sql = "DELETE FROM Bookings WHERE EventID = ?";
+        try (Connection conn = DBManager.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setInt(1, eventId);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.print("Something went wrong, Bookings not removed from the DB");
+        }
+        DBManager.disconnect();
     }
 
     // Function name: viewAllBookings()

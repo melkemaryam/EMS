@@ -11,7 +11,7 @@ Created: 1st May 2020
 -------------------------------------------------
 */
 
- 
+
 import java.util.ArrayList;
 import java.sql.Statement;
 import java.sql.Connection;
@@ -20,7 +20,7 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 
 public class EventManager {
-
+    
     // Function name: getRoomList()
     // Task: returns a list of room information
     public void getRoomList() {
@@ -29,7 +29,7 @@ public class EventManager {
         try (Connection conn = DBManager.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql)){
-
+    
             while (rs.next()){
                 System.out.println(rs.getInt("RoomID") + "\t" +
                                     rs.getInt("RoomNo") + "\t" +
@@ -40,7 +40,7 @@ public class EventManager {
         }
         DBManager.disconnect();
     }
-
+    
     // Function name: addRoom()
     // Task: adds a new room to the DB
     public void addRoom(String Address, int RoomNo, int Size) {
@@ -58,10 +58,10 @@ public class EventManager {
         DBManager.disconnect();
     
     }
-
+    
     // Function name: createEvent()
     // Task: creates a new event in the system
-    public static void createEvent(String EventName, String EventDescription, int EventDate, float StartTime, float EndTime, int UserID, int RoomID) {
+    public static void createEvent(String EventName, String EventDescription, int EventDate, float StartTime, float EndTime, Student playerOne, int RoomID) {
         String sql = "INSERT INTO Events(EventName, EventDescription, EventDate, StartTime, EndTime, UserID, RoomID, isNew, isVisible) VALUES (?,?,?,?,?,?,?,?)";
         
         try (Connection conn = DBManager.connect();
@@ -71,7 +71,7 @@ public class EventManager {
             pstmt.setInt(3, EventDate);
             pstmt.setFloat(4, StartTime);
             pstmt.setFloat(5, EndTime);
-            pstmt.setInt(6, UserID);
+            pstmt.setInt(6, playerOne.getUserId());
             pstmt.setInt(7, RoomID);
             pstmt.setInt(8, 1);
             pstmt.setInt(9, 1);
@@ -80,34 +80,51 @@ public class EventManager {
             System.err.print("Something went wrong, Event was not added to the DB");
         }
         DBManager.disconnect();
-
+    
         System.out.println("You have successfully created this event.");
         //GUI: show message, show in bookingsWindow
         //GUI: show empty window to put values into the empty boxes
     }
-
+    
     // Function name: cancelEvent()
     // Task: cancels and event in the system
-    public void cancelEvent(int EventId) {
+    public void cancelEvent(int eventId) {
         String sql = "UPDATE Events isVisible VALUE 0 WHERE EventId= ?";
         
         try (Connection conn = DBManager.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)){
-            pstmt.setInt(1, EventId);
+            pstmt.setInt(1, eventId);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.err.print("Something went wrong, Event was not cancelled");
         }
         DBManager.disconnect();
+        BookingManager.cancelAllBookings(eventId);
         //GUI: ARE YOU SURE? window appears on mouse click
         System.out.println("You have successfully cancelled the event.");
         //GUI: show message
     }
-
+    
     // Function name: searchEvent()
     // Task: searches for a special event in the DB
-    public void searchEvent() {
-
+    public Events searchEvent(int EventId) {
+        String sql = "SELECT EventName, EventDescription, EventDate, StartTime RoomID FROM Events WHERE EventId = ?";
+        Events specificEvent = new Events();
+            try(Connection conn = DBManager.connect();
+                Statement stmt = conn.prepareStatement(sql)){
+                ResultSet rs = stmt.executeQuery(sql);
+                while (rs.next()){
+                    specificEvent.setEventName(rs.getString(1));
+                    specificEvent.setDescription(rs.getString(2));
+                    specificEvent.setDate(rs.getString(3));
+                    specificEvent.setTime(rs.getFloat(4));
+                    specificEvent.setRoomNo(rs.getInt(5));
+                }
+        }catch (SQLException e) {
+            System.err.print("No events in DB");
+        }
+        DBManager.disconnect();
+        return specificEvent;
     }
 
     // Function name: viewAllEvents()
@@ -150,11 +167,32 @@ public class EventManager {
 
     // Function name: viewOwnEvents()
     // Task: with this method the EventOrganiser can view their own events
-    public void viewOwnEvents() {
-        //GUI: change of window?
+    public ArrayList<Events> viewOwnEvents(Student playerOne) {
+        String sql = "SELECT EventId, EventName, EventDescription, EventDate, StartTime RoomID FROM Events WHERE isVisible = 1 AND UserId = ?";
+        ArrayList<Events> eventsList = new ArrayList<>();
+        try(Connection conn = DBManager.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setInt(1, playerOne.getUserId());
+            ResultSet rs = pstmt.executeQuery(sql);      
+
+            while (rs.next()){
+                Events allEvents = new Events();
+                int i = 1;
+                allEvents.setEventId(rs.getInt(1));
+                allEvents.setEventName(rs.getString(2));
+                allEvents.setDescription(rs.getString(3));
+                allEvents.setDate(rs.getString(4));
+                allEvents.setTime(rs.getFloat(5));
+                allEvents.setRoomNo(rs.getInt(6));
+                eventsList.add(i, allEvents);
+                i++;
+                }
+            
+        }catch (SQLException e) {
+            System.err.print("No events in DB");
+        }
+        DBManager.disconnect();
+        return eventsList;
     }
-
-
-
-
+        //GUI: change of window?
 }
