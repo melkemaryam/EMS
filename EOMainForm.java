@@ -17,7 +17,6 @@ import javax.swing.*;
 
 public class EOMainForm extends JFrame {
 
-    private JMenuBar menuBar;
     private JButton BookEOButton;
     private JCheckBox BookReqBoxEO;
     private JLabel BookReqLabel;
@@ -58,9 +57,7 @@ public class EOMainForm extends JFrame {
 
         this.setTitle("EOMainForm");
         this.setSize(717,444);
-        //menu generate method
-        generateMenu();
-        this.setJMenuBar(menuBar);
+       
 
         //pane with null layout
         JPanel contentPane = new JPanel(null);
@@ -560,32 +557,7 @@ public class EOMainForm extends JFrame {
             //TODO
     }
 
-    //method for generate menu
-    public void generateMenu(){
-        menuBar = new JMenuBar();
-
-        JMenu file = new JMenu("File");
-        JMenu tools = new JMenu("Tools");
-        JMenu help = new JMenu("Help");
-
-        JMenuItem open = new JMenuItem("Open   ");
-        JMenuItem save = new JMenuItem("Save   ");
-        JMenuItem exit = new JMenuItem("Exit   ");
-        JMenuItem preferences = new JMenuItem("Preferences   ");
-        JMenuItem about = new JMenuItem("About   ");
-
-
-        file.add(open);
-        file.add(save);
-        file.addSeparator();
-        file.add(exit);
-        tools.add(preferences);
-        help.add(about);
-
-        menuBar.add(file);
-        menuBar.add(tools);
-        menuBar.add(help);
-    }
+    
 
 
 
