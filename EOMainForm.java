@@ -444,12 +444,12 @@ public class EOMainForm extends JFrame {
         TitleEOField.setText("");
         TitleEOField.setVisible(true);
 
-
 	//Method actionPerformed for BookEOButton
 	private void bookEO (ActionEvent evt) {
 	         book m = new book();
 	         this.dispose();
 	         m.setVisible(true);
+	        
 	}
 
         TitleLabel = new JLabel();
