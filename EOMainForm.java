@@ -13,6 +13,14 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import javax.swing.border.Border;
 import javax.swing.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.DriverManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 
 
 public class EOMainForm extends JFrame {
@@ -52,6 +60,11 @@ public class EOMainForm extends JFrame {
 	private JLabel TitleLabel;
 	private JLabel Welcomelabel;
 	private JTextField YearEOField;
+	
+	
+	Connection conn;
+	PreparedStatement pst;
+	ResultSet rs;
 
 	//Constructor 
 	public EOMainForm(){
@@ -114,7 +127,7 @@ public class EOMainForm extends JFrame {
 		//Set action for button click
 	
 		//Call defined method
-		CancelEOButton.addActionListener(new ActionListener()) {
+		CancelEOButton.addActionListener(new ActionListener()); {
 			public void actionPerformed(ActionEvent evt) {
 				cancelEO(evt);
 			}
@@ -148,7 +161,7 @@ public class EOMainForm extends JFrame {
 		CreateEventEOButton.setVisible(true);
 		//Set action for button click
 		//Call defined method
-		CreateEventEOButton.addActionListener(new ActionListener() {
+		CreateEventEOButton.addActionListener(new ActionListener()); {
 			public void actionPerformed(ActionEvent evt) {
 				createEventEO(evt);
 			}
