@@ -24,7 +24,6 @@ import java.sql.ResultSet;
 
 public class RegisterForm extends JFrame {
 
-    private JMenuBar menuBar;
     private JLabel ConPassLabelReg;
     private JPasswordField ConPassRegField;
     private JLabel FNameLabel;
@@ -51,9 +50,7 @@ public class RegisterForm extends JFrame {
 
         this.setTitle("RegisterForm");
         this.setSize(500,444);
-        //menu generate method
-        generateMenu();
-        this.setJMenuBar(menuBar);
+        
 
         //pane with null layout
         JPanel contentPane = new JPanel(null);
@@ -244,7 +241,7 @@ public class RegisterForm extends JFrame {
                 if ("student".equalsIgnoreCase(usertype)) // go to student data base
                 {
                     // create a connection to the database
-                    conn = DBManager.getConnection();
+                    conn = DBManager.connect();
                     System.out.println("Database Connected ");
 
                     pst = conn.prepareStatement("INSERT INTO userstudent(studentID,firstName, lastName,password)values(?,?,?,?)");
@@ -266,7 +263,7 @@ public class RegisterForm extends JFrame {
                    // JOptionPane.showMessageDialog(null, "Option disabled by Administrator, contact the admin to give you access!");
                                  
                 // create a connection to the database
-                conn = DBManager.getConnection();
+                conn = DBManager.connect();
                 System.out.println("Database Connected yes");
 
                 pst = conn.prepareStatement("INSERT INTO usersadmin(adminID,firstName,lastName,password)values(?,?,?,?)");
@@ -304,33 +301,7 @@ public class RegisterForm extends JFrame {
 
     }
 
-    //method for generate menu
-    public void generateMenu(){
-        menuBar = new JMenuBar();
-
-        JMenu file = new JMenu("File");
-        JMenu tools = new JMenu("Tools");
-        JMenu help = new JMenu("Help");
-
-        JMenuItem open = new JMenuItem("Open   ");
-        JMenuItem save = new JMenuItem("Save   ");
-        JMenuItem exit = new JMenuItem("Exit   ");
-        JMenuItem preferences = new JMenuItem("Preferences   ");
-        JMenuItem about = new JMenuItem("About   ");
-
-
-        file.add(open);
-        file.add(save);
-        file.addSeparator();
-        file.add(exit);
-        tools.add(preferences);
-        help.add(about);
-
-        menuBar.add(file);
-        menuBar.add(tools);
-        menuBar.add(help);
-    }
-
+    
 
 
      public static void main(String[] args){

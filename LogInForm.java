@@ -24,7 +24,6 @@ import java.sql.ResultSet;
 
 public class LogInForm extends JFrame {
 
-        private JMenuBar menuBar;
 	private JLabel LogIn;
 	private JButton LogInButton;
 	private JLabel NewUserLabel;
@@ -35,7 +34,6 @@ public class LogInForm extends JFrame {
 	private JLabel StudentIDLabel;
 	private JComboBox UserTypeBox;
 	private JLabel UserTypeLabel;
-	int hello;
 
 	
 	Connection conn;
@@ -51,9 +49,7 @@ public class LogInForm extends JFrame {
 
 		this.setTitle("LogInForm");
 		this.setSize(500,400);
-		//menu generate method
-		generateMenu();
-		this.setJMenuBar(menuBar);
+		
 
 		//pane with null layout
 		JPanel contentPane = new JPanel(null);
@@ -202,7 +198,7 @@ public class LogInForm extends JFrame {
                 
                     if ("student".equalsIgnoreCase(usertype)) 
                     {
-                    conn = DBManager.getConnection();
+                    conn = DBManager.connect();
                     System.out.println("Database Connected");
                     pst = conn.prepareStatement("SELECT * FROM userstudent where studentID=? and password=?");
                     pst.setString(1, studentid);
@@ -223,7 +219,7 @@ public class LogInForm extends JFrame {
                         StudentID.requestFocus();
                     }
                 } else if ("event organiser".equalsIgnoreCase(usertype)) {
-                    conn = DBManager.getConnection();
+                    conn = DBManager.connect();
                     System.out.println("Database Connected");
                     pst = conn.prepareStatement("SELECT * FROM usersorganiser where organiserID=? and organiserName=? and password=?");
                     pst.setString(1, studentid);
@@ -232,7 +228,7 @@ public class LogInForm extends JFrame {
 
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(null, "Welcome " + "studentIDorganiser" + " to the Event Organiser menu");
-                        EventOrganiser mo = new EventOrganiser();
+                        EOMainForm mo = new EOMainForm();
                         this.dispose();
                         mo.setVisible(true);
                     } else {
@@ -243,7 +239,7 @@ public class LogInForm extends JFrame {
                         StudentID.requestFocus();
                     }
                 } else if ("administrator".equalsIgnoreCase(usertype)) {
-                    conn = DBManager.getConnection();
+                    conn = DBManager.connect();
                     System.out.println("Database Connected");
                     pst = conn.prepareStatement("SELECT * FROM usersadmin where adminID=? and adminName=? and password=?");
                     pst.setString(1, studentid);
@@ -297,33 +293,7 @@ public class LogInForm extends JFrame {
 
 	}
 
-	//method for generate menu
-	public void generateMenu(){
-		menuBar = new JMenuBar();
-
-		JMenu file = new JMenu("File");
-		JMenu tools = new JMenu("Tools");
-		JMenu help = new JMenu("Help");
-
-		JMenuItem open = new JMenuItem("Open   ");
-		JMenuItem save = new JMenuItem("Save   ");
-		JMenuItem exit = new JMenuItem("Exit   ");
-		JMenuItem preferences = new JMenuItem("Preferences   ");
-		JMenuItem about = new JMenuItem("About   ");
-
-
-		file.add(open);
-		file.add(save);
-		file.addSeparator();
-		file.add(exit);
-		tools.add(preferences);
-		help.add(about);
-
-		menuBar.add(file);
-		menuBar.add(tools);
-		menuBar.add(help);
-	}
-
+	
 
 
 	 public static void main(String[] args){
