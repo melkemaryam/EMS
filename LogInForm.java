@@ -200,15 +200,16 @@ public class LogInForm extends JFrame {
                     {
                     conn = DBManager.connect();
                     System.out.println("Database Connected");
-                    pst = conn.prepareStatement("SELECT * FROM userstudent where studentID=? and password=?");
+                    pst = conn.prepareStatement("SELECT * FROM Users where StudentID=? and password=?");
                     pst.setString(1, studentid);
                     pst.setString(2, password);
-                    //pst.setString(3, usertype);
                     rs = pst.executeQuery();
 
                     if (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Welcome " + "studentID" + " to the student menu");
+                        JOptionPane.showMessageDialog(null, "Welcome " + studentid + " to the student menu");
                         StudentMainForm ms = new StudentMainForm();
+                        Student playerOne = new Student();
+                        AccountManager.retrieveUser(playerOne);
                         this.dispose();
                         ms.setVisible(true);
                     } else {
@@ -221,14 +222,16 @@ public class LogInForm extends JFrame {
                 } else if ("event organiser".equalsIgnoreCase(usertype)) {
                     conn = DBManager.connect();
                     System.out.println("Database Connected");
-                    pst = conn.prepareStatement("SELECT * FROM usersorganiser where organiserID=? and organiserName=? and password=?");
+                    pst = conn.prepareStatement("SELECT * FROM Users where StudentID=? and password=?");
                     pst.setString(1, studentid);
                     pst.setString(2, password);
                     rs = pst.executeQuery();
 
                     if (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Welcome " + "studentIDorganiser" + " to the Event Organiser menu");
+                        JOptionPane.showMessageDialog(null, "Welcome " + studentid + " to the Event Organiser menu");
                         EOMainForm mo = new EOMainForm();
+                        Student playerOne = new Student();
+                        AccountManager.retrieveUser(playerOne);
                         this.dispose();
                         mo.setVisible(true);
                     } else {
@@ -241,14 +244,16 @@ public class LogInForm extends JFrame {
                 } else if ("administrator".equalsIgnoreCase(usertype)) {
                     conn = DBManager.connect();
                     System.out.println("Database Connected");
-                    pst = conn.prepareStatement("SELECT * FROM usersadmin where adminID=? and adminName=? and password=?");
+                    pst = conn.prepareStatement("SELECT * FROM Users where StudentID=? and password=?");
                     pst.setString(1, studentid);
                     pst.setString(2, password);
                     rs = pst.executeQuery();
 
                     if (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Welcome " + "admin" + " to the Admin menu");
+                        JOptionPane.showMessageDialog(null, "Welcome " + studentid + " to the Admin menu");
                         AdminMainForm ma = new AdminMainForm();
+                        Student playerOne = new Student();
+                        AccountManager.retrieveUser(playerOne);
                         this.dispose();
                         ma.setVisible(true);
                     } else {

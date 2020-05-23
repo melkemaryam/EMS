@@ -37,7 +37,7 @@ public class Rooms{
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-
+/*
     public ArrayList<Rooms> retrieveRooms() {
         String sql = "SELECT * FROM Rooms";
         ArrayList<Rooms> roomsList = new ArrayList<>();
@@ -62,5 +62,5 @@ public class Rooms{
         DBManager.disconnect();
         return roomsList;
     }
-    
+ */   
 }

@@ -129,24 +129,15 @@ public class EventManager {
 
     // Function name: viewAllEvents()
     // Task: shows all events
-    public ArrayList<Events> viewAllEvents() {
-        String sql = "SELECT EventId, EventName, EventDescription, EventDate, StartTime RoomID FROM Events WHERE isVisible = 1";
-        ArrayList<Events> eventsList = new ArrayList<>();
+    public ArrayList<String> viewAllEvents() {
+        String sql = "SELECT EventName FROM Events WHERE isVisible = 1";
+        ArrayList<String> eventsList = new ArrayList<>();
         try(Connection conn = DBManager.connect();
             Statement stmt = conn.prepareStatement(sql)){
             ResultSet rs = stmt.executeQuery(sql);      
 
             while (rs.next()){
-                Events allEvents = new Events();
-                int i = 1;
-                allEvents.setEventId(rs.getInt(1));
-                allEvents.setEventName(rs.getString(2));
-                allEvents.setDescription(rs.getString(3));
-                allEvents.setDate(rs.getString(4));
-                allEvents.setTime(rs.getFloat(5));
-                allEvents.setRoomNo(rs.getInt(6));
-                eventsList.add(i, allEvents);
-                i++;
+                eventsList.add(rs.getString(1));
                 }
             
         }catch (SQLException e) {

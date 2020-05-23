@@ -101,8 +101,8 @@ public class AccountManager {
 
     // Function name: retrieveUser()
     // Task: method to retrive user information
-    public void retrieveUser(Student playerOne) {
-        String sql = "SELECT FirstName, LastName, Email, UserType, StudentID FROM Users WHERE UserID =?";
+    public static void retrieveUser(Student playerOne) {
+        String sql = "SELECT UserID, FirstName, LastName, Email, UserType FROM Users WHERE StudentID =?";
         int universityId = playerOne.getUniId();
 
         try (Connection conn = DBManager.connect();
@@ -111,7 +111,7 @@ public class AccountManager {
             ResultSet rs = pstmt.executeQuery(sql);
 
             while (rs.next()){
-                playerOne.setUniId(rs.getInt("StudentID"));
+                playerOne.setUserId(rs.getInt("UserID"));
                 playerOne.setFirstName(rs.getString("FirstName"));
                 playerOne.setLastName(rs.getString("LastName"));
                 playerOne.setEmail(rs.getString("Email"));
@@ -128,7 +128,7 @@ public class AccountManager {
     // Task: grants a student the permission to act as an EventOrganiser
     public void grantPermission(Student playerOne) {
         String sql = "UPDATE Users " + "SET UserType = ? " + "WHERE UserID = ?";
-        int userId = playerOne.getUserId();    
+        int userId = playerOne.getUserId();
         int userType = 2;
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
@@ -175,19 +175,15 @@ public class AccountManager {
 
     // Function name: retrieveRequests()
     // Task: method to retrive requests for Event Organiser rights
-    public ArrayList<Student> retrieveRequests() {
+    public ArrayList<Integer> retrieveRequests() {
         String sql = "SELECT UserID FROM Users WHERE roleRequest = 1";
-        ArrayList<Student> requestsList = new ArrayList<>();
+        ArrayList<Integer> requestsList = new ArrayList<>();
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
             ResultSet rs = pstmt.executeQuery(sql);
 
             while (rs.next()){
-                int i = 1;
-                Student playerTwo = new Student();
-                playerTwo.setUserId(rs.getInt("StudentID"));
-                requestsList.add(i, playerTwo);
-                i++;
+                requestsList.add(rs.getInt("StudentID"));
             }
         }catch (SQLException e) {
             System.err.print("No such user");
