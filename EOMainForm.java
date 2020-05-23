@@ -87,7 +87,7 @@ public class EOMainForm extends JFrame {
         //Call defined method
         BookEOButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                bookEO(evt);
+                //bookEO(evt);
             }
         });
 
@@ -159,7 +159,7 @@ public class EOMainForm extends JFrame {
         //Call defined method
         CreateEventEOButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                createEventEO(evt);
+                //createEventEO(evt);
             }
         });
 
@@ -444,14 +444,6 @@ public class EOMainForm extends JFrame {
         TitleEOField.setText("");
         TitleEOField.setVisible(true);
 
-
-	//Method actionPerformed for BookEOButton
-	private void bookEO (ActionEvent evt) {
-	         book m = new book();
-	         this.dispose();
-	         m.setVisible(true);
-	}
-
         TitleLabel = new JLabel();
         TitleLabel.setBounds(380,69,90,35);
         TitleLabel.setBackground(new Color(214,217,223));
@@ -460,13 +452,6 @@ public class EOMainForm extends JFrame {
         TitleLabel.setFont(new Font("sansserif",0,12));
         TitleLabel.setText("Title");
         TitleLabel.setVisible(true);
-
-	//Method actionPerformed for CancelEOButton
-	private void cancelEO (ActionEvent evt) {
-		 cancel m = new cancel();
-                 this.dispose();
-                 m.setVisible(true);
-                }
 	
 
         Welcomelabel = new JLabel();
@@ -478,14 +463,6 @@ public class EOMainForm extends JFrame {
         Welcomelabel.setText("Welcome");
         Welcomelabel.setVisible(true);
 
-
-
-	//Method actionPerformed for CreateEventEOButton
-	private void createEventEO (ActionEvent evt) {
-		creatNewEvent m = new creatNewEvent();
-                this.dispose();
-                m.setVisible(true);
-	}
 
         YearEOField = new JTextField();
         YearEOField.setBounds(611,142,67,25);
@@ -542,19 +519,29 @@ public class EOMainForm extends JFrame {
     }
 
     //Method actionPerformed for BookEOButton
-    private void bookEO (ActionEvent evt) {
-            //TODO
-    }
+    //private void bookEO (ActionEvent evt) {
+            //book m = new book();
+	    //this.dispose();
+	    //m.setVisible(true);
+	    //BookingManager.addBooking(playerOne, eventID);
+    //}
 
     //Method actionPerformed for CancelEOButton
     private void cancelEO (ActionEvent evt) {
-            //TODO
+            //cancel m = new cancel();
+            //this.dispose();
+            //m.setVisible(true);
+            BookingManager.cancelBooking(playerOne, eventID);
+            
     }
 
     //Method actionPerformed for CreateEventEOButton
-    private void createEventEO (ActionEvent evt) {
-            //TODO
-    }
+    //private void createEventEO (ActionEvent evt) {
+            //creatNewEvent m = new creatNewEvent();
+            //this.dispose();
+            //m.setVisible(true);
+            //EventManager.createEvent();
+    //}
 
     //Method actionPerformed for DeleteEOButton
     private void deleteEO (ActionEvent evt) {
@@ -569,7 +556,9 @@ public class EOMainForm extends JFrame {
 
     //Method actionPerformed for LogOutEOButton
     private void logOutEO (ActionEvent evt) {
-            //TODO
+        LogInForm lo = new LogInForm();
+        this.dispose();
+        lo.setVisible(true);
     }
 
     //Method actionPerformed for ModifyEOButton
