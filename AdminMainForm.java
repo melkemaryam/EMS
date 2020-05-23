@@ -33,6 +33,7 @@ public class AdminMainForm extends JFrame {
     private JButton CancelEventAdButton;
     private JTextField CatAdField;
     private JLabel Category;
+    private JButton ChooseEventAdButton;
     private JTextField DateAdField;
     private JLabel DateLabel;
     private JTextField DescAdField;
@@ -158,6 +159,22 @@ public class AdminMainForm extends JFrame {
         Category.setFont(new Font("sansserif",0,12));
         Category.setText("Category");
         Category.setVisible(true);
+        
+        ChooseEventAdButton = new JButton();
+	ChooseEventAdButton.setBounds(502,388,125,33);
+	ChooseEventAdButton.setBackground(new Color(214,217,223));
+	ChooseEventAdButton.setForeground(new Color(0,0,0));
+	ChooseEventAdButton.setEnabled(true);
+	ChooseEventAdButton.setFont(new Font("sansserif",0,12));
+	ChooseEventAdButton.setText("Choose Event");
+	ChooseEventAdButton.setVisible(true);
+	//Set action for button click
+	//Call defined method
+	ChooseEventAdButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent evt) {
+			chooseEventAd(evt);
+		}
+	});
 
         DateAdField = new JTextField();
         DateAdField.setBounds(502,143,91,27);
@@ -380,6 +397,7 @@ public class AdminMainForm extends JFrame {
         contentPane.add(CancelEventAdButton);
         contentPane.add(CatAdField);
         contentPane.add(Category);
+        contentPane.add(ChooseEventAdButton);
         contentPane.add(DateAdField);
         contentPane.add(DateLabel);
         contentPane.add(DescAdField);
@@ -477,7 +495,10 @@ public class AdminMainForm extends JFrame {
         }
     }
 
-    
+    //Method actionPerformed for ChooseEventAdButton
+    private void chooseEventAd (ActionEvent evt) {
+			//TODO
+    }
 
     //Method actionPerformed for ExitAdButton
     private void exitAd (ActionEvent evt) {
