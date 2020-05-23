@@ -110,37 +110,37 @@ public class AdminMainForm extends JFrame {
         BookReqLabel.setVisible(true);
 
         CancelBookAdButton = new JButton();
-	CancelBookAdButton.setBounds(305,389,146,34);
-	CancelBookAdButton.setBackground(new Color(214,217,223));
-	CancelBookAdButton.setForeground(new Color(0,0,0));
-	CancelBookAdButton.setEnabled(true);
-	CancelBookAdButton.setFont(new Font("sansserif",0,12));
-	CancelBookAdButton.setText("Cancel Booking");
-	CancelBookAdButton.setVisible(true);
-	//Set action for button click
-	//Call defined method
-	CancelBookAdButton.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent evt) {
-			cancelBooking(evt);
-		}
-	});
+    CancelBookAdButton.setBounds(305,389,146,34);
+    CancelBookAdButton.setBackground(new Color(214,217,223));
+    CancelBookAdButton.setForeground(new Color(0,0,0));
+    CancelBookAdButton.setEnabled(true);
+    CancelBookAdButton.setFont(new Font("sansserif",0,12));
+    CancelBookAdButton.setText("Cancel Booking");
+    CancelBookAdButton.setVisible(true);
+    //Set action for button click
+    //Call defined method
+    CancelBookAdButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+            cancelBooking(evt);
+        }
+    });
 
 
-	CancelEventAdButton = new JButton();
-	CancelEventAdButton.setBounds(148,388,119,35);
-	CancelEventAdButton.setBackground(new Color(214,217,223));
-	CancelEventAdButton.setForeground(new Color(0,0,0));
-	CancelEventAdButton.setEnabled(true);
-	CancelEventAdButton.setFont(new Font("sansserif",0,12));
-	CancelEventAdButton.setText("Cancel Event");
-	CancelEventAdButton.setVisible(true);
-	//Set action for button click
-	//Call defined method
-	CancelEventAdButton.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent evt) {
-			cancelEvent(evt);
-		}
-	});
+    CancelEventAdButton = new JButton();
+    CancelEventAdButton.setBounds(148,388,119,35);
+    CancelEventAdButton.setBackground(new Color(214,217,223));
+    CancelEventAdButton.setForeground(new Color(0,0,0));
+    CancelEventAdButton.setEnabled(true);
+    CancelEventAdButton.setFont(new Font("sansserif",0,12));
+    CancelEventAdButton.setText("Cancel Event");
+    CancelEventAdButton.setVisible(true);
+    //Set action for button click
+    //Call defined method
+    CancelEventAdButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+            cancelEvent(evt);
+        }
+    });
 
 
         CatAdField = new JTextField();
@@ -162,20 +162,20 @@ public class AdminMainForm extends JFrame {
         Category.setVisible(true);
         
         ChooseEventAdButton = new JButton();
-	ChooseEventAdButton.setBounds(502,388,125,33);
-	ChooseEventAdButton.setBackground(new Color(214,217,223));
-	ChooseEventAdButton.setForeground(new Color(0,0,0));
-	ChooseEventAdButton.setEnabled(true);
-	ChooseEventAdButton.setFont(new Font("sansserif",0,12));
-	ChooseEventAdButton.setText("Choose Event");
-	ChooseEventAdButton.setVisible(true);
-	//Set action for button click
-	//Call defined method
-	ChooseEventAdButton.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent evt) {
-			chooseEventAd(evt);
-		}
-	});
+    ChooseEventAdButton.setBounds(502,388,125,33);
+    ChooseEventAdButton.setBackground(new Color(214,217,223));
+    ChooseEventAdButton.setForeground(new Color(0,0,0));
+    ChooseEventAdButton.setEnabled(true);
+    ChooseEventAdButton.setFont(new Font("sansserif",0,12));
+    ChooseEventAdButton.setText("Choose Event");
+    ChooseEventAdButton.setVisible(true);
+    //Set action for button click
+    //Call defined method
+    ChooseEventAdButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+            chooseEventAd(evt);
+        }
+    });
 
         DateAdField = new JTextField();
         DateAdField.setBounds(502,143,91,27);
@@ -341,7 +341,7 @@ public class AdminMainForm extends JFrame {
         ShowEventsAd.setForeground(new Color(0,0,0));
         ShowEventsAd.setEnabled(true);
         ShowEventsAd.setFont(new Font("sansserif",0,12));
-        ShowEventsAd.setText(ActionListener.actionPerformed());
+        ShowEventsAd.setText(getAllEventsList());
         ShowEventsAd.setBorder(BorderFactory.createBevelBorder(1));
         ShowEventsAd.setVisible(true);
 
@@ -498,9 +498,9 @@ public class AdminMainForm extends JFrame {
 
     //Method actionPerformed for ChooseEventAdButton
     private void chooseEventAd (ActionEvent evt) {
-	String eventName = JOptionPane.showInputDialog("Please type in the event name.");
-	EventManager bs = new EventManager();
-	bs.searchEvent(eventName);
+    String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+    EventManager bs = new EventManager();
+    bs.searchEvent(eventName);
     }
 
     //Method actionPerformed for ExitAdButton
@@ -519,22 +519,36 @@ public class AdminMainForm extends JFrame {
     private void seeAllBookingsAd (ActionEvent evt) {
             //TODO
     }
+    
+    private String getAllBookingsList(){
+    BookingManager bs = new BookingManager();
+    ArrayList<String> bookingsList = bs.viewAllBookings();
+    String bookingsListString = "";
+    
+    for (String s : bookingsList)
+    {
+        bookingsListString += s + "\t";
+    }
+    
+    return bookingsListString;
+    }   
 
     //Method actionPerformed for SeeAllEventsAdButton
-    private String seeAllEventsAd (ActionEvent evt) {
+    private void seeAllEventsAd (ActionEvent evt) {
+    }
+
+    private String getAllEventsList(){
             EventManager bs = new EventManager();
             ArrayList<String> eventsList = bs.viewAllEvents();
-            String listString = "";
+            String eventListString = "";
             
             for (String s : eventsList)
             {
-                listString += s + "\t";
+                eventListString += s + "\t";
             }
             
-            return listString;
-    }
-
-    
+            return eventListString;
+        }
 
 
      public static void main(String[] args){

@@ -75,9 +75,9 @@ public class BookingManager {
         DBManager.disconnect();
     }
 
-    // Function name: viewAllBookings()
+    // Function name: viewUserBookings()
     // Task: shows all bookings for certain user
-    public ArrayList<String> viewAllBookings(Student playerOne) {
+    public ArrayList<String> viewUserBookings(Student playerOne) {
         String sql = "SELECT EventID FROM Bookings WHERE UserID = ?";
         
         int userId = playerOne.getUserId();  
@@ -98,7 +98,27 @@ public class BookingManager {
         DBManager.disconnect();
         return eventsList;
     }
+    
+    // Function name: viewAllBookings()
+    // Task: shows all bookings
+    public ArrayList<String> viewAllBookings() {
+        String sql = "SELECT UserID, EventID FROM Bookings";
+        
+        ArrayList<String> bookingsList = new ArrayList<>();
+        try(Connection conn = DBManager.connect();
+            Statement stmt = conn.prepareStatement(sql)){
+            ResultSet rs = stmt.executeQuery(sql);      
 
+            while (rs.next()){
+                bookingsList.add(rs.getInt(1) + " - " +rs.getInt(2));
+                }
+            
+        }catch (SQLException e) {
+            System.err.print("No bookings in DB");
+        }
+        DBManager.disconnect();
+        return bookingsList;
+    }
     // Function name: confirmBooking()
     // Task: confirms a booking
     public void confirmBooking() {
