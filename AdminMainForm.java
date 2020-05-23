@@ -385,6 +385,53 @@ public class AdminMainForm extends JFrame {
     //Method actionPerformed for CancelAdButton
     private void cancelAd (ActionEvent evt) {
             //TODO
+            if (ShowEventsAd.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Please insert Event ID to proceed!!");
+        } else {
+            try {
+
+                String deleteB = ShowEventsAd.getText();
+                int id = Integer.parseInt(deleteB);                
+                conn = DBManager.connect();
+                System.out.println("Database Connected");
+                String findByIdQuery = "SELECT * FROM event WHERE event_id=?";
+                PreparedStatement preparedStmt = conn.prepareStatement(findByIdQuery);
+                preparedStmt.setInt(1, id);
+                preparedStmt.execute();
+                rs = preparedStmt.getResultSet();
+
+                if (rs.next()) {
+                    String query = "DELETE FROM event WHERE event_id=?";
+                    preparedStmt = conn.prepareStatement(query);
+                    preparedStmt.setInt(1, id);
+                    preparedStmt.execute();
+                    String query1 = "DELETE FROM studentbookings WHERE event_id=?";
+                    preparedStmt = conn.prepareStatement(query1);
+                    preparedStmt.setInt(1, id);
+                    preparedStmt.execute();
+                    JOptionPane.showMessageDialog(null, "Event cancelled!");
+
+                    this.dispose();
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Event ID does not exist!!!");
+                }
+                conn.close();
+                System.out.println("Database is closed");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Opss something is wrong!!!");
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                if (conn != null) {
+                    try {
+                        conn.close();
+                    } catch (SQLException ex1) {
+                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                }
+            }
+        }
+    }
+
     }
 
     //Method actionPerformed for ExitAdButton
