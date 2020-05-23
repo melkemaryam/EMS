@@ -19,6 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 
@@ -340,7 +341,7 @@ public class AdminMainForm extends JFrame {
         ShowEventsAd.setForeground(new Color(0,0,0));
         ShowEventsAd.setEnabled(true);
         ShowEventsAd.setFont(new Font("sansserif",0,12));
-        ShowEventsAd.setText("");
+        ShowEventsAd.setText(ActionListener.actionPerformed());
         ShowEventsAd.setBorder(BorderFactory.createBevelBorder(1));
         ShowEventsAd.setVisible(true);
 
@@ -497,7 +498,9 @@ public class AdminMainForm extends JFrame {
 
     //Method actionPerformed for ChooseEventAdButton
     private void chooseEventAd (ActionEvent evt) {
-	String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+	String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+	EventManager bs = new EventManager();
+	bs.searchEvent(eventName);
     }
 
     //Method actionPerformed for ExitAdButton
@@ -518,8 +521,17 @@ public class AdminMainForm extends JFrame {
     }
 
     //Method actionPerformed for SeeAllEventsAdButton
-    private void seeAllEventsAd (ActionEvent evt) {
-            //TODO
+    private String seeAllEventsAd (ActionEvent evt) {
+            EventManager bs = new EventManager();
+            ArrayList<String> eventsList = bs.viewAllEvents();
+            String listString = "";
+            
+            for (String s : eventsList)
+            {
+                listString += s + "\t";
+            }
+            
+            return listString;
     }
 
     
