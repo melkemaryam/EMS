@@ -130,12 +130,12 @@ public class RequestsForm extends JFrame {
 
     //Method actionPerformed for CloseButton
     private void grantPermission (ActionEvent evt) {
-            //TODO
+	String inputValue = JOptionPane.showInputDialog("Please type in the user ID.");
     }
     
     //Method actionPerformed for RevokeRightsButton
     private void revokeRights (ActionEvent evt) {
-            //TODO
+	String inputValue = JOptionPane.showInputDialog("Please type in the user ID.");
     }
 
 
