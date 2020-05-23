@@ -23,6 +23,7 @@ public class StudentMainForm extends JFrame {
     private JComboBox CatFieldStu;
     private JLabel CatLabel;
     private JCheckBox CheckBoxBookReqStu;
+    private JButton ChooseEventStuButton;
     private JTextField DateFieldStu;
     private JLabel Datelabel;
     private JTextField DescFieldStu;
@@ -126,6 +127,22 @@ public class StudentMainForm extends JFrame {
         CheckBoxBookReqStu.setFont(new Font("sansserif",0,12));
         CheckBoxBookReqStu.setText("");
         CheckBoxBookReqStu.setVisible(true);
+        
+        ChooseEventStuButton = new JButton();
+	ChooseEventStuButton.setBounds(33,379,120,35);
+	ChooseEventStuButton.setBackground(new Color(214,217,223));
+	ChooseEventStuButton.setForeground(new Color(0,0,0));
+	ChooseEventStuButton.setEnabled(true);
+	ChooseEventStuButton.setFont(new Font("sansserif",0,12));
+	ChooseEventStuButton.setText("Choose Event");
+	ChooseEventStuButton.setVisible(true);
+	//Set action for button click
+	//Call defined method
+	ChooseEventStuButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent evt) {
+			chooseEventStu(evt);
+		}
+	});
 
         DateFieldStu = new JTextField();
         DateFieldStu.setBounds(539,148,90,35);
@@ -364,6 +381,7 @@ public class StudentMainForm extends JFrame {
         contentPane.add(CatFieldStu);
         contentPane.add(CatLabel);
         contentPane.add(CheckBoxBookReqStu);
+        contentPane.add(ChooseEventStuButton);
         contentPane.add(DateFieldStu);
         contentPane.add(Datelabel);
         contentPane.add(DescFieldStu);
@@ -403,7 +421,12 @@ public class StudentMainForm extends JFrame {
     private void cancelStu (ActionEvent evt) {
             //TODO
     }
-
+    
+    //Method actionPerformed for ChooseEventStuButton
+    private void chooseEventStu (ActionEvent evt) {
+			//TODO
+    }
+    
     //Method actionPerformed for ExitStuButton
     private void exitStu (ActionEvent evt) {
         System.exit(0);
