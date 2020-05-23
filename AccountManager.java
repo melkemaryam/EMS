@@ -126,14 +126,11 @@ public class AccountManager {
 
     // Function name: grantPermission()
     // Task: grants a student the permission to act as an EventOrganiser
-    public void grantPermission(Student playerOne) {
-        String sql = "UPDATE Users " + "SET UserType = ? " + "WHERE UserID = ?";
-        int userId = playerOne.getUserId();
-        int userType = 2;
+    public void grantPermission(int rightsId) {
+        String sql = "UPDATE Users SET UserType = 2 " + "WHERE UserID = ?";
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
-                pstmt.setInt(1, userType);
-                pstmt.setInt(2, userId);
+                pstmt.setInt(1, rightsId);
             ResultSet rs = pstmt.executeQuery(sql);
         }catch (SQLException e) {
             System.err.print("No DB connection");
@@ -158,14 +155,11 @@ public class AccountManager {
     
     // Function name: revokeRights()
     // Task: revokes then rights from an EventOrganiser
-    public void revokeRights(Student playerOne) {
-        String sql = "UPDATE Users " + "SET UserType = ? " + "WHERE UserID = ?";
-        int userId = playerOne.getUserId();    
-        int userType = 1;
+    public void revokeRights(int rightsId) {
+        String sql = "UPDATE Users SET UserType = 1 " + "WHERE UserID = ?";
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
-                pstmt.setInt(1, userType);
-                pstmt.setInt(2, userId);
+                pstmt.setInt(1, rightsId);
             ResultSet rs = pstmt.executeQuery(sql);
         }catch (SQLException e) {
             System.err.print("No DB connection");

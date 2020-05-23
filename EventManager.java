@@ -61,20 +61,20 @@ public class EventManager {
     
     // Function name: createEvent()
     // Task: creates a new event in the system
-    public static void createEvent(String EventName, String EventDescription, int EventDate, float StartTime, float EndTime, Student playerOne, int RoomID) {
-        String sql = "INSERT INTO Events(EventName, EventDescription, EventDate, StartTime, EndTime, UserID, RoomID, isNew, isVisible) VALUES (?,?,?,?,?,?,?,?)";
+    public static void createEvent(String EventName, String EventDescription, String EventDay, String EventMonth, String EventYear, String EventHour, String EventMinute, Student playerOne, int RoomID, String Places) {
+        String sql = "INSERT INTO Events(EventName, EventDescription, EventDate, EventTime, UserID, RoomID, isNew, isVisible, Places) VALUES (?,?,?,?,?,?,?,?,?)";
         
         try (Connection conn = DBManager.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)){
             pstmt.setString(1, EventName);
             pstmt.setString(2, EventDescription);
-            pstmt.setInt(3, EventDate);
-            pstmt.setFloat(4, StartTime);
-            pstmt.setFloat(5, EndTime);
-            pstmt.setInt(6, playerOne.getUserId());
-            pstmt.setInt(7, RoomID);
+            pstmt.setString(3, EventDay +"-"+ EventMonth +"-"+ EventYear);
+            pstmt.setString(4, EventHour +"-"+ EventMinute);
+            pstmt.setInt(5, playerOne.getUserId());
+            pstmt.setInt(6, RoomID);
+            pstmt.setInt(7, 1);
             pstmt.setInt(8, 1);
-            pstmt.setInt(9, 1);
+            pstmt.setString(9, Places);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.err.print("Something went wrong, Event was not added to the DB");
@@ -88,18 +88,21 @@ public class EventManager {
     
     // Function name: cancelEvent()
     // Task: cancels and event in the system
-    public void cancelEvent(int eventId) {
-        String sql = "UPDATE Events isVisible VALUE 0 WHERE EventId= ?";
-        
+    public void cancelEvent(String eventName) {
+        String sql = "UPDATE Events isVisible VALUE 0 WHERE EventName= ?";
+        Events specificEvent = new Events();
         try (Connection conn = DBManager.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)){
-            pstmt.setInt(1, eventId);
+            pstmt.setString(1, eventName);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.err.print("Something went wrong, Event was not cancelled");
         }
         DBManager.disconnect();
-        BookingManager.cancelAllBookings(eventId);
+        specificEvent.setEventName(eventName);
+        searchEvent(eventName);
+        int EventId = specificEvent.getEventId();
+        BookingManager.cancelAllBookings(EventId);
         //GUI: ARE YOU SURE? window appears on mouse click
         System.out.println("You have successfully cancelled the event.");
         //GUI: show message
@@ -107,14 +110,15 @@ public class EventManager {
     
     // Function name: searchEvent()
     // Task: searches for a special event in the DB
-    public Events searchEvent(int EventId) {
-        String sql = "SELECT EventName, EventDescription, EventDate, StartTime RoomID FROM Events WHERE EventId = ?";
+    public Events searchEvent(String eventName) {
+        String sql = "SELECT EventId, EventDescription, EventDate, StartTime RoomID FROM Events WHERE EventName = ?";
         Events specificEvent = new Events();
             try(Connection conn = DBManager.connect();
-                Statement stmt = conn.prepareStatement(sql)){
-                ResultSet rs = stmt.executeQuery(sql);
+                    PreparedStatement pstmt = conn.prepareStatement(sql)){
+                    pstmt.setString(1, eventName);
+                ResultSet rs = pstmt.executeQuery(sql);
                 while (rs.next()){
-                    specificEvent.setEventName(rs.getString(1));
+                    specificEvent.setEventId(rs.getInt(1));
                     specificEvent.setDescription(rs.getString(2));
                     specificEvent.setDate(rs.getString(3));
                     specificEvent.setTime(rs.getFloat(4));
