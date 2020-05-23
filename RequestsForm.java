@@ -90,7 +90,7 @@ public class RequestsForm extends JFrame {
         RequestsLabel.setVisible(true);
 
         RevokeRightsButton = new JButton();
-        RevokeRightsButton.setBounds(321,139,120,31);
+        RevokeRightsButton.setBounds(321,139,132,34);
         RevokeRightsButton.setBackground(new Color(214,217,223));
         RevokeRightsButton.setForeground(new Color(0,0,0));
         RevokeRightsButton.setEnabled(true);
