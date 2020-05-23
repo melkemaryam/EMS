@@ -531,7 +531,7 @@ public class EOMainForm extends JFrame {
             //cancel m = new cancel();
             //this.dispose();
             //m.setVisible(true);
-            BookingManager.cancelBooking(Student playerOne; int eventId);
+            //BookingManager.cancelBooking(Student playerOne; int eventId);
             
     }
 

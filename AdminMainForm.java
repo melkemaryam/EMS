@@ -416,7 +416,10 @@ public class AdminMainForm extends JFrame {
 
     //Method actionPerformed for CancelAdButton
     private void cancelBooking (ActionEvent evt) {
-        
+        int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION){
+            JOptionPane.showMessageDialog(null, "You have successfully cancelled it.");
+        } 
     }
     
     //Method actionPerformed for CancelAdButton
@@ -438,17 +441,23 @@ public class AdminMainForm extends JFrame {
                 rs = preparedStmt.getResultSet();
 
                 if (rs.next()) {
-                    String query = "DELETE FROM event WHERE event_id=?";
-                    preparedStmt = conn.prepareStatement(query);
-                    preparedStmt.setInt(1, id);
-                    preparedStmt.execute();
-                    String query1 = "DELETE FROM studentbookings WHERE event_id=?";
-                    preparedStmt = conn.prepareStatement(query1);
-                    preparedStmt.setInt(1, id);
-                    preparedStmt.execute();
-                    JOptionPane.showMessageDialog(null, "Event cancelled!");
+                    
+                    int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
+                    if (reply == JOptionPane.YES_OPTION){
+                        JOptionPane.showMessageDialog(null, "You have successfully cancelled it.");
+                     
+                        String query = "DELETE FROM event WHERE event_id=?";
+                        preparedStmt = conn.prepareStatement(query);
+                        preparedStmt.setInt(1, id);
+                        preparedStmt.execute();
+                        String query1 = "DELETE FROM studentbookings WHERE event_id=?";
+                        preparedStmt = conn.prepareStatement(query1);
+                        preparedStmt.setInt(1, id);
+                        preparedStmt.execute();
+                        JOptionPane.showMessageDialog(null, "Event cancelled!");
 
-                    this.dispose();
+                        this.dispose();
+                    }
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Event ID does not exist!!!");
@@ -457,12 +466,12 @@ public class AdminMainForm extends JFrame {
                 System.out.println("Database is closed");
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Opss something is wrong!!!");
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 if (conn != null) {
                     try {
                         conn.close();
                     } catch (SQLException ex1) {
-                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
+                        //Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
                     }
                 }
             }
