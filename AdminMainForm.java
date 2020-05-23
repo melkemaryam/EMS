@@ -497,7 +497,7 @@ public class AdminMainForm extends JFrame {
 
     //Method actionPerformed for ChooseEventAdButton
     private void chooseEventAd (ActionEvent evt) {
-			//TODO
+	String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
     }
 
     //Method actionPerformed for ExitAdButton
