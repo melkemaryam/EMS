@@ -549,12 +549,16 @@ public class EOMainForm extends JFrame {
             //this.dispose();
             //m.setVisible(true);
             //BookingManager.cancelBooking(Student playerOne; int eventId);
+            int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION){
+                JOptionPane.showMessageDialog(null, "You have successfully cancelled it.");
+            } 
             
     }
     
     //Method actionPerformed for ChooseEventEOButton
     private void chooseEventEO (ActionEvent evt) {
-		//TODO
+	String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
     }
 
     //Method actionPerformed for CreateEventEOButton

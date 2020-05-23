@@ -414,17 +414,20 @@ public class StudentMainForm extends JFrame {
 
     //Method actionPerformed for BookButton
     private void bookStu (ActionEvent evt) {
-            //TODO
+	String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
     }
 
     //Method actionPerformed for CancelBookButton
     private void cancelStu (ActionEvent evt) {
-            //TODO
+        int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION){
+            JOptionPane.showMessageDialog(null, "You have successfully cancelled it.");
+        }     
     }
     
     //Method actionPerformed for ChooseEventStuButton
     private void chooseEventStu (ActionEvent evt) {
-			//TODO
+	String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
     }
     
     //Method actionPerformed for ExitStuButton
