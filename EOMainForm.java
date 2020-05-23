@@ -32,6 +32,7 @@ public class EOMainForm extends JFrame {
     private JButton CancelEOButton;
     private JComboBox CatEOBox;
     private JLabel Category;
+    private JButton ChooseEventEOButton;
     private JButton CreateEventEOButton;
     private JLabel DateLabel;
     private JTextField DayEOField;
@@ -49,7 +50,7 @@ public class EOMainForm extends JFrame {
     private JButton MyEventsEOButton;
     private JTextField PlacesEOField;
     private JLabel PlacesLabel;
-    private JTextField RoomNoEOField;
+    private JComboBox RoomNoEOBox;
     private JLabel RoomNoLabel;
     private JButton SaveEOButton;
     private JButton SeeAllBookEOButton;
@@ -145,6 +146,22 @@ public class EOMainForm extends JFrame {
         Category.setFont(new Font("sansserif",0,12));
         Category.setText("Category");
         Category.setVisible(true);
+        
+        ChooseEventEOButton = new JButton();
+	ChooseEventEOButton.setBounds(506,395,136,33);
+	ChooseEventEOButton.setBackground(new Color(214,217,223));
+	ChooseEventEOButton.setForeground(new Color(0,0,0));
+	ChooseEventEOButton.setEnabled(true);
+	ChooseEventEOButton.setFont(new Font("sansserif",0,12));
+	ChooseEventEOButton.setText("Choose Event");
+	ChooseEventEOButton.setVisible(true);
+	//Set action for button click
+	//Call defined method
+	ChooseEventEOButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent evt) {
+			chooseEventEO(evt);
+		}
+	});
 
 
         CreateEventEOButton = new JButton();
@@ -349,14 +366,13 @@ public class EOMainForm extends JFrame {
         PlacesLabel.setText("Places");
         PlacesLabel.setVisible(true);
 
-        RoomNoEOField = new JTextField();
-        RoomNoEOField.setBounds(528,307,90,35);
-        RoomNoEOField.setBackground(new Color(255,255,255));
-        RoomNoEOField.setForeground(new Color(0,0,0));
-        RoomNoEOField.setEnabled(true);
-        RoomNoEOField.setFont(new Font("sansserif",0,12));
-        RoomNoEOField.setText("");
-        RoomNoEOField.setVisible(true);
+        RoomNoEOBox = new JComboBox();
+	RoomNoEOBox.setBounds(530,306,90,35);
+	RoomNoEOBox.setBackground(new Color(214,217,223));
+	RoomNoEOBox.setForeground(new Color(0,0,0));
+	RoomNoEOBox.setEnabled(true);
+	RoomNoEOBox.setFont(new Font("sansserif",0,12));
+	RoomNoEOBox.setVisible(true);
 
         RoomNoLabel = new JLabel();
         RoomNoLabel.setBounds(378,307,90,35);
@@ -481,6 +497,7 @@ public class EOMainForm extends JFrame {
         contentPane.add(CancelEOButton);
         contentPane.add(CatEOBox);
         contentPane.add(Category);
+        contentPane.add(ChooseEventEOButton);
         contentPane.add(CreateEventEOButton);
         contentPane.add(DateLabel);
         contentPane.add(DayEOField);
@@ -498,7 +515,7 @@ public class EOMainForm extends JFrame {
         contentPane.add(MyEventsEOButton);
         contentPane.add(PlacesEOField);
         contentPane.add(PlacesLabel);
-        contentPane.add(RoomNoEOField);
+        contentPane.add(RoomNoEOBox);
         contentPane.add(RoomNoLabel);
         contentPane.add(SaveEOButton);
         contentPane.add(SeeAllBookEOButton);
@@ -533,6 +550,11 @@ public class EOMainForm extends JFrame {
             //m.setVisible(true);
             //BookingManager.cancelBooking(Student playerOne; int eventId);
             
+    }
+    
+    //Method actionPerformed for ChooseEventEOButton
+    private void chooseEventEO (ActionEvent evt) {
+		//TODO
     }
 
     //Method actionPerformed for CreateEventEOButton

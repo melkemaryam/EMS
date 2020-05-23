@@ -426,7 +426,7 @@ public class AdminMainForm extends JFrame {
     private void cancelEvent (ActionEvent evt) {
             //TODO
             if (ShowEventsAd.getText().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Please insert Event ID to proceed!!");
+            JOptionPane.showMessageDialog(this, "Please insert the Event Name to proceed!!");
         } else {
             try {
 
@@ -434,7 +434,7 @@ public class AdminMainForm extends JFrame {
                 int id = Integer.parseInt(deleteB);                
                 conn = DBManager.connect();
                 System.out.println("Database Connected");
-                String findByIdQuery = "SELECT * FROM event WHERE event_id=?";
+                String findByIdQuery = "SELECT * FROM event WHERE EventName=?";
                 PreparedStatement preparedStmt = conn.prepareStatement(findByIdQuery);
                 preparedStmt.setInt(1, id);
                 preparedStmt.execute();
@@ -444,28 +444,27 @@ public class AdminMainForm extends JFrame {
                     
                     int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
                     if (reply == JOptionPane.YES_OPTION){
-                        JOptionPane.showMessageDialog(null, "You have successfully cancelled it.");
                      
-                        String query = "DELETE FROM event WHERE event_id=?";
+                        String query = "DELETE FROM event WHERE EventName=?";
                         preparedStmt = conn.prepareStatement(query);
                         preparedStmt.setInt(1, id);
                         preparedStmt.execute();
-                        String query1 = "DELETE FROM studentbookings WHERE event_id=?";
+                        String query1 = "DELETE FROM studentbookings WHERE EventName=?";
                         preparedStmt = conn.prepareStatement(query1);
                         preparedStmt.setInt(1, id);
                         preparedStmt.execute();
-                        JOptionPane.showMessageDialog(null, "Event cancelled!");
+                        JOptionPane.showMessageDialog(null, "You have successfully cancelled it.");
 
                         this.dispose();
                     }
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Event ID does not exist!!!");
+                    JOptionPane.showMessageDialog(null, "Event Name does not exist!!!");
                 }
                 conn.close();
                 System.out.println("Database is closed");
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Opss something is wrong!!!");
+                JOptionPane.showMessageDialog(null, "Opss something when wrong!!!");
                 //Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 if (conn != null) {
                     try {
