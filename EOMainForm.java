@@ -536,12 +536,14 @@ public class EOMainForm extends JFrame {
     }
 
     //Method actionPerformed for BookEOButton
-    //private void bookEO (ActionEvent evt) {
+    private void bookEO (ActionEvent evt) {
             //book m = new book();
 	    //this.dispose();
 	    //m.setVisible(true);
 	    //BookingManager.addBooking(playerOne, eventID);
-    //}
+	    String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+
+    }
 
     //Method actionPerformed for CancelEOButton
     private void cancelEO (ActionEvent evt) {
