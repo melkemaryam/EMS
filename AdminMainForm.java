@@ -13,6 +13,14 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import javax.swing.border.Border;
 import javax.swing.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.DriverManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 
 
 public class AdminMainForm extends JFrame {
@@ -45,6 +53,11 @@ public class AdminMainForm extends JFrame {
     private JLabel TimeLabel;
     private JLabel TitleLabel;
     private JLabel WelcomeLabel;
+    
+    
+    Connection conn;
+    PreparedStatement pst;
+    ResultSet rs;
 
     //Constructor 
     public AdminMainForm(){
@@ -461,7 +474,6 @@ public class AdminMainForm extends JFrame {
     //Method actionPerformed for ExitAdButton
     private void exitAd (ActionEvent evt) {
         System.exit(0);
-        //TODO
     }
 
     //Method actionPerformed for LogOutAdButton
