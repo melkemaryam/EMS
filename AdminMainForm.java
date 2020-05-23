@@ -21,7 +21,8 @@ public class AdminMainForm extends JFrame {
     private JButton AdminAdButton;
     private JCheckBox BookReqCheckAd;
     private JLabel BookReqLabel;
-    private JButton CancelAdButton;
+    private JButton CancelBookAdButton;
+    private JButton CancelEventAdButton;
     private JTextField CatAdField;
     private JLabel Category;
     private JTextField DateAdField;
@@ -93,21 +94,38 @@ public class AdminMainForm extends JFrame {
         BookReqLabel.setText("Booking Required");
         BookReqLabel.setVisible(true);
 
-        CancelAdButton = new JButton();
-        CancelAdButton.setBounds(244,391,90,35);
-        CancelAdButton.setBackground(new Color(214,217,223));
-        CancelAdButton.setForeground(new Color(0,0,0));
-        CancelAdButton.setEnabled(true);
-        CancelAdButton.setFont(new Font("sansserif",0,12));
-        CancelAdButton.setText("Cancel");
-        CancelAdButton.setVisible(true);
-        //Set action for button click
-        //Call defined method
-        CancelAdButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                cancelAd(evt);
-            }
-        });
+        CancelBookAdButton = new JButton();
+	CancelBookAdButton.setBounds(305,389,146,34);
+	CancelBookAdButton.setBackground(new Color(214,217,223));
+	CancelBookAdButton.setForeground(new Color(0,0,0));
+	CancelBookAdButton.setEnabled(true);
+	CancelBookAdButton.setFont(new Font("sansserif",0,12));
+	CancelBookAdButton.setText("Cancel Booking");
+	CancelBookAdButton.setVisible(true);
+	//Set action for button click
+	//Call defined method
+	CancelBookAdButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent evt) {
+			cancelBooking(evt);
+		}
+	});
+
+
+	CancelEventAdButton = new JButton();
+	CancelEventAdButton.setBounds(148,388,119,35);
+	CancelEventAdButton.setBackground(new Color(214,217,223));
+	CancelEventAdButton.setForeground(new Color(0,0,0));
+	CancelEventAdButton.setEnabled(true);
+	CancelEventAdButton.setFont(new Font("sansserif",0,12));
+	CancelEventAdButton.setText("Cancel Event");
+	CancelEventAdButton.setVisible(true);
+	//Set action for button click
+	//Call defined method
+	CancelEventAdButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent evt) {
+			cancelEvent(evt);
+		}
+	});
 
 
         CatAdField = new JTextField();
@@ -345,7 +363,8 @@ public class AdminMainForm extends JFrame {
         contentPane.add(AdminAdButton);
         contentPane.add(BookReqCheckAd);
         contentPane.add(BookReqLabel);
-        contentPane.add(CancelAdButton);
+        contentPane.add(CancelBookAdButton);
+        contentPane.add(CancelEventAdButton);
         contentPane.add(CatAdField);
         contentPane.add(Category);
         contentPane.add(DateAdField);
@@ -383,7 +402,12 @@ public class AdminMainForm extends JFrame {
     }
 
     //Method actionPerformed for CancelAdButton
-    private void cancelAd (ActionEvent evt) {
+    private void cancelBooking (ActionEvent evt) {
+        
+    }
+    
+    //Method actionPerformed for CancelAdButton
+    private void cancelEvent (ActionEvent evt) {
             //TODO
             if (ShowEventsAd.getText().length() == 0) {
             JOptionPane.showMessageDialog(this, "Please insert Event ID to proceed!!");
@@ -432,7 +456,7 @@ public class AdminMainForm extends JFrame {
         }
     }
 
-    }
+    
 
     //Method actionPerformed for ExitAdButton
     private void exitAd (ActionEvent evt) {
