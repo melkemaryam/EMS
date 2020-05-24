@@ -23,7 +23,7 @@ public class StudentMainForm extends JFrame {
     private JComboBox CatFieldStu;
     private JLabel CatLabel;
     private JCheckBox CheckBoxBookReqStu;
-    private JButton ChooseEventStuButton;
+    private JButton ChooseOrSearchEventStuButton;
     private JTextField DateFieldStu;
     private JLabel Datelabel;
     private JTextField DescFieldStu;
@@ -128,19 +128,19 @@ public class StudentMainForm extends JFrame {
         CheckBoxBookReqStu.setText("");
         CheckBoxBookReqStu.setVisible(true);
         
-        ChooseEventStuButton = new JButton();
-	ChooseEventStuButton.setBounds(33,379,120,35);
-	ChooseEventStuButton.setBackground(new Color(214,217,223));
-	ChooseEventStuButton.setForeground(new Color(0,0,0));
-	ChooseEventStuButton.setEnabled(true);
-	ChooseEventStuButton.setFont(new Font("sansserif",0,12));
-	ChooseEventStuButton.setText("Choose Event");
-	ChooseEventStuButton.setVisible(true);
+        ChooseOrSearchEventStuButton = new JButton();
+	ChooseOrSearchEventStuButton.setBounds(10,379,170,35);
+	ChooseOrSearchEventStuButton.setBackground(new Color(214,217,223));
+	ChooseOrSearchEventStuButton.setForeground(new Color(0,0,0));
+	ChooseOrSearchEventStuButton.setEnabled(true);
+	ChooseOrSearchEventStuButton.setFont(new Font("sansserif",0,12));
+	ChooseOrSearchEventStuButton.setText("Choose or Search Event");
+	ChooseOrSearchEventStuButton.setVisible(true);
 	//Set action for button click
 	//Call defined method
-	ChooseEventStuButton.addActionListener(new ActionListener() {
+	ChooseOrSearchEventStuButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
-			chooseEventStu(evt);
+			chooseOrSearchEventStu(evt);
 		}
 	});
 
@@ -381,7 +381,7 @@ public class StudentMainForm extends JFrame {
         contentPane.add(CatFieldStu);
         contentPane.add(CatLabel);
         contentPane.add(CheckBoxBookReqStu);
-        contentPane.add(ChooseEventStuButton);
+        contentPane.add(ChooseOrSearchEventStuButton);
         contentPane.add(DateFieldStu);
         contentPane.add(Datelabel);
         contentPane.add(DescFieldStu);
@@ -426,7 +426,7 @@ public class StudentMainForm extends JFrame {
     }
     
     //Method actionPerformed for ChooseEventStuButton
-    private void chooseEventStu (ActionEvent evt) {
+    private void chooseOrSearchEventStu (ActionEvent evt) {
 	String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
     }
     

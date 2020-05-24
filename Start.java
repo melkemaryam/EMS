@@ -5,9 +5,9 @@ public class Start {
         //new LogInForm();
         //new StudentMainForm();
         //new AdminMainForm();
-        //new EOMainForm();
+        new EOMainForm();
         //new RegisterForm();
         //new StuAdminForm();
-        new RequestsForm();
+        //new RequestsForm();
     }
 }

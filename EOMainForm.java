@@ -32,7 +32,7 @@ public class EOMainForm extends JFrame {
     private JButton CancelEOButton;
     private JComboBox CatEOBox;
     private JLabel Category;
-    private JButton ChooseEventEOButton;
+    private JButton ChooseOrSearchEventEOButton;
     private JButton CreateEventEOButton;
     private JLabel DateLabel;
     private JTextField DayEOField;
@@ -147,19 +147,19 @@ public class EOMainForm extends JFrame {
         Category.setText("Category");
         Category.setVisible(true);
         
-        ChooseEventEOButton = new JButton();
-	ChooseEventEOButton.setBounds(506,395,136,33);
-	ChooseEventEOButton.setBackground(new Color(214,217,223));
-	ChooseEventEOButton.setForeground(new Color(0,0,0));
-	ChooseEventEOButton.setEnabled(true);
-	ChooseEventEOButton.setFont(new Font("sansserif",0,12));
-	ChooseEventEOButton.setText("Choose Event");
-	ChooseEventEOButton.setVisible(true);
+        ChooseOrSearchEventEOButton = new JButton();
+	ChooseOrSearchEventEOButton.setBounds(506,395,170,33);
+	ChooseOrSearchEventEOButton.setBackground(new Color(214,217,223));
+	ChooseOrSearchEventEOButton.setForeground(new Color(0,0,0));
+	ChooseOrSearchEventEOButton.setEnabled(true);
+	ChooseOrSearchEventEOButton.setFont(new Font("sansserif",0,12));
+	ChooseOrSearchEventEOButton.setText("Choose or Search Event");
+	ChooseOrSearchEventEOButton.setVisible(true);
 	//Set action for button click
 	//Call defined method
-	ChooseEventEOButton.addActionListener(new ActionListener() {
+	ChooseOrSearchEventEOButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
-			chooseEventEO(evt);
+			chooseOrSearchEventEO(evt);
 		}
 	});
 
@@ -497,7 +497,7 @@ public class EOMainForm extends JFrame {
         contentPane.add(CancelEOButton);
         contentPane.add(CatEOBox);
         contentPane.add(Category);
-        contentPane.add(ChooseEventEOButton);
+        contentPane.add(ChooseOrSearchEventEOButton);
         contentPane.add(CreateEventEOButton);
         contentPane.add(DateLabel);
         contentPane.add(DayEOField);
@@ -558,8 +558,8 @@ public class EOMainForm extends JFrame {
             
     }
     
-    //Method actionPerformed for ChooseEventEOButton
-    private void chooseEventEO (ActionEvent evt) {
+    //Method actionPerformed for ChooseOrSearchEventEOButton
+    private void chooseOrSearchEventEO (ActionEvent evt) {
 	String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
     }
 
