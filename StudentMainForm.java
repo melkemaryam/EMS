@@ -109,6 +109,7 @@ public class StudentMainForm extends JFrame {
         CatFieldStu.setEnabled(true);
         CatFieldStu.setFont(new Font("sansserif",0,12));
         CatFieldStu.setVisible(true);
+        CatFieldStu.setEditable(false);
 
         CatLabel = new JLabel();
         CatLabel.setBounds(379,265,90,35);
@@ -127,6 +128,7 @@ public class StudentMainForm extends JFrame {
         CheckBoxBookReqStu.setFont(new Font("sansserif",0,12));
         CheckBoxBookReqStu.setText("");
         CheckBoxBookReqStu.setVisible(true);
+        //CheckBoxBookReqStu.setEditable(false);
         
         ChooseOrSearchEventStuButton = new JButton();
 	ChooseOrSearchEventStuButton.setBounds(10,379,170,35);
@@ -152,6 +154,7 @@ public class StudentMainForm extends JFrame {
         DateFieldStu.setFont(new Font("sansserif",0,12));
         DateFieldStu.setText("");
         DateFieldStu.setVisible(true);
+        DateFieldStu.setEditable(false);
 
         Datelabel = new JLabel();
         Datelabel.setBounds(379,149,90,35);
@@ -161,6 +164,7 @@ public class StudentMainForm extends JFrame {
         Datelabel.setFont(new Font("sansserif",0,12));
         Datelabel.setText("Date");
         Datelabel.setVisible(true);
+        
 
         DescFieldStu = new JTextField();
         DescFieldStu.setBounds(537,106,90,35);
@@ -170,6 +174,7 @@ public class StudentMainForm extends JFrame {
         DescFieldStu.setFont(new Font("sansserif",0,12));
         DescFieldStu.setText("");
         DescFieldStu.setVisible(true);
+        DescFieldStu.setEditable(false);
 
         DescLabel = new JLabel();
         DescLabel.setBounds(377,107,90,35);
@@ -214,6 +219,7 @@ public class StudentMainForm extends JFrame {
         LocationFieldStu.setFont(new Font("sansserif",0,12));
         LocationFieldStu.setText("");
         LocationFieldStu.setVisible(true);
+        LocationFieldStu.setEditable(false);
 
         LogOutStuButton = new JButton();
         LogOutStuButton.setBounds(29,226,90,35);
@@ -240,6 +246,7 @@ public class StudentMainForm extends JFrame {
         PlacesFieldStu.setFont(new Font("sansserif",0,12));
         PlacesFieldStu.setText("");
         PlacesFieldStu.setVisible(true);
+        PlacesFieldStu.setEditable(false);
 
         Placeslabel = new JLabel();
         Placeslabel.setBounds(380,371,90,35);
@@ -275,6 +282,7 @@ public class StudentMainForm extends JFrame {
         RoomNoFieldStu.setFont(new Font("sansserif",0,12));
         RoomNoFieldStu.setText("");
         RoomNoFieldStu.setVisible(true);
+        RoomNoFieldStu.setEditable(false);
 
         RoomNoLabel = new JLabel();
         RoomNoLabel.setBounds(381,332,90,35);
@@ -337,6 +345,7 @@ public class StudentMainForm extends JFrame {
         TimeFieldStu.setFont(new Font("sansserif",0,12));
         TimeFieldStu.setText("");
         TimeFieldStu.setVisible(true);
+        TimeFieldStu.setEditable(false);
 
         TimeLabel = new JLabel();
         TimeLabel.setBounds(380,189,90,35);
@@ -355,6 +364,7 @@ public class StudentMainForm extends JFrame {
         TitleFieldStu.setFont(new Font("sansserif",0,12));
         TitleFieldStu.setText("");
         TitleFieldStu.setVisible(true);
+        TitleFieldStu.setEditable(false);
 
         TitleLabel = new JLabel();
         TitleLabel.setBounds(380,68,90,35);
