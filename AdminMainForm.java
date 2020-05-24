@@ -206,6 +206,7 @@ public class AdminMainForm extends JFrame {
         DescAdField.setFont(new Font("sansserif",0,12));
         DescAdField.setText("");
         DescAdField.setVisible(true);
+        DescAdField.setEditable(false);
 
         DescLabel = new JLabel();
         DescLabel.setBounds(383,109,90,35);

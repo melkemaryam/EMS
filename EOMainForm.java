@@ -36,7 +36,6 @@ public class EOMainForm extends JFrame {
     private JButton CreateEventEOButton;
     private JLabel DateLabel;
     private JTextField DayEOField;
-    //private JButton DeleteEOButton;
     private JTextField DescEOField;
     private JLabel DescLabel;
     private JButton ExitEOButton;
@@ -202,22 +201,6 @@ public class EOMainForm extends JFrame {
         DayEOField.setFont(new Font("sansserif",0,12));
         DayEOField.setText("");
         DayEOField.setVisible(true);
-
-        //DeleteEOButton = new JButton();
-        //DeleteEOButton.setBounds(258,372,90,35);
-        //DeleteEOButton.setBackground(new Color(214,217,223));
-        //DeleteEOButton.setForeground(new Color(0,0,0));
-        //DeleteEOButton.setEnabled(true);
-        //DeleteEOButton.setFont(new Font("sansserif",0,12));
-        //DeleteEOButton.setText("Delete");
-        //DeleteEOButton.setVisible(true);
-        //Set action for button click
-        //Call defined method
-        //DeleteEOButton.addActionListener(new ActionListener() {
-            //public void actionPerformed(ActionEvent evt) {
-                //deleteEO(evt);
-           // }
-        //});
 
 
         DescEOField = new JTextField();
@@ -504,7 +487,6 @@ public class EOMainForm extends JFrame {
         contentPane.add(CreateEventEOButton);
         contentPane.add(DateLabel);
         contentPane.add(DayEOField);
-        //contentPane.add(DeleteEOButton);
         contentPane.add(DescEOField);
         contentPane.add(DescLabel);
         contentPane.add(ExitEOButton);
@@ -576,10 +558,6 @@ public class EOMainForm extends JFrame {
             //EventManager.createEvent();
     //}
 
-    //Method actionPerformed for DeleteEOButton
-    //private void deleteEO (ActionEvent evt) {
-            //TODO
-    //}
 
     //Method actionPerformed for ExitEOButton
     private void exitEO (ActionEvent evt) {

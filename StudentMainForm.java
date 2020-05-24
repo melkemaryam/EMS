@@ -20,7 +20,7 @@ public class StudentMainForm extends JFrame {
     private JButton BookButton;
     private JLabel BookReqLabel;
     private JButton CancelBookButton;
-    private JComboBox CatFieldStu;
+    private JTextField CatFieldStu;
     private JLabel CatLabel;
     private JCheckBox CheckBoxBookReqStu;
     private JButton ChooseOrSearchEventStuButton;
@@ -102,7 +102,7 @@ public class StudentMainForm extends JFrame {
         });
 
 
-        CatFieldStu = new JComboBox();
+        CatFieldStu = new JTextField();
         CatFieldStu.setBounds(537,263,90,35);
         CatFieldStu.setBackground(new Color(214,217,223));
         CatFieldStu.setForeground(new Color(0,0,0));
