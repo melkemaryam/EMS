@@ -162,20 +162,20 @@ public class AdminMainForm extends JFrame {
         Category.setVisible(true);
         
         ChooseEventAdButton = new JButton();
-    ChooseEventAdButton.setBounds(502,388,125,33);
-    ChooseEventAdButton.setBackground(new Color(214,217,223));
-    ChooseEventAdButton.setForeground(new Color(0,0,0));
-    ChooseEventAdButton.setEnabled(true);
-    ChooseEventAdButton.setFont(new Font("sansserif",0,12));
-    ChooseEventAdButton.setText("Choose Event");
-    ChooseEventAdButton.setVisible(true);
-    //Set action for button click
-    //Call defined method
-    ChooseEventAdButton.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent evt) {
-            chooseEventAd(evt);
-        }
-    });
+        ChooseEventAdButton.setBounds(502,388,125,33);
+        ChooseEventAdButton.setBackground(new Color(214,217,223));
+        ChooseEventAdButton.setForeground(new Color(0,0,0));
+        ChooseEventAdButton.setEnabled(true);
+        ChooseEventAdButton.setFont(new Font("sansserif",0,12));
+        ChooseEventAdButton.setText("Choose Event");
+        ChooseEventAdButton.setVisible(true);
+        //Set action for button click
+        //Call defined method
+        ChooseEventAdButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                chooseEventAd(evt);
+            }
+        });
 
         DateAdField = new JTextField();
         DateAdField.setBounds(502,143,91,27);
@@ -430,11 +430,17 @@ public class AdminMainForm extends JFrame {
 
     //Method actionPerformed for AdminAdButton
     private void studentAdministrationAd (ActionEvent evt) {
-            //TODO
+        RequestsForm rf = new RequestsForm();
+        this.dispose();
+        rf.setVisible(true);
     }
 
     //Method actionPerformed for CancelAdButton
     private void cancelBooking (ActionEvent evt) {
+        
+        String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+
+        
         int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null, "You have successfully cancelled it.");
@@ -445,7 +451,7 @@ public class AdminMainForm extends JFrame {
     private void cancelEvent (ActionEvent evt) {
             //TODO
             if (ShowEventsAd.getText().length() == 0) {
-            JOptionPane.showMessageDialog(this, "Please insert the Event Name to proceed!!");
+	    String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
         } else {
             try {
 
@@ -498,9 +504,9 @@ public class AdminMainForm extends JFrame {
 
     //Method actionPerformed for ChooseEventAdButton
     private void chooseEventAd (ActionEvent evt) {
-    String eventName = JOptionPane.showInputDialog("Please type in the event name.");
-    EventManager bs = new EventManager();
-    bs.searchEvent(eventName);
+        String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+        EventManager bs = new EventManager();
+        bs.searchEvent(eventName);
     }
 
     //Method actionPerformed for ExitAdButton
