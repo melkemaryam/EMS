@@ -19,15 +19,15 @@ import java.sql.SQLException;
 
 public class DBManager {
     
+
     // Function name: connect()
     // Task: connects to the DB
     public static Connection connect() {
-        
         Connection conn = null;
         try {
             Path currentRelativePath = Paths.get("");
             String s = currentRelativePath.toAbsolutePath().toString();
-            String url = ("jdbc:sqlite:" + s + "\\ribbentrop_molotov.db");
+            String url = ("jdbc:sqlite:" + s + "ribbentrop_molotov.db");
                        
             // create a connection to the database via hybrid-relative address
             conn = DriverManager.getConnection(url);

@@ -137,7 +137,7 @@ public class EventManager {
         String sql = "SELECT EventName FROM Events WHERE isVisible = 1";
         ArrayList<String> eventsList = new ArrayList<>();
         try(Connection conn = DBManager.connect();
-            Statement stmt = conn.prepareStatement(sql)){
+            PreparedStatement stmt = conn.prepareStatement(sql)){
             ResultSet rs = stmt.executeQuery(sql);      
 
             while (rs.next()){
@@ -190,4 +190,6 @@ public class EventManager {
         return eventsList;
     }
         //GUI: change of window?
+    public static void main(String[] args) {
+    }
 }
