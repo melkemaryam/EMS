@@ -3,11 +3,11 @@ public class Start {
     public static void main(String[] args) {
         // This is an object of the Login class
         //new LogInForm();
-        //new StudentMainForm();
+        new StudentMainForm();
         //new AdminMainForm();
         //new EOMainForm();
         //new RegisterForm();
         //new StuAdminForm();
-        new RequestsForm();
+        //new RequestsForm();
     }
 }
