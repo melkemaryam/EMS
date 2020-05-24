@@ -34,7 +34,7 @@ public class AdminMainForm extends JFrame {
     private JButton CancelEventAdButton;
     private JTextField CatAdField;
     private JLabel Category;
-    private JButton ChooseEventAdButton;
+    private JButton ChooseOrSearchEventAdButton;
     private JTextField DateAdField;
     private JLabel DateLabel;
     private JTextField DescAdField;
@@ -161,19 +161,19 @@ public class AdminMainForm extends JFrame {
         Category.setText("Category");
         Category.setVisible(true);
         
-        ChooseEventAdButton = new JButton();
-        ChooseEventAdButton.setBounds(502,388,125,33);
-        ChooseEventAdButton.setBackground(new Color(214,217,223));
-        ChooseEventAdButton.setForeground(new Color(0,0,0));
-        ChooseEventAdButton.setEnabled(true);
-        ChooseEventAdButton.setFont(new Font("sansserif",0,12));
-        ChooseEventAdButton.setText("Choose Event");
-        ChooseEventAdButton.setVisible(true);
+        ChooseOrSearchEventAdButton = new JButton();
+        ChooseOrSearchEventAdButton.setBounds(502,388,170,33);
+        ChooseOrSearchEventAdButton.setBackground(new Color(214,217,223));
+        ChooseOrSearchEventAdButton.setForeground(new Color(0,0,0));
+        ChooseOrSearchEventAdButton.setEnabled(true);
+        ChooseOrSearchEventAdButton.setFont(new Font("sansserif",0,12));
+        ChooseOrSearchEventAdButton.setText("Choose or Search Event");
+        ChooseOrSearchEventAdButton.setVisible(true);
         //Set action for button click
         //Call defined method
-        ChooseEventAdButton.addActionListener(new ActionListener() {
+        ChooseOrSearchEventAdButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                chooseEventAd(evt);
+                chooseOrSearchEventAd(evt);
             }
         });
 
@@ -398,7 +398,7 @@ public class AdminMainForm extends JFrame {
         contentPane.add(CancelEventAdButton);
         contentPane.add(CatAdField);
         contentPane.add(Category);
-        contentPane.add(ChooseEventAdButton);
+        contentPane.add(ChooseOrSearchEventAdButton);
         contentPane.add(DateAdField);
         contentPane.add(DateLabel);
         contentPane.add(DescAdField);
@@ -504,7 +504,7 @@ public class AdminMainForm extends JFrame {
     }
 
     //Method actionPerformed for ChooseEventAdButton
-    private void chooseEventAd (ActionEvent evt) {
+    private void chooseOrSearchEventAd (ActionEvent evt) {
         String eventName = JOptionPane.showInputDialog("Please type in the event name.");
         EventManager bs = new EventManager();
         bs.searchEvent(eventName);
