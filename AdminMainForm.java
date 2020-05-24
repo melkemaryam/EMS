@@ -455,13 +455,12 @@ public class AdminMainForm extends JFrame {
         } else {
             try {
 
-                String deleteB = ShowEventsAd.getText();
-                int id = Integer.parseInt(deleteB);                
+                String deleteB = ShowEventsAd.getText();             
                 conn = DBManager.connect();
                 System.out.println("Database Connected");
-                String findByIdQuery = "SELECT * FROM event WHERE EventName=?";
-                PreparedStatement preparedStmt = conn.prepareStatement(findByIdQuery);
-                preparedStmt.setInt(1, id);
+                String findByNameQuery = "SELECT * FROM event WHERE EventName=?";
+                PreparedStatement preparedStmt = conn.prepareStatement(findByNameQuery);
+                preparedStmt.setString(1, deleteB);
                 preparedStmt.execute();
                 rs = preparedStmt.getResultSet();
 
@@ -470,14 +469,16 @@ public class AdminMainForm extends JFrame {
                     int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
                     if (reply == JOptionPane.YES_OPTION){
                      
-                        String query = "DELETE FROM event WHERE EventName=?";
-                        preparedStmt = conn.prepareStatement(query);
-                        preparedStmt.setInt(1, id);
-                        preparedStmt.execute();
-                        String query1 = "DELETE FROM studentbookings WHERE EventName=?";
-                        preparedStmt = conn.prepareStatement(query1);
-                        preparedStmt.setInt(1, id);
-                        preparedStmt.execute();
+                        EventManager bs = new EventManager();
+                        bs.cancelEvent(deleteB);
+                        //String query = "DELETE FROM event WHERE EventName=?";
+                        //preparedStmt = conn.prepareStatement(query);
+                        //preparedStmt.setInt(1, id);
+                        //preparedStmt.execute();
+                        //String query1 = "DELETE FROM studentbookings WHERE EventName=?";
+                        //preparedStmt = conn.prepareStatement(query1);
+                        //preparedStmt.setInt(1, id);
+                        //preparedStmt.execute();
                         JOptionPane.showMessageDialog(null, "You have successfully cancelled it.");
 
                         this.dispose();

@@ -104,7 +104,7 @@ public class EventManager {
         int EventId = specificEvent.getEventId();
         BookingManager.cancelAllBookings(EventId);
         //GUI: ARE YOU SURE? window appears on mouse click
-        System.out.println("You have successfully cancelled the event.");
+        //System.out.println("You have successfully cancelled the event.");
         //GUI: show message
     }
     
