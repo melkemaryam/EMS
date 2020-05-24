@@ -50,7 +50,7 @@ public class AdminMainForm extends JFrame {
     private JButton SeeAllBookAdButton;
     private JButton SeeAllEventsAdButton;
     private JTextArea ShowEventsAd;
-    private JTextField TiitleAdField;
+    private JTextField TitleAdField;
     private JTextField TimeAdField;
     private JLabel TimeLabel;
     private JLabel TitleLabel;
@@ -99,6 +99,7 @@ public class AdminMainForm extends JFrame {
         BookReqCheckAd.setFont(new Font("sansserif",0,12));
         BookReqCheckAd.setText("");
         BookReqCheckAd.setVisible(true);
+        //BookReqCheckAd.setEditable(false);
 
         BookReqLabel = new JLabel();
         BookReqLabel.setBounds(383,205,110,34);
@@ -110,33 +111,33 @@ public class AdminMainForm extends JFrame {
         BookReqLabel.setVisible(true);
 
         CancelBookAdButton = new JButton();
-    CancelBookAdButton.setBounds(305,389,146,34);
-    CancelBookAdButton.setBackground(new Color(214,217,223));
-    CancelBookAdButton.setForeground(new Color(0,0,0));
-    CancelBookAdButton.setEnabled(true);
-    CancelBookAdButton.setFont(new Font("sansserif",0,12));
-    CancelBookAdButton.setText("Cancel Booking");
-    CancelBookAdButton.setVisible(true);
-    //Set action for button click
-    //Call defined method
-    CancelBookAdButton.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent evt) {
-            cancelBooking(evt);
-        }
-    });
+        CancelBookAdButton.setBounds(305,389,146,34);
+        CancelBookAdButton.setBackground(new Color(214,217,223));
+        CancelBookAdButton.setForeground(new Color(0,0,0));
+        CancelBookAdButton.setEnabled(true);
+        CancelBookAdButton.setFont(new Font("sansserif",0,12));
+        CancelBookAdButton.setText("Cancel Booking");
+        CancelBookAdButton.setVisible(true);
+        //Set action for button click
+        //Call defined method
+        CancelBookAdButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                cancelBooking(evt);
+            }
+        });
 
 
-    CancelEventAdButton = new JButton();
-    CancelEventAdButton.setBounds(148,388,119,35);
-    CancelEventAdButton.setBackground(new Color(214,217,223));
-    CancelEventAdButton.setForeground(new Color(0,0,0));
-    CancelEventAdButton.setEnabled(true);
-    CancelEventAdButton.setFont(new Font("sansserif",0,12));
-    CancelEventAdButton.setText("Cancel Event");
-    CancelEventAdButton.setVisible(true);
-    //Set action for button click
-    //Call defined method
-    CancelEventAdButton.addActionListener(new ActionListener() {
+        CancelEventAdButton = new JButton();
+        CancelEventAdButton.setBounds(148,388,119,35);
+        CancelEventAdButton.setBackground(new Color(214,217,223));
+        CancelEventAdButton.setForeground(new Color(0,0,0));
+        CancelEventAdButton.setEnabled(true);
+        CancelEventAdButton.setFont(new Font("sansserif",0,12));
+        CancelEventAdButton.setText("Cancel Event");
+        CancelEventAdButton.setVisible(true);
+        //Set action for button click
+        //Call defined method
+        CancelEventAdButton.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
             cancelEvent(evt);
         }
@@ -151,6 +152,7 @@ public class AdminMainForm extends JFrame {
         CatAdField.setFont(new Font("sansserif",0,12));
         CatAdField.setText("");
         CatAdField.setVisible(true);
+        CatAdField.setEditable(false);
 
         Category = new JLabel();
         Category.setBounds(382,235,90,35);
@@ -185,6 +187,7 @@ public class AdminMainForm extends JFrame {
         DateAdField.setFont(new Font("sansserif",0,12));
         DateAdField.setText("");
         DateAdField.setVisible(true);
+        DateAdField.setEditable(false);
 
         DateLabel = new JLabel();
         DateLabel.setBounds(383,139,90,35);
@@ -247,6 +250,7 @@ public class AdminMainForm extends JFrame {
         LocationAdField.setFont(new Font("sansserif",0,12));
         LocationAdField.setText("");
         LocationAdField.setVisible(true);
+        LocationAdField.setEditable(false);
 
         LogOutAdButton = new JButton();
         LogOutAdButton.setBounds(34,258,90,35);
@@ -273,6 +277,7 @@ public class AdminMainForm extends JFrame {
         PlacesAdField.setFont(new Font("sansserif",0,12));
         PlacesAdField.setText("");
         PlacesAdField.setVisible(true);
+        PlacesAdField.setEditable(false);
 
         PlacesLabel = new JLabel();
         PlacesLabel.setBounds(380,330,90,35);
@@ -291,6 +296,7 @@ public class AdminMainForm extends JFrame {
         RoomNoAdField.setFont(new Font("sansserif",0,12));
         RoomNoAdField.setText("");
         RoomNoAdField.setVisible(true);
+        RoomNoAdField.setEditable(false);
 
         RoomNoLabel = new JLabel();
         RoomNoLabel.setBounds(382,298,90,35);
@@ -345,14 +351,16 @@ public class AdminMainForm extends JFrame {
         ShowEventsAd.setBorder(BorderFactory.createBevelBorder(1));
         ShowEventsAd.setVisible(true);
 
-        TiitleAdField = new JTextField();
-        TiitleAdField.setBounds(503,70,98,31);
-        TiitleAdField.setBackground(new Color(255,255,255));
-        TiitleAdField.setForeground(new Color(0,0,0));
-        TiitleAdField.setEnabled(true);
-        TiitleAdField.setFont(new Font("sansserif",0,12));
-        TiitleAdField.setText("");
-        TiitleAdField.setVisible(true);
+        TitleAdField = new JTextField();
+        TitleAdField.setBounds(503,70,98,31);
+        TitleAdField.setBackground(new Color(255,255,255));
+        TitleAdField.setForeground(new Color(0,0,0));
+        TitleAdField.setEnabled(true);
+        TitleAdField.setFont(new Font("sansserif",0,12));
+        TitleAdField.setText("");
+        TitleAdField.setVisible(true);
+        TitleAdField.setEditable(false);
+        
 
         TimeAdField = new JTextField();
         TimeAdField.setBounds(538,174,90,35);
@@ -362,6 +370,7 @@ public class AdminMainForm extends JFrame {
         TimeAdField.setFont(new Font("sansserif",0,12));
         TimeAdField.setText("");
         TimeAdField.setVisible(true);
+        TimeAdField.setEditable(false);
 
         TimeLabel = new JLabel();
         TimeLabel.setBounds(383,172,90,35);
@@ -414,7 +423,7 @@ public class AdminMainForm extends JFrame {
         contentPane.add(SeeAllBookAdButton);
         contentPane.add(SeeAllEventsAdButton);
         contentPane.add(ShowEventsAd);
-        contentPane.add(TiitleAdField);
+        contentPane.add(TitleAdField);
         contentPane.add(TimeAdField);
         contentPane.add(TimeLabel);
         contentPane.add(TitleLabel);
