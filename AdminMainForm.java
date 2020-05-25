@@ -55,6 +55,7 @@ public class AdminMainForm extends JFrame {
     private JLabel TimeLabel;
     private JLabel TitleLabel;
     private JLabel WelcomeLabel;
+    private JScrollPane Scroll;
     
     
     Connection conn;
@@ -348,10 +349,17 @@ public class AdminMainForm extends JFrame {
         ShowEventsAd.setForeground(new Color(0,0,0));
         ShowEventsAd.setEnabled(true);
         ShowEventsAd.setFont(new Font("sansserif",0,12));
-        ShowEventsAd.setText(getAllEventsList());
+        //ShowEventsAd.setText(getAllEventsList());
+        ShowEventsAd.setText("äääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääää");
         ShowEventsAd.setBorder(BorderFactory.createBevelBorder(1));
         ShowEventsAd.setVisible(true);
         ShowEventsAd.setEditable(false);
+        Scroll = new JScrollPane(ShowEventsAd, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        ShowEventsAd.setLineWrap(true);
+        ShowEventsAd.setWrapStyleWord(true);
+        Scroll.setBounds(205,86,157,284);
+
 
         TitleAdField = new JTextField();
         TitleAdField.setBounds(503,70,98,31);
@@ -430,6 +438,7 @@ public class AdminMainForm extends JFrame {
         contentPane.add(TimeLabel);
         contentPane.add(TitleLabel);
         contentPane.add(WelcomeLabel);
+        contentPane.add(Scroll);
 
         //adding panel to JFrame and seting of window position and close operation
         this.add(contentPane);
