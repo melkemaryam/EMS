@@ -336,6 +336,7 @@ public class StudentMainForm extends JFrame {
         ShowEventsStuBox.setText("");
         ShowEventsStuBox.setBorder(BorderFactory.createBevelBorder(1));
         ShowEventsStuBox.setVisible(true);
+        ShowEventsStuBox.setEditable(false);
 
         TimeFieldStu = new JTextField();
         TimeFieldStu.setBounds(540,188,90,35);

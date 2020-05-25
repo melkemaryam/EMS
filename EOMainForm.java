@@ -427,6 +427,7 @@ public class EOMainForm extends JFrame {
         ShowEventsEO.setText("");
         ShowEventsEO.setBorder(BorderFactory.createBevelBorder(1));
         ShowEventsEO.setVisible(true);
+        ShowEventsEO.setEditable(false);
 
         TimeLabel = new JLabel();
         TimeLabel.setBounds(379,170,90,35);

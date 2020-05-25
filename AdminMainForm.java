@@ -351,6 +351,7 @@ public class AdminMainForm extends JFrame {
         ShowEventsAd.setText(getAllEventsList());
         ShowEventsAd.setBorder(BorderFactory.createBevelBorder(1));
         ShowEventsAd.setVisible(true);
+        ShowEventsAd.setEditable(false);
 
         TitleAdField = new JTextField();
         TitleAdField.setBounds(503,70,98,31);
