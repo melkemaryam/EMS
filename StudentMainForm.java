@@ -16,7 +16,7 @@ import javax.swing.*;
 
 
 public class StudentMainForm extends JFrame {
-
+    // Components of the Form
     private JButton BookButton;
     private JLabel BookReqLabel;
     private JButton CancelBookButton;

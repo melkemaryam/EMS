@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 
 public class RegisterForm extends JFrame {
-
+    // Components of the Form
     private JLabel ConPassLabelReg;
     private JPasswordField ConPassRegField;
     private JLabel FNameLabel;
@@ -45,7 +45,7 @@ public class RegisterForm extends JFrame {
 	
     
 
-    //Constructor 
+    // Creates new form RegisteForm 
     public RegisterForm(){
 
         this.setTitle("RegisterForm");

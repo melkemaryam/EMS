@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 
 public class LogInForm extends JFrame {
-
+        // Variables declaration
 	private JLabel LogIn;
 	private JButton LogInButton;
 	private JLabel NewUserLabel;
@@ -44,7 +44,7 @@ public class LogInForm extends JFrame {
 	
 	
 
-	//Constructor 
+	//Creates new form LogIn
 	public LogInForm(){
 
 		this.setTitle("LogInForm");
@@ -299,9 +299,10 @@ public class LogInForm extends JFrame {
 
 	
 
-
+         //param args the command line arguments
 	 public static void main(String[] args){
 		System.setProperty("swing.defaultlaf", "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+		//Create and display the form
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new LogInForm().setVisible(true);

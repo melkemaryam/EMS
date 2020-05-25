@@ -26,7 +26,7 @@ import java.sql.ResultSet;
 
 public class AdminMainForm extends JFrame {
 
-    
+    // Components of the Form
     private JButton AdminAdButton;
     private JCheckBox BookReqCheckAd;
     private JLabel BookReqLabel;
@@ -464,8 +464,7 @@ public class AdminMainForm extends JFrame {
     
     //Method actionPerformed for CancelAdButton
     private void cancelEvent (ActionEvent evt) {
-            //TODO
-            //
+            
             if (ShowEventsAd.getText().length() == 0) {
 	    String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
         } else {
