@@ -209,7 +209,6 @@ public class LogInForm extends JFrame {
                         JOptionPane.showMessageDialog(null, "Welcome " + studentid + " to the student menu");
                         StudentMainForm ms = new StudentMainForm();
                         Student playerOne = new Student();
-                        AccountManager.retrieveUser(playerOne);
                         this.dispose();
                         ms.setVisible(true);
                     } else {

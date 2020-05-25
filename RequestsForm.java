@@ -22,6 +22,7 @@ public class RequestsForm extends JFrame {
     private JTextArea RequestsArea;
     private JLabel RequestsLabel;
     private JButton RevokeRightsButton;
+    private JButton ShowRequestsButton;
 
     //Constructor 
     public RequestsForm(){
@@ -79,6 +80,7 @@ public class RequestsForm extends JFrame {
         RequestsArea.setText("");
         RequestsArea.setBorder(BorderFactory.createBevelBorder(1));
         RequestsArea.setVisible(true);
+        RequestsArea.setEditable(false);
 
         RequestsLabel = new JLabel();
         RequestsLabel.setBounds(83,25,377,35);
@@ -104,6 +106,23 @@ public class RequestsForm extends JFrame {
                 revokeRights(evt);
             }
         });
+        
+        ShowRequestsButton = new JButton();
+	ShowRequestsButton.setBounds(323,287,129,37);
+	ShowRequestsButton.setBackground(new Color(214,217,223));
+	ShowRequestsButton.setForeground(new Color(0,0,0));
+	ShowRequestsButton.setEnabled(true);
+	ShowRequestsButton.setFont(new Font("sansserif",0,12));
+	ShowRequestsButton.setText("Show Requests");
+	ShowRequestsButton.setVisible(true);
+	//Set action for button click
+	//Call defined method
+	ShowRequestsButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent evt) {
+			showRequests(evt);
+		}
+	});
+
 
 
         //adding components to contentPane panel
@@ -112,6 +131,8 @@ public class RequestsForm extends JFrame {
         contentPane.add(RequestsArea);
         contentPane.add(RequestsLabel);
         contentPane.add(RevokeRightsButton);
+        contentPane.add(ShowRequestsButton);
+
 
         //adding panel to JFrame and seting of window position and close operation
         this.add(contentPane);
@@ -131,15 +152,26 @@ public class RequestsForm extends JFrame {
     //Method actionPerformed for CloseButton
     private void grantPermission (ActionEvent evt) {
 	String inputValue = JOptionPane.showInputDialog("Please type in the user ID.");
-	//call from accountManager
+	AccountManager am = new AccountManager();
+	Student playerOne = new Student();
+	AccountManager.retrieveUser(playerOne);
+	//am.grantPermission(rightsID);
     }
     
     //Method actionPerformed for RevokeRightsButton
     private void revokeRights (ActionEvent evt) {
 	String inputValue = JOptionPane.showInputDialog("Please type in the user ID.");
-	//call from accountManager
+	AccountManager am = new AccountManager();
+	Student playerOne = new Student();
+	AccountManager.retrieveUser(playerOne);
+	//am.revokeRights(rightsID);
     }
 
+    //Method actionPerformed for ShowRequestsButton
+    private void showRequests (ActionEvent evt) {
+        AccountManager am = new AccountManager();
+        am.retrieveRequests();
+    }
 
 
 

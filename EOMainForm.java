@@ -523,24 +523,23 @@ public class EOMainForm extends JFrame {
 
     //Method actionPerformed for BookEOButton
     private void bookEO (ActionEvent evt) {
-            //book m = new book();
-	    //this.dispose();
-	    //m.setVisible(true);
-	    //BookingManager.addBooking(playerOne, eventID);
-	    String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+            String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+            Student playerOne = new Student();
+            AccountManager.retrieveUser(playerOne);
+            BookingManager bs = new BookingManager();
+            
+	    //bs.addBooking(playerOne, eventName);
 
     }
 
     //Method actionPerformed for CancelEOButton
     private void cancelEO (ActionEvent evt) {
-            String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+            String eventName = JOptionPane.showInputDialog("Please type in the event name.");
 
-            //cancel m = new cancel();
-            //this.dispose();
-            //m.setVisible(true);
-            //BookingManager.cancelBooking(Student playerOne; int eventId);
             int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION){
+                EventManager em = new EventManager();
+                em.cancelEvent(eventName);
                 JOptionPane.showMessageDialog(null, "You have successfully cancelled it.");
             } 
             
@@ -548,7 +547,9 @@ public class EOMainForm extends JFrame {
     
     //Method actionPerformed for ChooseOrSearchEventEOButton
     private void chooseOrSearchEventEO (ActionEvent evt) {
-	String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+	String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+	EventManager em = new EventManager();
+	em.searchEvent(eventName);
     }
 
     //Method actionPerformed for CreateEventEOButton
@@ -583,8 +584,10 @@ public class EOMainForm extends JFrame {
 
     //Method actionPerformed for MyEventsEOButton
     private void seeOwnEventsEO (ActionEvent evt) {
-            //TODO
-            //viewOwnEvents in EventManager
+            Student playerOne = new Student();
+            AccountManager.retrieveUser(playerOne);
+            EventManager em = new EventManager();
+            em.viewOwnEvents(playerOne);
     }
     
     //Method actionPerformed for SaveEOButton
@@ -595,14 +598,15 @@ public class EOMainForm extends JFrame {
 
     //Method actionPerformed for SeeAllBookEOButton
     private void seeAllBookingsEO (ActionEvent evt) {
-            //TODO
-            //viewAllBookings in BookingManager
+            String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+            BookingManager bm = new BookingManager();
+            bm.viewAllBookings();
     }
 
     //Method actionPerformed for SeeAllEventsEOButton
     private void seeAllEventsEO (ActionEvent evt) {
-            //TODO
-            //seeAllEvents in EventManager
+            EventManager em = new EventManager();
+            em.viewAllEvents();
     }
 
     
