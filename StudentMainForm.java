@@ -1,4 +1,4 @@
-/**
+    /**
 *Text genereted by Simple GUI Extension for BlueJ
 */
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -131,20 +131,20 @@ public class StudentMainForm extends JFrame {
         //CheckBoxBookReqStu.setEditable(false);
         
         ChooseOrSearchEventStuButton = new JButton();
-	ChooseOrSearchEventStuButton.setBounds(10,379,170,35);
-	ChooseOrSearchEventStuButton.setBackground(new Color(214,217,223));
-	ChooseOrSearchEventStuButton.setForeground(new Color(0,0,0));
-	ChooseOrSearchEventStuButton.setEnabled(true);
-	ChooseOrSearchEventStuButton.setFont(new Font("sansserif",0,12));
-	ChooseOrSearchEventStuButton.setText("Choose or Search Event");
-	ChooseOrSearchEventStuButton.setVisible(true);
-	//Set action for button click
-	//Call defined method
-	ChooseOrSearchEventStuButton.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent evt) {
-			chooseOrSearchEventStu(evt);
-		}
-	});
+    ChooseOrSearchEventStuButton.setBounds(10,379,170,35);
+    ChooseOrSearchEventStuButton.setBackground(new Color(214,217,223));
+    ChooseOrSearchEventStuButton.setForeground(new Color(0,0,0));
+    ChooseOrSearchEventStuButton.setEnabled(true);
+    ChooseOrSearchEventStuButton.setFont(new Font("sansserif",0,12));
+    ChooseOrSearchEventStuButton.setText("Choose or Search Event");
+    ChooseOrSearchEventStuButton.setVisible(true);
+    //Set action for button click
+    //Call defined method
+    ChooseOrSearchEventStuButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+            chooseOrSearchEventStu(evt);
+        }
+    });
 
         DateFieldStu = new JTextField();
         DateFieldStu.setBounds(539,148,90,35);
@@ -425,12 +425,20 @@ public class StudentMainForm extends JFrame {
 
     //Method actionPerformed for BookButton
     private void bookStu (ActionEvent evt) {
-	String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+    String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+    BookingManager bs = new BookingManager();
+    Student playerOne = new Student();
+    AccountManager.retrieveUser(playerOne);
+        //bs.addBooking(playerOne,eventName);
     }
 
     //Method actionPerformed for CancelBookButton
     private void cancelStu (ActionEvent evt) {
-        String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+        String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+        BookingManager bs = new BookingManager();
+        Student playerOne = new Student();
+        AccountManager.retrieveUser(playerOne);
+        //bs.cancelBooking(playerOne,eventName);
 
         int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION){
@@ -440,7 +448,9 @@ public class StudentMainForm extends JFrame {
     
     //Method actionPerformed for ChooseEventStuButton
     private void chooseOrSearchEventStu (ActionEvent evt) {
-	String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+    String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+    EventManager bs = new EventManager();
+        bs.searchEvent(eventName);
     }
     
     //Method actionPerformed for ExitStuButton
@@ -458,19 +468,29 @@ public class StudentMainForm extends JFrame {
 
     //Method actionPerformed for RightsStuButton
     private void askForRightsStu (ActionEvent evt) {
-            //TODO
+        Student playerOne = new Student();
+        AccountManager.retrieveUser(playerOne);
+        AccountManager bs = new AccountManager();
+        bs.requestPermission(playerOne);
             //call on method in accountManager
     }
 
     //Method actionPerformed for SeeAllBookStuButton
     private void seeAllBookingsStu (ActionEvent evt) {
-            //TODO
+            Student playerOne = new Student();
+            AccountManager.retrieveUser(playerOne);
+            BookingManager bs = new BookingManager();
+            bs.viewUserBookings(playerOne);
+            
+            
             //view userbookings in BookingManager
     }
 
     //Method actionPerformed for SeeAllEventsStuButton
     private void seeAllEventsStu (ActionEvent evt) {
-            //TODO
+            EventManager bs = new EventManager();
+            bs.viewAllEvents();
+            
             //viewallevents in eventManager
     }
 
