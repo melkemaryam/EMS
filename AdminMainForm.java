@@ -449,7 +449,7 @@ public class AdminMainForm extends JFrame {
     private void cancelBooking (ActionEvent evt) {
         
         String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
-
+        //call method admincancelbooking, with booking id in bookingManager
         
         int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION){
@@ -460,12 +460,14 @@ public class AdminMainForm extends JFrame {
     //Method actionPerformed for CancelAdButton
     private void cancelEvent (ActionEvent evt) {
             //TODO
+            //
             if (ShowEventsAd.getText().length() == 0) {
 	    String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
         } else {
             try {
+                String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
 
-                String deleteB = ShowEventsAd.getText();             
+                String deleteB = inputValue;             
                 conn = DBManager.connect();
                 System.out.println("Database Connected");
                 String findByNameQuery = "SELECT * FROM event WHERE EventName=?";
@@ -518,6 +520,7 @@ public class AdminMainForm extends JFrame {
         String eventName = JOptionPane.showInputDialog("Please type in the event name.");
         EventManager bs = new EventManager();
         bs.searchEvent(eventName);
+        //searchEvnet from EventManager with event name
     }
 
     //Method actionPerformed for ExitAdButton
@@ -535,17 +538,20 @@ public class AdminMainForm extends JFrame {
     //Method actionPerformed for SeeAllBookAdButton
     private void seeAllBookingsAd (ActionEvent evt) {
             //TODO
+            String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+
+            //call from BookingManager
     }
     
     private String getAllBookingsList(){
-    BookingManager bs = new BookingManager();
-    ArrayList<String> bookingsList = bs.viewAllBookings();
-    String bookingsListString = "";
+        BookingManager bs = new BookingManager();
+        ArrayList<String> bookingsList = bs.viewAllBookings();
+        String bookingsListString = "";
     
-    for (String s : bookingsList)
-    {
-        bookingsListString += s + "\t";
-    }
+        for (String s : bookingsList)
+        {
+            bookingsListString += s + "\t";
+        }
     
     return bookingsListString;
     }   

@@ -458,16 +458,19 @@ public class StudentMainForm extends JFrame {
     //Method actionPerformed for RightsStuButton
     private void askForRightsStu (ActionEvent evt) {
             //TODO
+            //call on method in accountManager
     }
 
     //Method actionPerformed for SeeAllBookStuButton
     private void seeAllBookingsStu (ActionEvent evt) {
             //TODO
+            //view userbookings in BookingManager
     }
 
     //Method actionPerformed for SeeAllEventsStuButton
     private void seeAllEventsStu (ActionEvent evt) {
             //TODO
+            //viewallevents in eventManager
     }
 
     

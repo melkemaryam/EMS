@@ -575,26 +575,33 @@ public class EOMainForm extends JFrame {
     //Method actionPerformed for ModifyEOButton
     private void modifyEO (ActionEvent evt) {
             //TODO
+            String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+            //check if event was created by EO
+            //saves the changes made in the DB
     }
 
     //Method actionPerformed for MyEventsEOButton
     private void seeOwnEventsEO (ActionEvent evt) {
             //TODO
+            //viewOwnEvents in EventManager
     }
     
     //Method actionPerformed for SaveEOButton
     private void saveChanges (ActionEvent evt) {
             //TODO
+            //saves the new event in DB
     }
 
     //Method actionPerformed for SeeAllBookEOButton
     private void seeAllBookingsEO (ActionEvent evt) {
             //TODO
+            //viewAllBookings in BookingManager
     }
 
     //Method actionPerformed for SeeAllEventsEOButton
     private void seeAllEventsEO (ActionEvent evt) {
             //TODO
+            //seeAllEvents in EventManager
     }
 
     
