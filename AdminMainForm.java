@@ -451,6 +451,10 @@ public class AdminMainForm extends JFrame {
         
         String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
         //call method admincancelbooking, with booking id in bookingManager
+        String bookstr = JOptionPane.showInputDialog("Please type in the booking ID.");
+        int bookId = Integer.parseInt(bookstr);
+        BookingManager bm = new BookingManager();
+        bm.adminCancelBooking(bookId);
         
         int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION){
@@ -538,10 +542,12 @@ public class AdminMainForm extends JFrame {
 
     //Method actionPerformed for SeeAllBookAdButton
     private void seeAllBookingsAd (ActionEvent evt) {
-            //TODO
+            //asking user for event name
             String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+            BookingManager bs = new BookingManager();
+            bs.viewAllBookings();
 
-            //call from BookingManager
+            //call from BookingManager 
     }
     
     private String getAllBookingsList(){
