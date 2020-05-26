@@ -38,15 +38,15 @@ public class AccountManager {
     // Function name: addUser()
     // Task: adds a new user to the DB
     public static void addUser(Student playerOne) {
-        String sql = "INSERT INTO Users(FirstName, LastName, Email, UserType, StudentID, password) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO Users(UniversityID, FirstName, LastName, email, Role, password) VALUES (?,?,?,?,?,?)";
 
         try (Connection conn = DBManager.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)){
-            pstmt.setString(1, playerOne.getFirstName());
-            pstmt.setString(2, playerOne.getLastName());
-            pstmt.setString(3, playerOne.getEmail());
-            pstmt.setInt(4, playerOne.getRole());
-            pstmt.setInt(5, playerOne.getUniId());
+            pstmt.setInt(1, playerOne.getUniId());
+            pstmt.setString(2, playerOne.getFirstName());
+            pstmt.setString(3, playerOne.getLastName());
+            pstmt.setString(4, playerOne.getEmail());
+            pstmt.setInt(5, playerOne.getRole());
             pstmt.setString(6, playerOne.getPassword());
             pstmt.executeUpdate();
 
@@ -61,7 +61,7 @@ public class AccountManager {
     // Function name: logIn()
     // Task: logs a user into the system
     public int logIn(Student playerOne) {
-        String sql = "SELECT UserID FROM Users WHERE StudentID =? AND password=?";
+        String sql = "SELECT UserID FROM Users WHERE UniversityID =? AND password=?";
         int logInStatus = 0;
         int universityId = playerOne.getUniId();    
         String password = playerOne.getPassword();
@@ -69,7 +69,7 @@ public class AccountManager {
             PreparedStatement pstmt = conn.prepareStatement(sql)){
                 pstmt.setInt(1, universityId);
                 pstmt.setString(2, password);
-            ResultSet rs = pstmt.executeQuery(sql);
+            ResultSet rs = pstmt.executeQuery();
 
             if (!rs.isBeforeFirst()) {
                 System.out.println("Combination of this UniversityID and password does not exist");
@@ -82,7 +82,7 @@ public class AccountManager {
             }
 
         }catch (SQLException e) {
-            System.err.print("No DB connection");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
         return logInStatus;
@@ -102,23 +102,23 @@ public class AccountManager {
     // Function name: retrieveUser()
     // Task: method to retrive user information
     public static void retrieveUser(Student playerOne) {
-        String sql = "SELECT UserID, FirstName, LastName, Email, UserType FROM Users WHERE StudentID =?";
+        String sql = "SELECT UserID, FirstName, LastName, email, Role FROM Users WHERE UniversityID =?";
         int universityId = playerOne.getUniId();
 
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
                 pstmt.setInt(1, universityId);
-            ResultSet rs = pstmt.executeQuery(sql);
+            ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()){
                 playerOne.setUserId(rs.getInt("UserID"));
                 playerOne.setFirstName(rs.getString("FirstName"));
                 playerOne.setLastName(rs.getString("LastName"));
-                playerOne.setEmail(rs.getString("Email"));
-                playerOne.setRole(rs.getInt("UserType")); 
+                playerOne.setEmail(rs.getString("email"));
+                playerOne.setRole(rs.getInt("Role")); 
             }
         }catch (SQLException e) {
-            System.err.print("No such user");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
     }
@@ -131,9 +131,9 @@ public class AccountManager {
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
                 pstmt.setInt(1, rightsId);
-            ResultSet rs = pstmt.executeQuery(sql);
+                pstmt.executeUpdate();
         }catch (SQLException e) {
-            System.err.print("No DB connection");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
     }
@@ -146,9 +146,9 @@ public class AccountManager {
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
                 pstmt.setInt(1, userId);
-            ResultSet rs = pstmt.executeQuery(sql);
+                pstmt.executeUpdate();
         }catch (SQLException e) {
-            System.err.print("No DB connection");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
     }
@@ -160,9 +160,9 @@ public class AccountManager {
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
                 pstmt.setInt(1, rightsId);
-            ResultSet rs = pstmt.executeQuery(sql);
+                pstmt.executeUpdate();
         }catch (SQLException e) {
-            System.err.print("No DB connection");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
     }
@@ -170,17 +170,17 @@ public class AccountManager {
     // Function name: retrieveRequests()
     // Task: method to retrive requests for Event Organiser rights
     public ArrayList<Integer> retrieveRequests() {
-        String sql = "SELECT UserID FROM Users WHERE roleRequest = 1";
+        String sql = "SELECT UniversityID FROM Users WHERE roleRequest = 1";
         ArrayList<Integer> requestsList = new ArrayList<>();
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
             ResultSet rs = pstmt.executeQuery(sql);
 
             while (rs.next()){
-                requestsList.add(rs.getInt("StudentID"));
+                requestsList.add(rs.getInt("UniversityID"));
             }
         }catch (SQLException e) {
-            System.err.print("No such user");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
         return requestsList;

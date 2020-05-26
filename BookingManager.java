@@ -34,7 +34,7 @@ public class BookingManager {
             pstmt.setInt(2, playerOne.getUserId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.err.print("Something went wrong, Booking was not added to the DB");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
 
@@ -52,7 +52,7 @@ public class BookingManager {
             pstmt.setInt(2, playerOne.getUserId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.err.print("Something went wrong, Booking was not removed from the DB");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
         
@@ -70,7 +70,7 @@ public class BookingManager {
             pstmt.setInt(1, bookingId);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.err.print("Something went wrong, Booking was not removed from the DB");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
         
@@ -80,14 +80,14 @@ public class BookingManager {
     }    
     // Function name: cancelAllBookings()
     // Task: cancels an event connected bookings
-    public static void cancelAllBookings(int eventId) {
-        String sql = "DELETE FROM Bookings WHERE EventID = ?";
+    public static void cancelAllBookings(String eventName) {
+        String sql = "DELETE FROM Bookings WHERE EventName = ?";
         try (Connection conn = DBManager.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)){
-            pstmt.setInt(1, eventId);
+            pstmt.setString(1, eventName);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.err.print("Something went wrong, Bookings not removed from the DB");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
     }
@@ -103,14 +103,14 @@ public class BookingManager {
         try(Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
                 pstmt.setInt(1, userId);
-            ResultSet rs = pstmt.executeQuery(sql);      
+            ResultSet rs = pstmt.executeQuery();      
 
             while (rs.next()){
                 eventsList.add(rs.getString(1));
                 }
             
         }catch (SQLException e) {
-            System.err.print("No bookings in DB");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
         return eventsList;
@@ -119,19 +119,19 @@ public class BookingManager {
     // Function name: viewAllBookings()
     // Task: shows all bookings
     public ArrayList<String> viewAllBookings() {
-        String sql = "SELECT Booking ID, UserID, EventID FROM Bookings";
+        String sql = "SELECT Booking ID, UserID, EventName FROM Bookings";
         
         ArrayList<String> bookingsList = new ArrayList<>();
         try(Connection conn = DBManager.connect();
-            Statement stmt = conn.prepareStatement(sql)){
-            ResultSet rs = stmt.executeQuery(sql);      
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+            ResultSet rs = pstmt.executeQuery();      
 
             while (rs.next()){
-                bookingsList.add(rs.getInt(1) + " - " +rs.getInt(2) + " - " +rs.getInt(3));
+                bookingsList.add(rs.getInt(1) + " - " +rs.getInt(2) + " - " +rs.getString(3));
                 }
             
         }catch (SQLException e) {
-            System.err.print("No bookings in DB");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
         return bookingsList;

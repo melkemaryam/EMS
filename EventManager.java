@@ -24,7 +24,7 @@ public class EventManager {
     // Function name: getRoomList()
     // Task: returns a list of room information
     public void getRoomList() {
-        String sql = "SELECT RoomID, RoomNo, Size FROM Rooms";
+        String sql = "SELECT RoomID, Capacity, RoomNo FROM Rooms";
         
         try (Connection conn = DBManager.connect();
             Statement stmt = conn.createStatement();
@@ -32,11 +32,11 @@ public class EventManager {
     
             while (rs.next()){
                 System.out.println(rs.getInt("RoomID") + "\t" +
-                                    rs.getInt("RoomNo") + "\t" +
-                                    rs.getInt("Size"));
+                                    rs.getInt("Capacity" + "\t" +
+                                    rs.getInt("RoomNo") ));
             }
         }catch (SQLException e) {
-            System.err.print("Problem with DB connection");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
     }
@@ -53,7 +53,7 @@ public class EventManager {
             pstmt.setString(3, Address);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.err.print("Something went wrong, Room was not added to the DB");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
     
@@ -61,24 +61,28 @@ public class EventManager {
     
     // Function name: createEvent()
     // Task: creates a new event in the system
-    public static void createEvent(String EventName, String EventDescription, String EventDay, String EventMonth, String EventYear, String EventHour, String EventMinute, Student playerOne, int RoomID, String Places) {
-        String sql = "INSERT INTO Events(EventName, EventDescription, EventDate, EventTime, UserID, RoomID, isNew, isVisible, Places) VALUES (?,?,?,?,?,?,?,?,?)";
+    public static void createEvent(String EventName, String EventDescription, String EventType, int EventDay, int EventMonth, int EventYear, int EventHour, int EventMinute, Student playerOne, int RoomNo, int Places) {
+        String sql = "INSERT INTO Events(EventName, EventDescription, EventDay, EventMonth, EvetYear, EventHour, EventMinute, RoomNo, isNew, isVisible, UserID, Participants) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
-        try (Connection conn = DBManager.connect();
-                PreparedStatement pstmt = conn.prepareStatement(sql)){
-            pstmt.setString(1, EventName);
-            pstmt.setString(2, EventDescription);
-            pstmt.setString(3, EventDay +"-"+ EventMonth +"-"+ EventYear);
-            pstmt.setString(4, EventHour +"-"+ EventMinute);
-            pstmt.setInt(5, playerOne.getUserId());
-            pstmt.setInt(6, RoomID);
-            pstmt.setInt(7, 1);
-            pstmt.setInt(8, 1);
-            pstmt.setString(9, Places);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.err.print("Something went wrong, Event was not added to the DB");
-        }
+            try (Connection conn = DBManager.connect();
+                    PreparedStatement pstmt = conn.prepareStatement(sql)){
+                pstmt.setString(1, EventName);
+                pstmt.setString(2, EventDescription);
+                pstmt.setInt(3, EventDay);
+                pstmt.setInt(4, EventMonth);
+                pstmt.setInt(5, EventYear);
+                pstmt.setInt(6, EventHour);
+                pstmt.setInt(7, EventMinute);
+                pstmt.setString(8, EventType);
+                pstmt.setInt(9, RoomNo);
+                pstmt.setInt(10, 1);
+                pstmt.setInt(11, 1);
+                pstmt.setInt(12, playerOne.getUserId());
+                pstmt.setInt(13, Places);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                System.err.print(e.getMessage());
+            }
         DBManager.disconnect();
     
         System.out.println("You have successfully created this event.");
@@ -91,18 +95,15 @@ public class EventManager {
     public void cancelEvent(String eventName) {
         String sql = "UPDATE Events isVisible VALUE 0 WHERE EventName= ?";
         Events specificEvent = new Events();
-        try (Connection conn = DBManager.connect();
-                PreparedStatement pstmt = conn.prepareStatement(sql)){
-            pstmt.setString(1, eventName);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.err.print("Something went wrong, Event was not cancelled");
-        }
+            try (Connection conn = DBManager.connect();
+                    PreparedStatement pstmt = conn.prepareStatement(sql)){
+                pstmt.setString(1, eventName);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                System.err.print(e.getMessage());
+            }
         DBManager.disconnect();
-        specificEvent.setEventName(eventName);
-        searchEvent(eventName);
-        int EventId = specificEvent.getEventId();
-        BookingManager.cancelAllBookings(EventId);
+        BookingManager.cancelAllBookings(eventName);
         //GUI: ARE YOU SURE? window appears on mouse click
         //System.out.println("You have successfully cancelled the event.");
         //GUI: show message
@@ -116,7 +117,7 @@ public class EventManager {
             try(Connection conn = DBManager.connect();
                     PreparedStatement pstmt = conn.prepareStatement(sql)){
                     pstmt.setString(1, eventName);
-                ResultSet rs = pstmt.executeQuery(sql);
+                ResultSet rs = pstmt.executeQuery();
                 while (rs.next()){
                     specificEvent.setEventId(rs.getInt(1));
                     specificEvent.setDescription(rs.getString(2));
@@ -125,7 +126,7 @@ public class EventManager {
                     specificEvent.setRoomNo(rs.getInt(5));
                 }
         }catch (SQLException e) {
-            System.err.print("No events in DB");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
         return specificEvent;
@@ -138,14 +139,14 @@ public class EventManager {
         ArrayList<String> eventsList = new ArrayList<>();
         try(Connection conn = DBManager.connect();
             PreparedStatement stmt = conn.prepareStatement(sql)){
-            ResultSet rs = stmt.executeQuery(sql);      
+            ResultSet rs = stmt.executeQuery();      
 
             while (rs.next()){
                 eventsList.add(rs.getString(1));
                 }
             
         }catch (SQLException e) {
-            System.err.print("No events in DB");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
         return eventsList;
@@ -168,7 +169,7 @@ public class EventManager {
         try(Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
             pstmt.setInt(1, playerOne.getUserId());
-            ResultSet rs = pstmt.executeQuery(sql);      
+            ResultSet rs = pstmt.executeQuery();      
 
             while (rs.next()){
                 Events allEvents = new Events();
@@ -184,7 +185,7 @@ public class EventManager {
                 }
             
         }catch (SQLException e) {
-            System.err.print("No events in DB");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
         return eventsList;
