@@ -241,19 +241,22 @@ public class RegisterForm extends JFrame {
                 if ("student".equalsIgnoreCase(usertype)) // go to student data base
                 {
                     // create a connection to the database
-                    conn = DBManager.connect();
-                    System.out.println("Database Connected ");
+                    //conn = DBManager.connect();
+                    //System.out.println("Database Connected ");
 
-                    pst = conn.prepareStatement("INSERT INTO userstudent(studentID,firstName, lastName,password)values(?,?,?,?)");
-                    pst.setString(1, studentid);
-                    pst.setString(2, firstname);
-                    pst.setString(3, lastname);
-                    pst.setString(4, password);
-                    pst.execute();
-                    conn.close();
-                    System.out.println("Database is closed");
-                    JOptionPane.showMessageDialog(null, firstname + " " + lastname + " account created!");
+                    //pst = conn.prepareStatement("INSERT INTO userstudent(studentID,firstName, lastName,password)values(?,?,?,?)");
+                    
+                    //pst.setString(1, studentid);
+                    //pst.setString(2, firstname);
+                    //pst.setString(3, lastname);
+                    //pst.setString(4, password);
+                    //pst.execute();
+                    //conn.close();
+                    //System.out.println("Database is closed");
+                    //JOptionPane.showMessageDialog(null, firstname + " " + lastname + " account created!");
 
+                    
+                    
                     LogInForm m = new LogInForm();
                     this.dispose();
                     m.setVisible(true);
@@ -286,7 +289,7 @@ public class RegisterForm extends JFrame {
                 }
 
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "User ID or name already exist....");
+                JOptionPane.showMessageDialog(this, "User ID or name already exists....");
                 Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
                 if (conn != null) {
                     try {
