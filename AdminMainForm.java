@@ -63,7 +63,7 @@ public class AdminMainForm extends JFrame {
     ResultSet rs;
 
     //Constructor 
-    public AdminMainForm(){
+    public AdminMainForm(Student playerOne){
 
         this.setTitle("AdminMainForm");
         this.setSize(694,443);
@@ -593,7 +593,7 @@ public class AdminMainForm extends JFrame {
         System.setProperty("swing.defaultlaf", "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new AdminMainForm();
+                new AdminMainForm(playerOne);
             }
         });
     }

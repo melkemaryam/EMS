@@ -42,7 +42,7 @@ public class RegisterForm extends JFrame {
     Connection conn;   
     PreparedStatement pst;
     ResultSet rs;
-	
+    
     
 
     // Creates new form RegisteForm 
@@ -230,7 +230,7 @@ public class RegisterForm extends JFrame {
             JOptionPane.showMessageDialog(this, "Please Insert Last name");
         }
         else {
-            try {
+            //try {
 
                 String studentid = StuIDRegField.getText();
                 String password = PassRegField.getText();
@@ -253,9 +253,15 @@ public class RegisterForm extends JFrame {
                     //pst.execute();
                     //conn.close();
                     //System.out.println("Database is closed");
-                    //JOptionPane.showMessageDialog(null, firstname + " " + lastname + " account created!");
-
                     
+                    Student playerOne = new Student();
+                    playerOne.setFirstName(firstname);
+                    playerOne.setLastName(lastname);
+                    playerOne.setRole(1);
+                    playerOne.setPassword(password);
+                    playerOne.setUniId(Integer.parseInt(studentid));
+                    AccountManager.addUser(playerOne);
+                    JOptionPane.showMessageDialog(null, firstname + " " + lastname + " account created!");
                     
                     LogInForm m = new LogInForm();
                     this.dispose();
@@ -266,15 +272,22 @@ public class RegisterForm extends JFrame {
                    // JOptionPane.showMessageDialog(null, "Option disabled by Administrator, contact the admin to give you access!");
                                  
                 // create a connection to the database
-                conn = DBManager.connect();
-                System.out.println("Database Connected yes");
+                //conn = DBManager.connect();
+                //System.out.println("Database Connected yes");
 
-                pst = conn.prepareStatement("INSERT INTO usersadmin(adminID,firstName,lastName,password)values(?,?,?,?)");
-                pst.setString(1, studentid);
-                pst.setString(2, firstname);
-                pst.setString(3, lastname);
-                pst.setString(4, password);
-                pst.execute();
+                //pst = conn.prepareStatement("INSERT INTO usersadmin(adminID,firstName,lastName,password)values(?,?,?,?)");
+                //pst.setString(1, studentid);
+                //pst.setString(2, firstname);
+                //pst.setString(3, lastname);
+                //pst.setString(4, password);
+                //pst.execute();
+                Student playerOne = new Student();
+                playerOne.setFirstName(firstname);
+                playerOne.setLastName(lastname);
+                playerOne.setRole(3);
+                playerOne.setPassword(password);
+                playerOne.setUniId(Integer.parseInt(studentid));
+                AccountManager.addUser(playerOne);
                 JOptionPane.showMessageDialog(null, firstname + " " + lastname + " account created!");
                 StuIDRegField.setText("");
                 PassRegField.setText("");
@@ -288,23 +301,18 @@ public class RegisterForm extends JFrame {
                     JOptionPane.showMessageDialog(this, "User ID, name, type and Password does not match.....");
                 }
 
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "User ID or name already exists....");
-                Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
-                if (conn != null) {
-                    try {
-                        conn.close();
-                        System.out.println("Database is closed");
-                    } catch (SQLException ex1) {
-                        Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex1);
-                    }
-                }
-            }
-        }
-
+            //} catch (SQLException ex) {
+                //JOptionPane.showMessageDialog(this, "User ID or name already exists....");
+                //Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
+                //if (conn != null) {
+                    //try {
+                        //conn.close();
+                        //System.out.println("Database is closed");
+                //} catch (SQLException ex1) {
+                //Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex1);
+              
+        }    
     }
-
-    
 
 
      public static void main(String[] args){

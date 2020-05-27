@@ -63,7 +63,7 @@ public class EOMainForm extends JFrame {
 
 
     //Constructor 
-    public EOMainForm(){
+    public EOMainForm(Student playerOne){
 
         this.setTitle("EOMainForm");
         this.setSize(717,444);
@@ -329,7 +329,7 @@ public class EOMainForm extends JFrame {
         //Call defined method
         MyEventsEOButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                seeOwnEventsEO(evt);
+                seeOwnEventsEO(evt, playerOne);
             }
         });
 
@@ -583,9 +583,7 @@ public class EOMainForm extends JFrame {
     }
 
     //Method actionPerformed for MyEventsEOButton
-    private void seeOwnEventsEO (ActionEvent evt) {
-            Student playerOne = new Student();
-            AccountManager.retrieveUser(playerOne);
+    private void seeOwnEventsEO (ActionEvent evt, Student playerOne) {
             EventManager em = new EventManager();
             em.viewOwnEvents(playerOne);
     }
@@ -616,8 +614,8 @@ public class EOMainForm extends JFrame {
      public static void main(String[] args){
         System.setProperty("swing.defaultlaf", "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new EOMainForm();
+            public void run(Student playerOne) {
+                new EOMainForm(playerOne);
             }
         });
     }
