@@ -51,7 +51,7 @@ public class AccountManager {
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.err.print("Something went wrong, User was not added to the DB");
+            System.err.print(e.getMessage());
         }
         DBManager.disconnect();
         System.out.println("You have successfully registered.");
