@@ -61,7 +61,7 @@ public class StudentMainForm extends JFrame {
         contentPane.setPreferredSize(new Dimension(703,447));
         contentPane.setBackground(new Color(192,192,192));
 
-
+        //create new button
         BookButton = new JButton();
         BookButton.setBounds(179,378,90,35);
         BookButton.setBackground(new Color(214,217,223));
@@ -78,7 +78,7 @@ public class StudentMainForm extends JFrame {
             }
         });
 
-
+        //create new label
         BookReqLabel = new JLabel();
         BookReqLabel.setBounds(380,228,118,33);
         BookReqLabel.setBackground(new Color(214,217,223));
@@ -87,7 +87,8 @@ public class StudentMainForm extends JFrame {
         BookReqLabel.setFont(new Font("sansserif",0,12));
         BookReqLabel.setText("Booking Required");
         BookReqLabel.setVisible(true);
-
+        
+        //create new button
         CancelBookButton = new JButton();
         CancelBookButton.setBounds(273,378,90,35);
         CancelBookButton.setBackground(new Color(214,217,223));
@@ -104,7 +105,7 @@ public class StudentMainForm extends JFrame {
             }
         });
 
-
+        //create new text field
         CatFieldStu = new JTextField();
         CatFieldStu.setBounds(537,263,90,35);
         CatFieldStu.setBackground(new Color(214,217,223));
@@ -113,7 +114,8 @@ public class StudentMainForm extends JFrame {
         CatFieldStu.setFont(new Font("sansserif",0,12));
         CatFieldStu.setVisible(true);
         CatFieldStu.setEditable(false);
-
+        
+        //create new label
         CatLabel = new JLabel();
         CatLabel.setBounds(379,265,90,35);
         CatLabel.setBackground(new Color(214,217,223));
@@ -122,7 +124,8 @@ public class StudentMainForm extends JFrame {
         CatLabel.setFont(new Font("sansserif",0,12));
         CatLabel.setText("Category");
         CatLabel.setVisible(true);
-
+        
+        //create new checkbox
         CheckBoxBookReqStu = new JCheckBox();
         CheckBoxBookReqStu.setBounds(534,227,90,35);
         CheckBoxBookReqStu.setBackground(new Color(214,217,223));
@@ -133,6 +136,7 @@ public class StudentMainForm extends JFrame {
         CheckBoxBookReqStu.setVisible(true);
         //CheckBoxBookReqStu.setEditable(false);
         
+        //create new button 
         ChooseOrSearchEventStuButton = new JButton();
         ChooseOrSearchEventStuButton.setBounds(10,379,170,35);
         ChooseOrSearchEventStuButton.setBackground(new Color(214,217,223));
@@ -148,7 +152,8 @@ public class StudentMainForm extends JFrame {
                 chooseOrSearchEventStu(evt);
             }
         });
-
+        
+        //create new text field
         DateFieldStu = new JTextField();
         DateFieldStu.setBounds(539,148,90,35);
         DateFieldStu.setBackground(new Color(255,255,255));
@@ -158,7 +163,8 @@ public class StudentMainForm extends JFrame {
         DateFieldStu.setText("");
         DateFieldStu.setVisible(true);
         DateFieldStu.setEditable(false);
-
+        
+        //create new label
         Datelabel = new JLabel();
         Datelabel.setBounds(379,149,90,35);
         Datelabel.setBackground(new Color(214,217,223));
