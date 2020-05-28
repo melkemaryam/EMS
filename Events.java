@@ -19,12 +19,14 @@ public class Events {
     int eventId;
     String eventName;
     String description;
-    String category;
-    String date;
-    float time;
+    int day;
+    int month;
+    int year;
+    int minute;
+    int hour;
     String location;
     int roomNo;
-    String place;
+    int places;
     boolean bookingRequired;
     
 
@@ -67,28 +69,44 @@ public class Events {
         this.description = description;
     }
 
-    public String getCategory() {
-        return category;
+    public int getEventDay() {
+        return day;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setEventDay(int day) {
+        this.day = day;
     }
 
-    public String getDate() {
-        return date;
+    public int getEventMonth() {
+        return month;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setEventMonth(int month) {
+        this.month = month;
+    }
+    
+    public int getEventYear() {
+        return year;
     }
 
-    public float getTime() {
-        return time;
+    public void setEventYear(int year) {
+        this.year = year;
+    }
+    
+    public int getEventHour() {
+        return hour;
     }
 
-    public void setTime(float time) {
-        this.time = time;
+    public void setEventHour(int hour) {
+        this.hour = hour;
+    }
+    
+    public int getEventMinute() {
+        return minute;
+    }
+
+    public void setEventMinute(int minute) {
+        this.minute = minute;
     }
 
     public String getLocation() {
@@ -107,12 +125,12 @@ public class Events {
         this.roomNo = roomNo;
     }
 
-    public String getPlace() {
-        return place;
+    public int getEventPlaces() {
+        return places;
     }
 
-    public void setPlace(String place) {
-        this.place = place;
+    public void setEventPlaces(int places) {
+        this.places = places;
     }
 
     public boolean getBookReq() {
