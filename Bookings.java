@@ -48,6 +48,6 @@ public class Bookings {
     public void setStatus(String status) {
         this.status = status;
     }
-
+    public static void main (String[] args){}
    
 }
