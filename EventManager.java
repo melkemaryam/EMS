@@ -199,6 +199,18 @@ public class EventManager {
         DBManager.disconnect();
         return eventsList;
     }
+    
+    public static void DropTestEvent(Events testEvent){
+        String sql = "DELETE FROM Events WHERE EventName = ?";
+        try(Connection conn = DBManager.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setString(1, testEvent.getEventName());
+            pstmt.executeUpdate();
+        }catch (SQLException e) {
+            System.err.print(e.getMessage());
+        }
+        DBManager.disconnect();    
+    }
         //GUI: change of window?
     public static void main(String[] args) {
     }

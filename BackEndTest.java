@@ -14,27 +14,6 @@ import java.util.ArrayList;
 
 public class BackEndTest
 {
-    int bookingId;
-    int eventId;
-    int userId;
-    int universityId;
-    String password;
-    String firstName;
-    String lastName;
-    String email;
-    int role;
-    int roomNo;
-    String roomAddress;
-    int capacity;
-    int uniId;
-    String eventName;
-    String description;
-    String category;
-    String date;
-    float time;
-    String location;
-    String place;
-    boolean bookingRequired;
     
     public static void main (String args[]){
         
@@ -132,14 +111,32 @@ public class BackEndTest
                 String event = testList.get(i);
                 sa.append(event);
             }
-        System.out.println("The events found are:" + sa);  
+        System.out.println("The events found are:" + sa);
         System.out.println("Last Manager Class is BookingManager");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
+        System.out.println("When user wants to book into an event method addBooking() is called, the arguments passed are Student object and EventName");
+        BookingManager.addBooking(test2, eventName);
+        System.out.println("Afterwards the booking can be viewed by administrator/event organiser/student resulting in lists of all/event based/user ID based bookings");
+        ArrayList<String> blist = BookingManager.viewUserBookings(test2);
+        StringBuilder sc = new StringBuilder();
+            for (int i = testList.size() - 1; i >=0; i--){
+                String book = testList.get(i);
+                sc.append(book);
+            }
+        System.out.println("The bookings found are:" + sc);
+        System.out.println("Afterwards the bookings can be cancelled by cancelBooking() method");
+        BookingManager.cancelBooking(test2, eventName);
+        System.out.println("Now the list should not contain booking made by test user");
+        BookingManager.addBooking(test2, eventName);
+        System.out.println("Afterwards the booking can be viewed by administrator/event organiser/student resulting in lists of all/event based/user ID based bookings");
+        ArrayList<String> clist = BookingManager.viewUserBookings(test2);
+        StringBuilder sd = new StringBuilder();
+            for (int i = testList.size() - 1; i >=0; i--){
+                String book = testList.get(i);
+                sd.append(book);
+            }
+        System.out.println("The bookings found are:" + sd);
+        System.out.println("Since this is the test after this line all test entires will be removed from DB");
+        EventManager.DropTestEvent(testEvent);
         AccountManager.removeTestUser(test2);
         
         

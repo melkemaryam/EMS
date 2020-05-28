@@ -94,7 +94,7 @@ public class BookingManager {
 
     // Function name: viewUserBookings()
     // Task: shows all bookings for certain user
-    public ArrayList<String> viewUserBookings(Student playerOne) {
+    public static ArrayList<String> viewUserBookings(Student playerOne) {
         String sql = "SELECT EventName FROM Bookings WHERE UserID = ?";
         
         int userId = playerOne.getUserId();  
@@ -118,7 +118,7 @@ public class BookingManager {
     
     // Function name: viewEventBookings()
     // Task: shows all bookings for certain event
-    public ArrayList<Integer> viewEventBookings(String eventName) {
+    public static ArrayList<Integer> viewEventBookings(String eventName) {
         String sql = "SELECT UserID FROM Bookings WHERE EventName = ?"; 
         //need a structure for remembering which user goes into participants in db, a table
         ArrayList<Integer> attendeesList = new ArrayList<>();
@@ -137,10 +137,11 @@ public class BookingManager {
         DBManager.disconnect();
         return attendeesList;
     }
+    
     // Function name: viewAllBookings()
     // Task: shows all bookings
-    public ArrayList<String> viewAllBookings() {
-        String sql = "SELECT Booking ID, UserID, EventName FROM Bookings";
+    public static ArrayList<String> viewAllBookings() {
+        String sql = "SELECT BookingID, UserID, EventName FROM Bookings";
         
         ArrayList<String> bookingsList = new ArrayList<>();
         try(Connection conn = DBManager.connect();
@@ -148,7 +149,7 @@ public class BookingManager {
             ResultSet rs = pstmt.executeQuery();      
 
             while (rs.next()){
-                bookingsList.add(rs.getInt(1) + " - " +rs.getInt(2) + " - " +rs.getString(3));
+                bookingsList.add(String.valueOf(rs.getInt(1)) + " - " + String.valueOf(rs.getInt(2)) + " - " +rs.getString(3));
                 }
             
         }catch (SQLException e) {
@@ -160,7 +161,7 @@ public class BookingManager {
     
     // Function name: confirmBooking()
     // Task: confirms a booking
-    public void confirmBooking() {
+    public static void confirmBooking() {
         
         //GUI: show window with ARE YOU SURE? 
         System.out.println("You have successfully confirmed the booking.");
