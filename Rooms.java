@@ -37,30 +37,4 @@ public class Rooms{
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-/*
-    public ArrayList<Rooms> retrieveRooms() {
-        String sql = "SELECT * FROM Rooms";
-        ArrayList<Rooms> roomsList = new ArrayList<>();
-        try{
-            Connection conn = DBManager.connect();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);      
-
-            while (rs.next()){
-                Rooms aRoom = new Rooms();
-                int i = 1;
-                aRoom.setRoomNo(rs.getInt(1));
-                aRoom.setRoomAddress(rs.getString(2));
-                aRoom.setCapacity(rs.getInt(3));
-                roomsList.add(i, aRoom);
-                i++;
-                }
-            
-        }catch (SQLException e) {
-            System.err.print("No rooms in DB");
-        }
-        DBManager.disconnect();
-        return roomsList;
-    }
- */   
 }
