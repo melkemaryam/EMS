@@ -25,6 +25,7 @@ public class Role {
     private String lastName;
     private int role;
     
+    //getter and setter methods
     public Role() {
     }
     

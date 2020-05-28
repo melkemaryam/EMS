@@ -25,169 +25,171 @@ import java.sql.ResultSet;
 
 public class LogInForm extends JFrame {
         // Variables declaration
-	private JLabel LogIn;
-	private JButton LogInButton;
-	private JLabel NewUserLabel;
-	private JPasswordField PassFieldLogIn;
-	private JLabel PasswordLabel;
-	private JButton RegisterButton;
-	private JTextField StudentID;
-	private JLabel StudentIDLabel;
-	private JComboBox UserTypeBox;
-	private JLabel UserTypeLabel;
+    private JLabel LogIn;
+    private JButton LogInButton;
+    private JLabel NewUserLabel;
+    private JPasswordField PassFieldLogIn;
+    private JLabel PasswordLabel;
+    private JButton RegisterButton;
+    private JTextField StudentID;
+    private JLabel StudentIDLabel;
+    private JComboBox UserTypeBox;
+    private JLabel UserTypeLabel;
 
-	
-	Connection conn;
-	PreparedStatement pst;
-	ResultSet rs;
-	
-	
-	
-	
+    
+    Connection conn;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    
+    
+    
 
-	//Creates new form LogIn
-	public LogInForm(){
+     /**
+     * Constructor for objects of class Login
+     */
+    public LogInForm(){
 
-		this.setTitle("LogInForm");
-		this.setSize(500,400);
-		
+        this.setTitle("LogInForm");
+        this.setSize(500,400);
+        
 
-		//pane with null layout
-		JPanel contentPane = new JPanel(null);
-		contentPane.setPreferredSize(new Dimension(500,400));
-		contentPane.setBackground(new Color(192,192,192));
-
-
-		LogIn = new JLabel();
-		LogIn.setBounds(201,24,90,35);
-		LogIn.setBackground(new Color(214,217,223));
-		LogIn.setForeground(new Color(0,0,0));
-		LogIn.setEnabled(true);
-		LogIn.setFont(new Font("SansSerif",0,20));
-		LogIn.setText("Log In");
-		LogIn.setVisible(true);
-
-		LogInButton = new JButton();
-		LogInButton.setBounds(199,244,90,35);
-		LogInButton.setBackground(new Color(214,217,223));
-		LogInButton.setForeground(new Color(0,0,0));
-		LogInButton.setEnabled(true);
-		LogInButton.setFont(new Font("sansserif",0,12));
-		LogInButton.setText("Log In");
-		LogInButton.setVisible(true);
-		//Set methods for mouse events
-		//Call defined methods
-		LogInButton.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent evt) {
-				logIn(evt);
-			}
-		});
+        //pane with null layout
+        JPanel contentPane = new JPanel(null);
+        contentPane.setPreferredSize(new Dimension(500,400));
+        contentPane.setBackground(new Color(192,192,192));
 
 
-		NewUserLabel = new JLabel();
-		NewUserLabel.setBounds(188,286,132,28);
-		NewUserLabel.setBackground(new Color(214,217,223));
-		NewUserLabel.setForeground(new Color(0,0,0));
-		NewUserLabel.setEnabled(true);
-		NewUserLabel.setFont(new Font("sansserif",0,12));
-		NewUserLabel.setText("Are you a new user?");
-		NewUserLabel.setVisible(true);
+        LogIn = new JLabel();
+        LogIn.setBounds(201,24,90,35);
+        LogIn.setBackground(new Color(214,217,223));
+        LogIn.setForeground(new Color(0,0,0));
+        LogIn.setEnabled(true);
+        LogIn.setFont(new Font("SansSerif",0,20));
+        LogIn.setText("Log In");
+        LogIn.setVisible(true);
 
-		PassFieldLogIn = new JPasswordField();
-		PassFieldLogIn.setBounds(259,136,90,35);
-		PassFieldLogIn.setBackground(new Color(214,217,223));
-		PassFieldLogIn.setForeground(new Color(0,0,0));
-		PassFieldLogIn.setEnabled(true);
-		PassFieldLogIn.setFont(new Font("sansserif",0,12));
-		PassFieldLogIn.setVisible(true);
+        LogInButton = new JButton();
+        LogInButton.setBounds(199,244,90,35);
+        LogInButton.setBackground(new Color(214,217,223));
+        LogInButton.setForeground(new Color(0,0,0));
+        LogInButton.setEnabled(true);
+        LogInButton.setFont(new Font("sansserif",0,12));
+        LogInButton.setText("Log In");
+        LogInButton.setVisible(true);
+        //Set methods for mouse events
+        //Call defined methods
+        LogInButton.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                logIn(evt);
+            }
+        });
 
-		PasswordLabel = new JLabel();
-		PasswordLabel.setBounds(120,140,90,35);
-		PasswordLabel.setBackground(new Color(214,217,223));
-		PasswordLabel.setForeground(new Color(0,0,0));
-		PasswordLabel.setEnabled(true);
-		PasswordLabel.setFont(new Font("sansserif",0,12));
-		PasswordLabel.setText("Password");
-		PasswordLabel.setVisible(true);
 
-		RegisterButton = new JButton();
-		RegisterButton.setBounds(201,325,90,35);
-		RegisterButton.setBackground(new Color(214,217,223));
-		RegisterButton.setForeground(new Color(0,0,0));
-		RegisterButton.setEnabled(true);
-		RegisterButton.setFont(new Font("sansserif",0,12));
-		RegisterButton.setText("Register");
-		RegisterButton.setVisible(true);
-		//Set action for button click
-		//Call defined method
+        NewUserLabel = new JLabel();
+        NewUserLabel.setBounds(188,286,132,28);
+        NewUserLabel.setBackground(new Color(214,217,223));
+        NewUserLabel.setForeground(new Color(0,0,0));
+        NewUserLabel.setEnabled(true);
+        NewUserLabel.setFont(new Font("sansserif",0,12));
+        NewUserLabel.setText("Are you a new user?");
+        NewUserLabel.setVisible(true);
 
-		RegisterButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				goToRegister(evt);
+        PassFieldLogIn = new JPasswordField();
+        PassFieldLogIn.setBounds(259,136,90,35);
+        PassFieldLogIn.setBackground(new Color(214,217,223));
+        PassFieldLogIn.setForeground(new Color(0,0,0));
+        PassFieldLogIn.setEnabled(true);
+        PassFieldLogIn.setFont(new Font("sansserif",0,12));
+        PassFieldLogIn.setVisible(true);
 
-			}
-		});
+        PasswordLabel = new JLabel();
+        PasswordLabel.setBounds(120,140,90,35);
+        PasswordLabel.setBackground(new Color(214,217,223));
+        PasswordLabel.setForeground(new Color(0,0,0));
+        PasswordLabel.setEnabled(true);
+        PasswordLabel.setFont(new Font("sansserif",0,12));
+        PasswordLabel.setText("Password");
+        PasswordLabel.setVisible(true);
+
+        RegisterButton = new JButton();
+        RegisterButton.setBounds(201,325,90,35);
+        RegisterButton.setBackground(new Color(214,217,223));
+        RegisterButton.setForeground(new Color(0,0,0));
+        RegisterButton.setEnabled(true);
+        RegisterButton.setFont(new Font("sansserif",0,12));
+        RegisterButton.setText("Register");
+        RegisterButton.setVisible(true);
+        //Set action for button click
+        //Call defined method
+
+        RegisterButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                goToRegister(evt);
+
+            }
+        });
                         
 
-		StudentID = new JTextField();
-		StudentID.setBounds(257,91,90,35);
-		StudentID.setBackground(new Color(255,255,255));
-		StudentID.setForeground(new Color(0,0,0));
-		StudentID.setEnabled(true);
-		StudentID.setFont(new Font("sansserif",0,12));
-		StudentID.setText("");
-		StudentID.setVisible(true);
+        StudentID = new JTextField();
+        StudentID.setBounds(257,91,90,35);
+        StudentID.setBackground(new Color(255,255,255));
+        StudentID.setForeground(new Color(0,0,0));
+        StudentID.setEnabled(true);
+        StudentID.setFont(new Font("sansserif",0,12));
+        StudentID.setText("");
+        StudentID.setVisible(true);
 
-		StudentIDLabel = new JLabel();
-		StudentIDLabel.setBounds(123,92,90,35);
-		StudentIDLabel.setBackground(new Color(214,217,223));
-		StudentIDLabel.setForeground(new Color(0,0,0));
-		StudentIDLabel.setEnabled(true);
-		StudentIDLabel.setFont(new Font("sansserif",0,12));
-		StudentIDLabel.setText("Student ID");
-		StudentIDLabel.setVisible(true);
-		
-		UserTypeBox = new JComboBox();
-		UserTypeBox.setBounds(265,191,90,35);
-		UserTypeBox.setBackground(new Color(214,217,223));
-		UserTypeBox.setForeground(new Color(0,0,0));
-		UserTypeBox.setEnabled(true);
-		UserTypeBox.setFont(new Font("sansserif",0,12));
-		UserTypeBox.setVisible(true);
-		UserTypeBox.setModel(new DefaultComboBoxModel<>(new String[] {"Student","Event Organiser","Administrator"} ));
+        StudentIDLabel = new JLabel();
+        StudentIDLabel.setBounds(123,92,90,35);
+        StudentIDLabel.setBackground(new Color(214,217,223));
+        StudentIDLabel.setForeground(new Color(0,0,0));
+        StudentIDLabel.setEnabled(true);
+        StudentIDLabel.setFont(new Font("sansserif",0,12));
+        StudentIDLabel.setText("Student ID");
+        StudentIDLabel.setVisible(true);
+        
+        UserTypeBox = new JComboBox();
+        UserTypeBox.setBounds(265,191,90,35);
+        UserTypeBox.setBackground(new Color(214,217,223));
+        UserTypeBox.setForeground(new Color(0,0,0));
+        UserTypeBox.setEnabled(true);
+        UserTypeBox.setFont(new Font("sansserif",0,12));
+        UserTypeBox.setVisible(true);
+        UserTypeBox.setModel(new DefaultComboBoxModel<>(new String[] {"Student","Event Organiser","Administrator"} ));
 
-		UserTypeLabel = new JLabel();
-		UserTypeLabel.setBounds(117,193,90,35);
-		UserTypeLabel.setBackground(new Color(214,217,223));
-		UserTypeLabel.setForeground(new Color(0,0,0));
-		UserTypeLabel.setEnabled(true);
-		UserTypeLabel.setFont(new Font("sansserif",0,12));
-		UserTypeLabel.setText("User Type");
-		UserTypeLabel.setVisible(true);
+        UserTypeLabel = new JLabel();
+        UserTypeLabel.setBounds(117,193,90,35);
+        UserTypeLabel.setBackground(new Color(214,217,223));
+        UserTypeLabel.setForeground(new Color(0,0,0));
+        UserTypeLabel.setEnabled(true);
+        UserTypeLabel.setFont(new Font("sansserif",0,12));
+        UserTypeLabel.setText("User Type");
+        UserTypeLabel.setVisible(true);
 
-		//adding components to contentPane panel
-		contentPane.add(LogIn);
-		contentPane.add(LogInButton);
-		contentPane.add(NewUserLabel);
-		contentPane.add(PassFieldLogIn);
-		contentPane.add(PasswordLabel);
-		contentPane.add(RegisterButton);
-		contentPane.add(StudentID);
-		contentPane.add(StudentIDLabel);
-		contentPane.add(UserTypeBox);
-		contentPane.add(UserTypeLabel);
+        //adding components to contentPane panel
+        contentPane.add(LogIn);
+        contentPane.add(LogInButton);
+        contentPane.add(NewUserLabel);
+        contentPane.add(PassFieldLogIn);
+        contentPane.add(PasswordLabel);
+        contentPane.add(RegisterButton);
+        contentPane.add(StudentID);
+        contentPane.add(StudentIDLabel);
+        contentPane.add(UserTypeBox);
+        contentPane.add(UserTypeLabel);
 
-		//adding panel to JFrame and seting of window position and close operation
-		this.add(contentPane);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
-		this.pack();
-		this.setVisible(true);
-	}
+        //adding panel to JFrame and seting of window position and close operation
+        this.add(contentPane);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.pack();
+        this.setVisible(true);
+    }
 
-	//Method mouseClicked for LogInButton
-	private void logIn (MouseEvent evt) {
-		 try {
+    //Method mouseClicked for LogInButton
+    private void logIn (MouseEvent evt) {
+         try {
 
             if (StudentID.getText().isEmpty() || PassFieldLogIn.getPassword().length == 0 ) {
                 JOptionPane.showMessageDialog(this, "Student ID or Password empty");
@@ -282,16 +284,16 @@ public class LogInForm extends JFrame {
         }
 
     
-	
-	}
+    
+    }
 
-	//Method actionPerformed for RegisterButton
+    //Method actionPerformed for RegisterButton
 
-	private void goToRegister (ActionEvent evt) {
-			
-			RegisterForm m = new RegisterForm();
-			this.dispose();
-			m.setVisible(true);
+    private void goToRegister (ActionEvent evt) {
+            
+            RegisterForm m = new RegisterForm();
+            this.dispose();
+            m.setVisible(true);
 
 	}
 

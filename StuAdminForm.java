@@ -16,7 +16,7 @@ import javax.swing.*;
 
 
 public class StuAdminForm extends JFrame {
-
+        // Variables declaration
 	private JMenuBar menuBar;
 	private JButton ApplyButton;
 	private JButton DiscardButton;

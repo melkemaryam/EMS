@@ -16,7 +16,7 @@ Created: 1st May 2020
 public class Events {
 
 
-    int eventId;
+    int eventId; 
     String eventName;
     String description;
     int day;
@@ -44,7 +44,9 @@ public class Events {
         //this.place = place;
         //this.bookingRequired = bookingRequired;
     //}
-
+    
+    //getter and setter methods
+    
     public int getEventId() {
         return eventId;
     }

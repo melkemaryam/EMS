@@ -472,7 +472,7 @@ public class StudentMainForm extends JFrame {
     //Method actionPerformed for ExitStuButton
     private void exitStu (ActionEvent evt) {
         System.exit(0);
-        //TODO
+        
     }
 
     //Method actionPerformed for LogOutStuButton
