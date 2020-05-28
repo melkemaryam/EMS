@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.DriverManager;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -207,8 +208,8 @@ public class LogInForm extends JFrame {
 
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(null, "Welcome " + studentid + " to the student menu");
-                        Student playerOne = new Student();
-                        StudentMainForm ms = new StudentMainForm(playerOne);
+                        StudentMainForm ms = new StudentMainForm();
+                        ms.catchAUser(studentid);
                         this.dispose();
                         ms.setVisible(true);
                     } else {
@@ -228,9 +229,8 @@ public class LogInForm extends JFrame {
 
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(null, "Welcome " + studentid + " to the Event Organiser menu");
-                        Student playerOne = new Student();
-                        EOMainForm mo = new EOMainForm(playerOne);
-                        AccountManager.retrieveUser(playerOne);
+                        EOMainForm mo = new EOMainForm();
+                        mo.catchAUser(studentid);
                         this.dispose();
                         mo.setVisible(true);
                     } else {
@@ -250,9 +250,7 @@ public class LogInForm extends JFrame {
 
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(null, "Welcome " + studentid + " to the Admin menu");
-                        Student playerOne = new Student();
-                        AdminMainForm ma = new AdminMainForm(playerOne);
-                        AccountManager.retrieveUser(playerOne);
+                        AdminMainForm ma = new AdminMainForm();
                         this.dispose();
                         ma.setVisible(true);
                     } else {

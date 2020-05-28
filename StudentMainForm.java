@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.util.*;
 import javax.swing.border.Border;
 import javax.swing.*;
 
@@ -45,7 +46,8 @@ public class StudentMainForm extends JFrame {
     private JTextField TitleFieldStu;
     private JLabel TitleLabel;
     private JLabel Welcome;
-
+    int uniId;
+    
     //Constructor 
     public StudentMainForm(){
 
@@ -423,13 +425,19 @@ public class StudentMainForm extends JFrame {
         this.setVisible(true);
     }
 
+    //Method to store loggedin user data
+    public void catchAUser (int uniId){
+        this.uniId = uniId;
+    }    
+    
     //Method actionPerformed for BookButton
     private void bookStu (ActionEvent evt) {
-    String eventName = JOptionPane.showInputDialog("Please type in the event name.");
-    BookingManager bs = new BookingManager();
-    Student playerOne = new Student();
-    AccountManager.retrieveUser(playerOne);
-        //bs.addBooking(playerOne,eventName);
+        String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+        BookingManager bs = new BookingManager();
+        Student playerOne = new Student();
+        playerOne.setUniId(uniId);
+        AccountManager.retrieveUser(playerOne);
+        bs.addBooking(playerOne,eventName);
     }
 
     //Method actionPerformed for CancelBookButton
@@ -437,8 +445,9 @@ public class StudentMainForm extends JFrame {
         String eventName = JOptionPane.showInputDialog("Please type in the event name.");
         BookingManager bs = new BookingManager();
         Student playerOne = new Student();
+        playerOne.setUniId(uniId);
         AccountManager.retrieveUser(playerOne);
-        //bs.cancelBooking(playerOne,eventName);
+        bs.cancelBooking(playerOne,eventName);
 
         int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION){
@@ -468,20 +477,21 @@ public class StudentMainForm extends JFrame {
 
     //Method actionPerformed for RightsStuButton
     private void askForRightsStu (ActionEvent evt) {
-        Student playerOne = new Student();
-        AccountManager.retrieveUser(playerOne);
         AccountManager bs = new AccountManager();
+        Student playerOne = new Student();
+        playerOne.setUniId(uniId);
+        AccountManager.retrieveUser(playerOne);
         bs.requestPermission(playerOne);
             //call on method in accountManager
     }
 
     //Method actionPerformed for SeeAllBookStuButton
     private void seeAllBookingsStu (ActionEvent evt) {
-            Student playerOne = new Student();
-            AccountManager.retrieveUser(playerOne);
             BookingManager bs = new BookingManager();
+            Student playerOne = new Student();
+            playerOne.setUniId(uniId);
+            AccountManager.retrieveUser(playerOne);
             bs.viewUserBookings(playerOne);
-            
             
             //view userbookings in BookingManager
     }
@@ -492,9 +502,12 @@ public class StudentMainForm extends JFrame {
             bs.viewAllEvents();
             
             //viewallevents in eventManager
-    }
+    }   
 
-    
+    //Method to store loggedin user data
+    public int getUser() {
+        return uniId;
+    }     
 
 
      public static void main(String[] args){

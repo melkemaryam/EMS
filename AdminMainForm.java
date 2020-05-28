@@ -56,6 +56,7 @@ public class AdminMainForm extends JFrame {
     private JLabel TitleLabel;
     private JLabel WelcomeLabel;
     private JScrollPane Scroll;
+    int uniId;
     
     
     Connection conn;
@@ -63,7 +64,7 @@ public class AdminMainForm extends JFrame {
     ResultSet rs;
 
     //Constructor 
-    public AdminMainForm(Student playerOne){
+    public AdminMainForm(){
 
         this.setTitle("AdminMainForm");
         this.setSize(694,443);
@@ -467,7 +468,7 @@ public class AdminMainForm extends JFrame {
         
         int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION){
-            JOptionPane.showMessageDialog(null, "You have successfully cancelled it.");
+            JOptionPane.showMessageDialog(null, "You have successfully cancelled the booking.");
         } 
     }
     
@@ -475,7 +476,7 @@ public class AdminMainForm extends JFrame {
     private void cancelEvent (ActionEvent evt) {
             
             if (ShowEventsAd.getText().length() == 0) {
-	    String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+        String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
         } else {
             try {
                 String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
@@ -563,12 +564,12 @@ public class AdminMainForm extends JFrame {
         ArrayList<String> bookingsList = bs.viewAllBookings();
         String bookingsListString = "";
     
-        for (String s : bookingsList)
-        {
-            bookingsListString += s + "\t";
-        }
+            for (String s : bookingsList)
+            {
+                bookingsListString += s + "\t";
+            }
     
-    return bookingsListString;
+        return bookingsListString;
     }   
 
     //Method actionPerformed for SeeAllEventsAdButton
@@ -580,20 +581,29 @@ public class AdminMainForm extends JFrame {
             ArrayList<String> eventsList = bs.viewAllEvents();
             String eventListString = "";
             
-            for (String s : eventsList)
-            {
-                eventListString += s + "\t";
-            }
+                for (String s : eventsList)
+                {
+                    eventListString += s + "\t";
+                }
             
             return eventListString;
-        }
+    }
 
-
+    //Method to store loggedin user data
+    public void catchAUser (int uniId){
+        this.uniId = uniId;
+    }   
+    
+    //Method to store loggedin user data
+    public int getUser() {
+        return uniId;
+    } 
+        
      public static void main(String[] args){
         System.setProperty("swing.defaultlaf", "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new AdminMainForm(playerOne);
+                new AdminMainForm();
             }
         });
     }

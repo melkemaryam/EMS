@@ -25,12 +25,12 @@ public class BookingManager {
 
     // Function name: addBooking()
     // Task: adds a new booking to the DB
-    public static void addBooking(Student playerOne, int eventID) {
-        String sql = "INSERT INTO Bookings(EventID, UserID) VALUES (?,?)";
+    public static void addBooking(Student playerOne, String eventName) {
+        String sql = "INSERT INTO Bookings(EventName, UserID) VALUES (?,?)";
         
         try (Connection conn = DBManager.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)){
-            pstmt.setInt(1, eventID);
+            pstmt.setString(1, eventName);
             pstmt.setInt(2, playerOne.getUserId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -44,11 +44,11 @@ public class BookingManager {
 
     // Function name: cancelBooking()
     // Task: cancels a booking
-    public static void cancelBooking(Student playerOne, int eventId) {
-        String sql = "DELETE FROM Bookings WHERE EventID = ? AND UserID = ?";
+    public static void cancelBooking(Student playerOne, String eventName) {
+        String sql = "DELETE FROM Bookings WHERE EventName = ? AND UserID = ?";
         try (Connection conn = DBManager.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)){
-            pstmt.setInt(1, eventId);
+            pstmt.setString(1, eventName);
             pstmt.setInt(2, playerOne.getUserId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -95,7 +95,7 @@ public class BookingManager {
     // Function name: viewUserBookings()
     // Task: shows all bookings for certain user
     public ArrayList<String> viewUserBookings(Student playerOne) {
-        String sql = "SELECT EventID FROM Bookings WHERE UserID = ?";
+        String sql = "SELECT EventName FROM Bookings WHERE UserID = ?";
         
         int userId = playerOne.getUserId();  
         //need a structure for remembering which user goes into participants in db, a table
@@ -116,6 +116,27 @@ public class BookingManager {
         return eventsList;
     }
     
+    // Function name: viewEventBookings()
+    // Task: shows all bookings for certain event
+    public ArrayList<Integer> viewEventBookings(String eventName) {
+        String sql = "SELECT UserID FROM Bookings WHERE EventName = ?"; 
+        //need a structure for remembering which user goes into participants in db, a table
+        ArrayList<Integer> attendeesList = new ArrayList<>();
+        try(Connection conn = DBManager.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+                pstmt.setString(1, eventName);
+            ResultSet rs = pstmt.executeQuery();      
+
+            while (rs.next()){
+                attendeesList.add(rs.getInt(1));
+                }
+            
+        }catch (SQLException e) {
+            System.err.print(e.getMessage());
+        }
+        DBManager.disconnect();
+        return attendeesList;
+    }
     // Function name: viewAllBookings()
     // Task: shows all bookings
     public ArrayList<String> viewAllBookings() {

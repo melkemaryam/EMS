@@ -60,10 +60,11 @@ public class EOMainForm extends JFrame {
     private JLabel TitleLabel;
     private JLabel Welcomelabel;
     private JTextField YearEOField;
+    int uniId;
 
 
     //Constructor 
-    public EOMainForm(Student playerOne){
+    public EOMainForm(){
 
         this.setTitle("EOMainForm");
         this.setSize(717,444);
@@ -329,7 +330,7 @@ public class EOMainForm extends JFrame {
         //Call defined method
         MyEventsEOButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                seeOwnEventsEO(evt, playerOne);
+                seeOwnEventsEO(evt);
             }
         });
 
@@ -525,10 +526,10 @@ public class EOMainForm extends JFrame {
     private void bookEO (ActionEvent evt) {
             String eventName = JOptionPane.showInputDialog("Please type in the event name.");
             Student playerOne = new Student();
+            playerOne.setUniId(uniId);
             AccountManager.retrieveUser(playerOne);
             BookingManager bs = new BookingManager();
-            
-	    //bs.addBooking(playerOne, eventName);
+            bs.addBooking(playerOne, eventName);
 
     }
 
@@ -583,8 +584,11 @@ public class EOMainForm extends JFrame {
     }
 
     //Method actionPerformed for MyEventsEOButton
-    private void seeOwnEventsEO (ActionEvent evt, Student playerOne) {
+    private void seeOwnEventsEO (ActionEvent evt) {
             EventManager em = new EventManager();
+            Student playerOne = new Student();
+            playerOne.setUniId(uniId);
+            AccountManager.retrieveUser(playerOne);
             em.viewOwnEvents(playerOne);
     }
     
@@ -607,15 +611,21 @@ public class EOMainForm extends JFrame {
             em.viewAllEvents();
     }
 
-    
+    //Method to store loggedin user data
+    public void catchAUser (int uniId){
+        this.uniId = uniId;
+    }    
 
-
+    //Method to store loggedin user data
+    public int getUser() {
+        return uniId;
+    } 
 
      public static void main(String[] args){
         System.setProperty("swing.defaultlaf", "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run(Student playerOne) {
-                new EOMainForm(playerOne);
+            public void run() {
+                new EOMainForm();
             }
         });
     }

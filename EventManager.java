@@ -154,8 +154,26 @@ public class EventManager {
 
     // Function name: editEvent()
     // Task: edits an already existing event in the DB
-    public void editEvent() {
-        //GUI: make window editable
+    public void editEvent(String EventName, String EventDescription, String EventType, int EventDay, int EventMonth, int EventYear, int EventHour, int EventMinute, int RoomNo, int Places) {
+        String sql = ("UPDATE Events SET EventDescription=?, EventDay=?, EventMonth=?, EvetYear=?, EventHour=?, EventMinute=?, RoomNo=?, Participants=? WHERE EventName=?");
+        
+            try (Connection conn = DBManager.connect();
+                    PreparedStatement pstmt = conn.prepareStatement(sql)){
+                pstmt.setString(1, EventDescription);
+                pstmt.setInt(2, EventDay);
+                pstmt.setInt(3, EventMonth);
+                pstmt.setInt(4, EventYear);
+                pstmt.setInt(5, EventHour);
+                pstmt.setInt(6, EventMinute);
+                pstmt.setString(7, EventType);
+                pstmt.setInt(8, RoomNo);
+                pstmt.setInt(9, Places);
+                pstmt.setString(10, EventName);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                System.err.print(e.getMessage());
+            }
+        DBManager.disconnect();
         //GUI: Save button for changes
         System.out.println("You have successfully edited this event.");
         //GUI: show message
