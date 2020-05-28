@@ -16,24 +16,15 @@ Created: 1st May 2020
 public class Administrator {
     int test;
     int adminId;
-    int universityId; // not sure if needed
+    int universityId;
     String password;
     String firstName;
     String lastName;
     String email;
 
-    //Constructor
-    //public Administrator (int adminId, int universityId, String password, String firstName, String lastName, String email) {
-
-        //this.adminId = adminId;
-        //this.universityId = universityId;
-        //this.password = password;
-        //this.firstName = firstName;
-        //this.lastName = lastName;
-        //this.email = email;
-    //}
-
     //getter and setter methods
+    // getX returns a specific value
+    // setX sets a specific variable
 
     public int getAdminId() {
         return adminId;
@@ -82,9 +73,5 @@ public class Administrator {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public static void main (String [] args) {
-
-
-    }
+    
 }
