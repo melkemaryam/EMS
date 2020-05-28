@@ -85,5 +85,5 @@ public class EventOrganiser {
         this.role = role;
     }
 
-
+    public static void main (String[] args){}
 }
