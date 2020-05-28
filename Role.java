@@ -11,7 +11,6 @@ Created: 1st May 2020
 -------------------------------------------------
 */
 
-//hello 
 
 public class Role {
 
@@ -25,7 +24,10 @@ public class Role {
     private String lastName;
     private int role;
     
-    //getter and setter methods
+    // getter and setter methods
+    // getX returns a specific value
+    // setX sets a specific variable
+    
     public Role() {
     }
     
@@ -61,5 +63,5 @@ public class Role {
         this.role = role;
     }
     
-    
+    public static void main (String[] args){}
 }
