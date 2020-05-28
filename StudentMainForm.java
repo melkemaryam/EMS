@@ -46,6 +46,7 @@ public class StudentMainForm extends JFrame {
     private JTextField TitleFieldStu;
     private JLabel TitleLabel;
     private JLabel Welcome;
+    private JScrollPane Scroll;
     int uniId;
     
     //Constructor 
@@ -133,20 +134,20 @@ public class StudentMainForm extends JFrame {
         //CheckBoxBookReqStu.setEditable(false);
         
         ChooseOrSearchEventStuButton = new JButton();
-    ChooseOrSearchEventStuButton.setBounds(10,379,170,35);
-    ChooseOrSearchEventStuButton.setBackground(new Color(214,217,223));
-    ChooseOrSearchEventStuButton.setForeground(new Color(0,0,0));
-    ChooseOrSearchEventStuButton.setEnabled(true);
-    ChooseOrSearchEventStuButton.setFont(new Font("sansserif",0,12));
-    ChooseOrSearchEventStuButton.setText("Choose or Search Event");
-    ChooseOrSearchEventStuButton.setVisible(true);
-    //Set action for button click
-    //Call defined method
-    ChooseOrSearchEventStuButton.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent evt) {
-            chooseOrSearchEventStu(evt);
-        }
-    });
+        ChooseOrSearchEventStuButton.setBounds(10,379,170,35);
+        ChooseOrSearchEventStuButton.setBackground(new Color(214,217,223));
+        ChooseOrSearchEventStuButton.setForeground(new Color(0,0,0));
+        ChooseOrSearchEventStuButton.setEnabled(true);
+        ChooseOrSearchEventStuButton.setFont(new Font("sansserif",0,12));
+        ChooseOrSearchEventStuButton.setText("Choose or Search Event");
+        ChooseOrSearchEventStuButton.setVisible(true);
+        //Set action for button click
+        //Call defined method
+        ChooseOrSearchEventStuButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                chooseOrSearchEventStu(evt);
+            }
+        });
 
         DateFieldStu = new JTextField();
         DateFieldStu.setBounds(539,148,90,35);
@@ -339,6 +340,11 @@ public class StudentMainForm extends JFrame {
         ShowEventsStuBox.setBorder(BorderFactory.createBevelBorder(1));
         ShowEventsStuBox.setVisible(true);
         ShowEventsStuBox.setEditable(false);
+        Scroll = new JScrollPane(ShowEventsStuBox, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        ShowEventsStuBox.setLineWrap(true);
+        ShowEventsStuBox.setWrapStyleWord(true);
+        Scroll.setBounds(208,85,156,275);
 
         TimeFieldStu = new JTextField();
         TimeFieldStu.setBounds(540,188,90,35);
@@ -411,6 +417,7 @@ public class StudentMainForm extends JFrame {
         contentPane.add(SeeAllBookStuButton);
         contentPane.add(SeeAllEventsStuButton);
         contentPane.add(ShowEventsStuBox);
+        contentPane.add(Scroll);
         contentPane.add(TimeFieldStu);
         contentPane.add(TimeLabel);
         contentPane.add(TitleFieldStu);
