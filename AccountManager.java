@@ -126,8 +126,8 @@ public class AccountManager {
 
     // Function name: grantPermission()
     // Task: grants a student the permission to act as an EventOrganiser
-    public void grantPermission(int rightsId) {
-        String sql = "UPDATE Users SET UserType = 2 " + "WHERE UserID = ?";
+    public static void grantPermission(int rightsId) {
+        String sql = "UPDATE Users SET Role = 2, roleRequest = 0 WHERE UniversityID = ?";
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
                 pstmt.setInt(1, rightsId);
@@ -140,12 +140,12 @@ public class AccountManager {
     
     // Function name: requestPermission()
     // Task: leaves a request in db for the permission to act as an EventOrganiser
-    public void requestPermission(Student playerOne) {
-        String sql = "UPDATE Users SET roleRequest = 1 " + "WHERE UserID = ?";
-        int userId = playerOne.getUserId(); 
+    public static void requestPermission(Student playerOne) {
+        String sql = "UPDATE Users SET roleRequest = 1 WHERE UniversityID = ?";
+        int universityId = playerOne.getUniId(); 
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
-                pstmt.setInt(1, userId);
+                pstmt.setInt(1, universityId);
                 pstmt.executeUpdate();
         }catch (SQLException e) {
             System.err.print(e.getMessage());
@@ -154,9 +154,9 @@ public class AccountManager {
     }
     
     // Function name: revokeRights()
-    // Task: revokes then rights from an EventOrganiser
-    public void revokeRights(int rightsId) {
-        String sql = "UPDATE Users SET UserType = 1 " + "WHERE UserID = ?";
+    // Task: revokes the rights from an EventOrganiser
+    public static void revokeRights(int rightsId) {
+        String sql = "UPDATE Users SET Role = 1 WHERE UniversityID = ?";
         try (Connection conn = DBManager.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
                 pstmt.setInt(1, rightsId);
@@ -169,12 +169,12 @@ public class AccountManager {
 
     // Function name: retrieveRequests()
     // Task: method to retrive requests for Event Organiser rights
-    public ArrayList<Integer> retrieveRequests() {
+    public static ArrayList<Integer> retrieveRequests() {
         String sql = "SELECT UniversityID FROM Users WHERE roleRequest = 1";
         ArrayList<Integer> requestsList = new ArrayList<>();
         try (Connection conn = DBManager.connect();
-            PreparedStatement pstmt = conn.prepareStatement(sql)){
-            ResultSet rs = pstmt.executeQuery(sql);
+            Statement stmt = conn.createStatement()){
+            ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()){
                 requestsList.add(rs.getInt("UniversityID"));
@@ -184,5 +184,17 @@ public class AccountManager {
         }
         DBManager.disconnect();
         return requestsList;
+    }
+    
+    public static void removeTestUser(Student playerOne){
+        String sql = "DELETE FROM Users WHERE UniversityID = ?";
+        try (Connection conn = DBManager.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
+                pstmt.setInt(1, playerOne.getUniId());
+                pstmt.executeUpdate();
+        }catch (SQLException e) {
+            System.err.print(e.getMessage());
+        }
+        DBManager.disconnect();
     }
 }

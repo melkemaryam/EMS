@@ -24,15 +24,14 @@ public class EventManager {
     // Function name: getRoomList()
     // Task: returns a list of room information
     public void getRoomList() {
-        String sql = "SELECT RoomID, Capacity, RoomNo FROM Rooms";
+        String sql = "SELECT Capacity, RoomNo FROM Rooms";
         
         try (Connection conn = DBManager.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql)){
     
             while (rs.next()){
-                System.out.println(rs.getInt("RoomID") + "\t" +
-                                    rs.getInt("Capacity" + "\t" +
+                System.out.println(rs.getInt("Capacity" + "\t" +
                                     rs.getInt("RoomNo") ));
             }
         }catch (SQLException e) {
@@ -43,14 +42,13 @@ public class EventManager {
     
     // Function name: addRoom()
     // Task: adds a new room to the DB
-    public void addRoom(String Address, int RoomNo, int Size) {
-        String sql = "INSERT INTO Users(Address, RoomNo, Size) VALUES (?,?,?)";
+    public void addRoom(int RoomNo, int Capacity) {
+        String sql = "INSERT INTO Rooms(Capacity, RoomNo) VALUES (?,?)";
         
         try (Connection conn = DBManager.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)){
-            pstmt.setInt(1, RoomNo);
-            pstmt.setInt(2, Size);
-            pstmt.setString(3, Address);
+            pstmt.setInt(1, Capacity);
+            pstmt.setInt(2, RoomNo);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.err.print(e.getMessage());
