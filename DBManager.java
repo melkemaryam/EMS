@@ -25,7 +25,7 @@ public class DBManager {
     public static Connection connect() {
         Connection conn = null;
         try {
-            String url = ("jdbc:sqlite:EM.db");
+            String url = ("jdbc:sqlite:EM2.db");
                        
             // create a connection to the database via hybrid-relative address
             conn = DriverManager.getConnection(url);
