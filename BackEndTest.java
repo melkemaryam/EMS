@@ -126,8 +126,6 @@ public class BackEndTest
         System.out.println("Afterwards the bookings can be cancelled by cancelBooking() method");
         BookingManager.cancelBooking(test2, eventName);
         System.out.println("Now the list should not contain booking made by test user");
-        BookingManager.addBooking(test2, eventName);
-        System.out.println("Afterwards the booking can be viewed by administrator/event organiser/student resulting in lists of all/event based/user ID based bookings");
         ArrayList<String> clist = BookingManager.viewUserBookings(test2);
         StringBuilder sd = new StringBuilder();
             for (int i = testList.size() - 1; i >=0; i--){
