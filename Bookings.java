@@ -18,17 +18,12 @@ public class Bookings {
     int bookingId;
     int eventId;
     int userId;
-    String status; // or int status if every status has a number: e.g. 1 = cancelled, etc...
+    String status; 
 
-    //Constructor
-    //public Bookings(int bookingId, int dateOfBooking, String status){
-
-        //this.bookingId = bookingId;
-        //this.dateOfBooking = dateOfBooking;
-        //this.status = status;
-    //}
-
-    //getter and setter methods
+    
+    // getter and setter methods
+    // getX returns a specific value
+    // setX sets a specific variable
 
     public int getBookingId() {
         return bookingId;
@@ -54,7 +49,5 @@ public class Bookings {
         this.status = status;
     }
 
-    public static void main (String[] args){
-
-    }
+   
 }
