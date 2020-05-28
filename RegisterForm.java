@@ -26,6 +26,8 @@ public class RegisterForm extends JFrame {
     // Components of the Form
     private JLabel ConPassLabelReg;
     private JPasswordField ConPassRegField;
+    private JTextField EmailField;
+    private JLabel EmailLabel;
     private JLabel FNameLabel;
     private JTextField FNameRegField;
     private JLabel IDLabelReg;
@@ -74,6 +76,24 @@ public class RegisterForm extends JFrame {
         ConPassRegField.setEnabled(true);
         ConPassRegField.setFont(new Font("sansserif",0,12));
         ConPassRegField.setVisible(true);
+        
+        EmailField = new JTextField();
+	EmailField.setBounds(263,350,150,25);
+	EmailField.setBackground(new Color(255,255,255));
+	EmailField.setForeground(new Color(0,0,0));
+	EmailField.setEnabled(true);
+	EmailField.setFont(new Font("sansserif",0,12));
+	EmailField.setText("");
+	EmailField.setVisible(true);
+
+	EmailLabel = new JLabel();
+	EmailLabel.setBounds(92,347,90,35);
+	EmailLabel.setBackground(new Color(214,217,223));
+	EmailLabel.setForeground(new Color(0,0,0));
+	EmailLabel.setEnabled(true);
+	EmailLabel.setFont(new Font("sansserif",0,12));
+	EmailLabel.setText("Email");
+	EmailLabel.setVisible(true);
 
         FNameLabel = new JLabel();
         FNameLabel.setBounds(96,223,90,35);
@@ -173,7 +193,7 @@ public class RegisterForm extends JFrame {
         StuIDRegField.setVisible(true);
         
         UserTypeBoxReg = new JComboBox();
-        UserTypeBoxReg.setBounds(266,317,90,35);
+        UserTypeBoxReg.setBounds(266,306,90,35);
         UserTypeBoxReg.setBackground(new Color(214,217,223));
         UserTypeBoxReg.setForeground(new Color(0,0,0));
         UserTypeBoxReg.setEnabled(true);
@@ -194,6 +214,8 @@ public class RegisterForm extends JFrame {
         //adding components to contentPane panel
         contentPane.add(ConPassLabelReg);
         contentPane.add(ConPassRegField);
+        contentPane.add(EmailField);
+	contentPane.add(EmailLabel);
         contentPane.add(FNameLabel);
         contentPane.add(FNameRegField);
         contentPane.add(IDLabelReg);
@@ -228,6 +250,8 @@ public class RegisterForm extends JFrame {
             JOptionPane.showMessageDialog(this, "Please Insert First name");
             }else if (LNameRegField.getText().length() == 0) {
             JOptionPane.showMessageDialog(this, "Please Insert Last name");
+            }else if (EmailField.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Please Insert your email address");
         }
         else {
             //try {
@@ -237,6 +261,7 @@ public class RegisterForm extends JFrame {
                 String firstname = FNameRegField.getText();
                 String lastname = LNameRegField.getText();
                 String usertype = UserTypeBoxReg.getSelectedItem().toString();
+                String email = EmailField.getText();
 
                 if ("student".equalsIgnoreCase(usertype)) // go to student data base
                 {
@@ -259,6 +284,7 @@ public class RegisterForm extends JFrame {
                     playerOne.setLastName(lastname);
                     playerOne.setRole(1);
                     playerOne.setPassword(password);
+                    playerOne.setEmail(email);
                     playerOne.setUniId(Integer.parseInt(studentid));
                     AccountManager.addUser(playerOne);
                     JOptionPane.showMessageDialog(null, firstname + " " + lastname + " account created!");
@@ -286,6 +312,7 @@ public class RegisterForm extends JFrame {
                 playerOne.setLastName(lastname);
                 playerOne.setRole(3);
                 playerOne.setPassword(password);
+                playerOne.setEmail(email);
                 playerOne.setUniId(Integer.parseInt(studentid));
                 AccountManager.addUser(playerOne);
                 JOptionPane.showMessageDialog(null, firstname + " " + lastname + " account created!");
