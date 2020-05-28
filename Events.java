@@ -30,22 +30,10 @@ public class Events {
     boolean bookingRequired;
     
 
-    //Constructor
-    //public Events(int eventId, String eventName, String description, String category, String date, float time, String location, int roomNumber, String place, boolean bookingRequired){
-
-        //this.eventId = eventId;
-        //this.eventName = eventName;
-        //this.description = description;
-        //this.category = category;
-        //this.date = date;
-        //this.time = time;
-        //this.location = location;
-        //this.roomNumber = roomNumber;
-        //this.place = place;
-        //this.bookingRequired = bookingRequired;
-    //}
     
-    //getter and setter methods
+    // getter and setter methods
+    // getX returns a specific value
+    // setX sets a specific variable
     
     public int getEventId() {
         return eventId;
