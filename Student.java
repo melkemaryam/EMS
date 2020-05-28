@@ -21,22 +21,12 @@ public class Student {
     String firstName;
     String lastName;
     String email;
-    int role; // same as in EventOrganiser
+    int role; 
 
-    //Constructor
-    //public Student (int studentId, int universityId, String password, String firstName, String lastName, String email, String role) {
-
-        //this.studentId = studentId;
-        //this.universityId = universityId;
-        //this.password = password;
-        //this.firstName = firstName;
-        //this.lastName = lastName;
-        //this.email = email;
-        //this.role = role;
-        
-    //}
-
-    //getter and setter methods
+  
+    // getter and setter methods
+    // getX returns a specific value
+    // setX sets a specific variable
 
     public int getUserId() {
         return userId;
@@ -94,8 +84,5 @@ public class Student {
         this.role = role;
     }
 
-    public static void main (String [] args) {
-
-
-    }
+   
 }
