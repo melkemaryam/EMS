@@ -13,7 +13,7 @@ Created: 1st May 2020
 
  
 
-public class EventOrganiser { //extends Student
+public class EventOrganiser { 
 
     int studentId;
     int universityId;
@@ -21,23 +21,13 @@ public class EventOrganiser { //extends Student
     String firstName;
     String lastName;
     String email;
-    String role; // or int role if every role has a number, e. g. student = 1, etc...
+    String role; 
 
 
-    // Constructor
-    //public EventOrganiser (int stuId, int uniId, String pass, String first, String last, String mail, String rol) {
-
-        //studentId = stuId;
-        //universityId = uniId;
-        //password = pass;
-        //firstName = first;
-        //lastName = last;
-        //email = mail;
-        //role = rol;
-
-    //}
-
-    //getter and setter methods
+    
+    // getter and setter methods
+    // getX returns a specific value
+    // setX sets a specific variable
 
     public int getStudentId() {
         return studentId;
@@ -95,9 +85,5 @@ public class EventOrganiser { //extends Student
         this.role = role;
     }
 
-    public static void main (String [] args) {
-
-
-    }
 
 }
