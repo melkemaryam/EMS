@@ -60,6 +60,7 @@ public class EOMainForm extends JFrame {
     private JLabel TitleLabel;
     private JLabel Welcomelabel;
     private JTextField YearEOField;
+    private JScrollPane Scroll;
     int uniId;
 
 
@@ -429,6 +430,11 @@ public class EOMainForm extends JFrame {
         ShowEventsEO.setBorder(BorderFactory.createBevelBorder(1));
         ShowEventsEO.setVisible(true);
         ShowEventsEO.setEditable(false);
+        Scroll = new JScrollPane(ShowEventsEO, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        ShowEventsEO.setLineWrap(true);
+        ShowEventsEO.setWrapStyleWord(true);
+        Scroll.setBounds(202,75,151,267);
 
         TimeLabel = new JLabel();
         TimeLabel.setBounds(379,170,90,35);
@@ -513,6 +519,7 @@ public class EOMainForm extends JFrame {
         contentPane.add(TitleLabel);
         contentPane.add(Welcomelabel);
         contentPane.add(YearEOField);
+        contentPane.add(Scroll);
 
         //adding panel to JFrame and seting of window position and close operation
         this.add(contentPane);
