@@ -19,6 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 
@@ -561,12 +562,16 @@ public class EOMainForm extends JFrame {
     }
 
     //Method actionPerformed for CreateEventEOButton
-    //private void createEventEO (ActionEvent evt) {
-            //creatNewEvent m = new creatNewEvent();
-            //this.dispose();
-            //m.setVisible(true);
-            //EventManager.createEvent();
-    //}
+    private void createEventEO (ActionEvent evt) {
+    TitleEOField.setText("");
+    DescEOField.setText("");
+    DayEOField.setText("");
+    MonthEOField.setText("");
+    YearEOField.setText("");
+    HourEOField.setText("");
+    MinutesEOField.setText("");
+    PlacesEOField.setText("");
+    }
 
 
     //Method actionPerformed for ExitEOButton
@@ -601,7 +606,15 @@ public class EOMainForm extends JFrame {
     
     //Method actionPerformed for SaveEOButton
     private void saveChanges (ActionEvent evt) {
-            //TODO
+            EventManager em = new EventManager();
+            Student playerOne = new Student();
+            playerOne.setUniId(getUser());
+            AccountManager am = new AccountManager();
+            am.retrieveUser(playerOne);
+            String category = CatEOBox.getSelectedItem().toString();
+            int roomNo = 10;
+            em.createEvent(TitleEOField.getText(), DescEOField.getText(), category, Integer.parseInt(DayEOField.getText()), Integer.parseInt(MonthEOField.getText()), Integer.parseInt(YearEOField.getText()), Integer.parseInt(HourEOField.getText()), Integer.parseInt(MinutesEOField.getText()), playerOne, roomNo, Integer.parseInt(PlacesEOField.getText()));
+    
             //saves the new event in DB
     }
 
