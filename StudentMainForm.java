@@ -332,6 +332,14 @@ public class StudentMainForm extends JFrame {
         SeeAllEventsStuButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 seeAllEventsStu(evt);
+                EventManager em = new EventManager();
+                ArrayList<String> eventList = em.viewAllEvents();
+                StringBuilder se = new StringBuilder();
+                    for (int i = eventList.size() - 1; i >=0; i--){
+                        String event = (eventList.get(i) + "\n");
+                        se.append(event);
+                    }
+                ShowEventsStuBox.setText(se.toString());
             }
         });
 
@@ -456,16 +464,17 @@ public class StudentMainForm extends JFrame {
     //Method actionPerformed for CancelBookButton
     private void cancelStu (ActionEvent evt) {
         String eventName = JOptionPane.showInputDialog("Please type in the event name.");
-        BookingManager bs = new BookingManager();
-        Student playerOne = new Student();
-        playerOne.setUniId(uniId);
-        AccountManager.retrieveUser(playerOne);
-        bs.cancelBooking(playerOne,eventName);
 
         int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel it?", "Yes",  JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION){
+            BookingManager bs = new BookingManager();
+            Student playerOne = new Student();
+            playerOne.setUniId(uniId);
+            AccountManager am = new AccountManager();
+            am.retrieveUser(playerOne);
+            bs.cancelBooking(playerOne,eventName);
             JOptionPane.showMessageDialog(null, "You have successfully cancelled it.");
-        }     
+        }   
     }
     
     //Method actionPerformed for ChooseEventStuButton
