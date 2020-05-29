@@ -333,6 +333,18 @@ public class EOMainForm extends JFrame {
         MyEventsEOButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 seeOwnEventsEO(evt);
+                EventManager em = new EventManager();
+                Student playerOne = new Student();
+                playerOne.setUniId(getUser());
+                AccountManager am = new AccountManager();
+                am.retrieveUser(playerOne);
+                ArrayList<String> eventList = em.viewOwnEvents(playerOne);
+                StringBuilder sb = new StringBuilder();
+                    for (int i = eventList.size() - 1; i >=0; i--){
+                        String event = (eventList.get(i) + "\n");
+                        sb.append(event);
+                    }
+                ShowEventsEO.setText(sb.toString());
             }
         });
 
@@ -401,6 +413,15 @@ public class EOMainForm extends JFrame {
         SeeAllBookEOButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 seeAllBookingsEO(evt);
+                String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+                BookingManager bm = new BookingManager();
+                ArrayList<Integer> eventList = bm.viewEventBookings(eventName);
+                StringBuilder sb = new StringBuilder();
+                    for (int i = eventList.size() - 1; i >=0; i--){
+                        String event = (String.valueOf(eventList.get(i)) + "\n");
+                        sb.append(event);
+                    }
+                ShowEventsEO.setText(sb.toString());
             }
         });
 
@@ -417,6 +438,14 @@ public class EOMainForm extends JFrame {
         SeeAllEventsEOButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 seeAllEventsEO(evt);
+                EventManager em = new EventManager();
+                ArrayList<String> eventList = em.viewAllEvents();
+                StringBuilder se = new StringBuilder();
+                    for (int i = eventList.size() - 1; i >=0; i--){
+                        String event = (eventList.get(i) + "\n");
+                        se.append(event);
+                    }
+                ShowEventsEO.setText(se.toString());
             }
         });
 
@@ -556,9 +585,17 @@ public class EOMainForm extends JFrame {
     
     //Method actionPerformed for ChooseOrSearchEventEOButton
     private void chooseOrSearchEventEO (ActionEvent evt) {
-	String eventName = JOptionPane.showInputDialog("Please type in the event name.");
-	EventManager em = new EventManager();
-	em.searchEvent(eventName);
+        EventManager em = new EventManager();
+        String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+        Events specificEvent = em.searchEvent(eventName);
+        TitleEOField.setText(specificEvent.getEventName());
+        DescEOField.setText(specificEvent.getDescription());
+        DayEOField.setText(String.valueOf(specificEvent.getEventDay()));
+        MonthEOField.setText(String.valueOf(specificEvent.getEventMonth()));
+        YearEOField.setText(String.valueOf(specificEvent.getEventYear()));
+        HourEOField.setText(String.valueOf(specificEvent.getEventHour()));
+        MinutesEOField.setText(String.valueOf(specificEvent.getEventMinute()));
+        PlacesEOField.setText(String.valueOf(specificEvent.getEventPlaces()));
     }
 
     //Method actionPerformed for CreateEventEOButton
@@ -589,8 +626,18 @@ public class EOMainForm extends JFrame {
 
     //Method actionPerformed for ModifyEOButton
     private void modifyEO (ActionEvent evt) {
-            //TODO
-            String inputValue = JOptionPane.showInputDialog("Please type in the event name.");
+        String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+        EventManager em = new EventManager();
+        Events specificEvent = new Events();
+        em.searchEvent(eventName);
+        TitleEOField.setText(specificEvent.getEventName());
+        DescEOField.setText(specificEvent.getEventName());
+        DayEOField.setText(String.valueOf(specificEvent.getEventDay()));
+        MonthEOField.setText(String.valueOf(specificEvent.getEventMonth()));
+        YearEOField.setText(String.valueOf(specificEvent.getEventYear()));
+        HourEOField.setText(String.valueOf(specificEvent.getEventHour()));
+        MinutesEOField.setText(String.valueOf(specificEvent.getEventMinute()));
+        PlacesEOField.setText(String.valueOf(specificEvent.getEventPlaces()));
             //check if event was created by EO
             //saves the changes made in the DB
     }
@@ -615,7 +662,16 @@ public class EOMainForm extends JFrame {
             int roomNo = 10;
             em.createEvent(TitleEOField.getText(), DescEOField.getText(), category, Integer.parseInt(DayEOField.getText()), Integer.parseInt(MonthEOField.getText()), Integer.parseInt(YearEOField.getText()), Integer.parseInt(HourEOField.getText()), Integer.parseInt(MinutesEOField.getText()), playerOne, roomNo, Integer.parseInt(PlacesEOField.getText()));
     
-            //saves the new event in DB
+            //saves the new event in DB   
+        TitleEOField.setText("");
+        DescEOField.setText("");
+        DayEOField.setText("");
+        MonthEOField.setText("");
+        YearEOField.setText("");
+        HourEOField.setText("");
+        MinutesEOField.setText("");
+        PlacesEOField.setText("");
+            //clears entry fields to avoid accidental doubling on creation of new event
     }
 
     //Method actionPerformed for SeeAllBookEOButton
