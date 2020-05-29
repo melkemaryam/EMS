@@ -75,7 +75,7 @@ public class AdminMainForm extends JFrame {
         contentPane.setPreferredSize(new Dimension(694,443));
         contentPane.setBackground(new Color(192,192,192));
 
-
+        //create new button
         AdminAdButton = new JButton();
         AdminAdButton.setBounds(33,178,165,35);
         AdminAdButton.setBackground(new Color(214,217,223));
@@ -92,7 +92,7 @@ public class AdminMainForm extends JFrame {
             }
         });
 
-
+        //create new checkbox
         BookReqCheckAd = new JCheckBox();
         BookReqCheckAd.setBounds(517,205,90,35);
         BookReqCheckAd.setBackground(new Color(214,217,223));
@@ -103,6 +103,7 @@ public class AdminMainForm extends JFrame {
         BookReqCheckAd.setVisible(true);
         //BookReqCheckAd.setEditable(false);
 
+        //create new label
         BookReqLabel = new JLabel();
         BookReqLabel.setBounds(383,205,110,34);
         BookReqLabel.setBackground(new Color(214,217,223));
@@ -112,6 +113,7 @@ public class AdminMainForm extends JFrame {
         BookReqLabel.setText("Booking Required");
         BookReqLabel.setVisible(true);
 
+        //create new button
         CancelBookAdButton = new JButton();
         CancelBookAdButton.setBounds(305,389,146,34);
         CancelBookAdButton.setBackground(new Color(214,217,223));
@@ -128,7 +130,7 @@ public class AdminMainForm extends JFrame {
             }
         });
 
-
+        //create new button
         CancelEventAdButton = new JButton();
         CancelEventAdButton.setBounds(148,388,119,35);
         CancelEventAdButton.setBackground(new Color(214,217,223));
@@ -145,7 +147,7 @@ public class AdminMainForm extends JFrame {
         }
     });
 
-
+        //create new field
         CatAdField = new JTextField();
         CatAdField.setBounds(513,237,100,30);
         CatAdField.setBackground(new Color(255,255,255));
@@ -155,7 +157,8 @@ public class AdminMainForm extends JFrame {
         CatAdField.setText("");
         CatAdField.setVisible(true);
         CatAdField.setEditable(false);
-
+    
+        //create new label
         Category = new JLabel();
         Category.setBounds(382,235,90,35);
         Category.setBackground(new Color(214,217,223));
@@ -165,6 +168,7 @@ public class AdminMainForm extends JFrame {
         Category.setText("Category");
         Category.setVisible(true);
         
+        //create new button
         ChooseOrSearchEventAdButton = new JButton();
         ChooseOrSearchEventAdButton.setBounds(502,388,170,33);
         ChooseOrSearchEventAdButton.setBackground(new Color(214,217,223));
@@ -181,6 +185,7 @@ public class AdminMainForm extends JFrame {
             }
         });
 
+        //create new field
         DateAdField = new JTextField();
         DateAdField.setBounds(502,143,91,27);
         DateAdField.setBackground(new Color(255,255,255));
@@ -191,6 +196,7 @@ public class AdminMainForm extends JFrame {
         DateAdField.setVisible(true);
         DateAdField.setEditable(false);
 
+        //create new label
         DateLabel = new JLabel();
         DateLabel.setBounds(383,139,90,35);
         DateLabel.setBackground(new Color(214,217,223));
@@ -200,6 +206,7 @@ public class AdminMainForm extends JFrame {
         DateLabel.setText("Date");
         DateLabel.setVisible(true);
 
+        //create new field
         DescAdField = new JTextField();
         DescAdField.setBounds(500,107,164,33);
         DescAdField.setBackground(new Color(255,255,255));
@@ -210,6 +217,7 @@ public class AdminMainForm extends JFrame {
         DescAdField.setVisible(true);
         DescAdField.setEditable(false);
 
+        //create new label
         DescLabel = new JLabel();
         DescLabel.setBounds(383,109,90,35);
         DescLabel.setBackground(new Color(214,217,223));
@@ -218,7 +226,8 @@ public class AdminMainForm extends JFrame {
         DescLabel.setFont(new Font("sansserif",0,12));
         DescLabel.setText("Description");
         DescLabel.setVisible(true);
-
+        
+        //create new button
         ExitAdButton = new JButton();
         ExitAdButton.setBounds(35,303,90,35);
         ExitAdButton.setBackground(new Color(214,217,223));
@@ -235,7 +244,7 @@ public class AdminMainForm extends JFrame {
             }
         });
 
-
+        //create new label
         LocLabel = new JLabel();
         LocLabel.setBounds(378,266,90,35);
         LocLabel.setBackground(new Color(214,217,223));
@@ -245,6 +254,7 @@ public class AdminMainForm extends JFrame {
         LocLabel.setText("Location");
         LocLabel.setVisible(true);
 
+        //create new field
         LocationAdField = new JTextField();
         LocationAdField.setBounds(514,276,144,28);
         LocationAdField.setBackground(new Color(255,255,255));
@@ -255,6 +265,7 @@ public class AdminMainForm extends JFrame {
         LocationAdField.setVisible(true);
         LocationAdField.setEditable(false);
 
+        //create new button
         LogOutAdButton = new JButton();
         LogOutAdButton.setBounds(34,258,90,35);
         LogOutAdButton.setBackground(new Color(214,217,223));
@@ -271,7 +282,7 @@ public class AdminMainForm extends JFrame {
             }
         });
 
-
+        //create new field
         PlacesAdField = new JTextField();
         PlacesAdField.setBounds(514,340,94,29);
         PlacesAdField.setBackground(new Color(255,255,255));
@@ -282,6 +293,7 @@ public class AdminMainForm extends JFrame {
         PlacesAdField.setVisible(true);
         PlacesAdField.setEditable(false);
 
+        //create new label
         PlacesLabel = new JLabel();
         PlacesLabel.setBounds(380,330,90,35);
         PlacesLabel.setBackground(new Color(214,217,223));
@@ -291,6 +303,7 @@ public class AdminMainForm extends JFrame {
         PlacesLabel.setText("Places");
         PlacesLabel.setVisible(true);
 
+        //create new field
         RoomNoAdField = new JTextField();
         RoomNoAdField.setBounds(511,308,101,28);
         RoomNoAdField.setBackground(new Color(255,255,255));
@@ -301,6 +314,7 @@ public class AdminMainForm extends JFrame {
         RoomNoAdField.setVisible(true);
         RoomNoAdField.setEditable(false);
 
+        //create new label
         RoomNoLabel = new JLabel();
         RoomNoLabel.setBounds(382,298,90,35);
         RoomNoLabel.setBackground(new Color(214,217,223));
@@ -310,6 +324,7 @@ public class AdminMainForm extends JFrame {
         RoomNoLabel.setText("Room No.");
         RoomNoLabel.setVisible(true);
 
+        //create new button 
         SeeAllBookAdButton = new JButton();
         SeeAllBookAdButton.setBounds(36,135,145,33);
         SeeAllBookAdButton.setBackground(new Color(214,217,223));
@@ -326,7 +341,7 @@ public class AdminMainForm extends JFrame {
             }
         });
 
-
+        //create new button
         SeeAllEventsAdButton = new JButton();
         SeeAllEventsAdButton.setBounds(37,90,120,37);
         SeeAllEventsAdButton.setBackground(new Color(214,217,223));
@@ -343,7 +358,7 @@ public class AdminMainForm extends JFrame {
             }
         });
 
-
+        //create new text area
         ShowEventsAd = new JTextArea();
         ShowEventsAd.setBounds(205,86,157,284);
         ShowEventsAd.setBackground(new Color(255,255,255));
@@ -351,7 +366,7 @@ public class AdminMainForm extends JFrame {
         ShowEventsAd.setEnabled(true);
         ShowEventsAd.setFont(new Font("sansserif",0,12));
         //ShowEventsAd.setText(getAllEventsList());
-        ShowEventsAd.setText("äääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääääää");
+        ShowEventsAd.setText("");
         ShowEventsAd.setBorder(BorderFactory.createBevelBorder(1));
         ShowEventsAd.setVisible(true);
         ShowEventsAd.setEditable(false);
@@ -361,7 +376,7 @@ public class AdminMainForm extends JFrame {
         ShowEventsAd.setWrapStyleWord(true);
         Scroll.setBounds(205,86,157,284);
 
-
+        //create new field
         TitleAdField = new JTextField();
         TitleAdField.setBounds(503,70,98,31);
         TitleAdField.setBackground(new Color(255,255,255));
@@ -372,7 +387,7 @@ public class AdminMainForm extends JFrame {
         TitleAdField.setVisible(true);
         TitleAdField.setEditable(false);
         
-
+        //create new field
         TimeAdField = new JTextField();
         TimeAdField.setBounds(538,174,90,35);
         TimeAdField.setBackground(new Color(255,255,255));
@@ -383,6 +398,7 @@ public class AdminMainForm extends JFrame {
         TimeAdField.setVisible(true);
         TimeAdField.setEditable(false);
 
+        //create new label
         TimeLabel = new JLabel();
         TimeLabel.setBounds(383,172,90,35);
         TimeLabel.setBackground(new Color(214,217,223));
@@ -392,6 +408,7 @@ public class AdminMainForm extends JFrame {
         TimeLabel.setText("Time");
         TimeLabel.setVisible(true);
 
+        //create new label
         TitleLabel = new JLabel();
         TitleLabel.setBounds(382,74,90,35);
         TitleLabel.setBackground(new Color(214,217,223));
@@ -401,6 +418,7 @@ public class AdminMainForm extends JFrame {
         TitleLabel.setText("Title");
         TitleLabel.setVisible(true);
 
+        //create new label
         WelcomeLabel = new JLabel();
         WelcomeLabel.setBounds(292,30,90,35);
         WelcomeLabel.setBackground(new Color(214,217,223));
