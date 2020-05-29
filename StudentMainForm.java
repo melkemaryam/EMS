@@ -514,13 +514,20 @@ public class StudentMainForm extends JFrame {
 
     //Method actionPerformed for SeeAllBookStuButton
     private void seeAllBookingsStu (ActionEvent evt) {
-            BookingManager bs = new BookingManager();
-            Student playerOne = new Student();
-            playerOne.setUniId(uniId);
-            AccountManager.retrieveUser(playerOne);
-            bs.viewUserBookings(playerOne);
-            
-            //view userbookings in BookingManager
+        BookingManager bs = new BookingManager();
+        Student playerOne = new Student();
+        AccountManager am = new AccountManager();
+        int uniId = getUser();
+        playerOne.setUniId(uniId);
+        am.retrieveUser(playerOne);
+        ArrayList<String> bookList = bs.viewUserBookings(playerOne);
+        StringBuilder se = new StringBuilder();
+            for (int i = bookList.size() - 1; i >=0; i--){
+                String book = (bookList.get(i) + "\n");
+                se.append(book);
+            }
+        ShowEventsStuBox.setText(se.toString());
+        //view userbookings in BookingManager
     }
 
     //Method actionPerformed for SeeAllEventsStuButton
