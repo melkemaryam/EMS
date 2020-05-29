@@ -151,26 +151,28 @@ public class RequestsForm extends JFrame {
 
     //Method actionPerformed for CloseButton
     private void grantPermission (ActionEvent evt) {
-	String inputValue = JOptionPane.showInputDialog("Please type in the user ID.");
-	AccountManager am = new AccountManager();
-	Student playerOne = new Student();
-	AccountManager.retrieveUser(playerOne);
-	//am.grantPermission(rightsID);
+    	int rightsID = Integer.parseInt(JOptionPane.showInputDialog("Please type in the user ID."));
+    	AccountManager am = new AccountManager();
+    	am.grantPermission(rightsID);
     }
     
     //Method actionPerformed for RevokeRightsButton
     private void revokeRights (ActionEvent evt) {
-	String inputValue = JOptionPane.showInputDialog("Please type in the user ID.");
-	AccountManager am = new AccountManager();
-	Student playerOne = new Student();
-	AccountManager.retrieveUser(playerOne);
-	//am.revokeRights(rightsID);
+    	int rightsID = Integer.parseInt(JOptionPane.showInputDialog("Please type in the user ID."));
+    	AccountManager am = new AccountManager();
+    	am.revokeRights(rightsID);
     }
 
     //Method actionPerformed for ShowRequestsButton
     private void showRequests (ActionEvent evt) {
         AccountManager am = new AccountManager();
-        am.retrieveRequests();
+        ArrayList<Integer> req = am.retrieveRequests();
+        StringBuilder se = new StringBuilder();
+            for (int i = req.size() - 1; i >=0; i--){
+                String event = (String.valueOf(req.get(i)) + "\n");
+                se.append(event);
+            }
+        RequestsArea.setText(se.toString());
     }
 
 
