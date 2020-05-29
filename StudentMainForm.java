@@ -479,9 +479,14 @@ public class StudentMainForm extends JFrame {
     
     //Method actionPerformed for ChooseEventStuButton
     private void chooseOrSearchEventStu (ActionEvent evt) {
-    String eventName = JOptionPane.showInputDialog("Please type in the event name.");
-    EventManager bs = new EventManager();
-        bs.searchEvent(eventName);
+        EventManager em = new EventManager();
+        String eventName = JOptionPane.showInputDialog("Please type in the event name.");
+        Events specificEvent = em.searchEvent(eventName);
+        TitleFieldStu.setText(specificEvent.getEventName());
+        DescFieldStu.setText(specificEvent.getDescription());
+        DateFieldStu.setText(String.valueOf(specificEvent.getEventDay()) + "-" + String.valueOf(specificEvent.getEventMonth()) + "-" +specificEvent.getEventYear());
+        TimeFieldStu.setText(String.valueOf(specificEvent.getEventHour()) + "-" + String.valueOf(specificEvent.getEventMinute()));
+        PlacesFieldStu.setText(String.valueOf(specificEvent.getEventPlaces()));
     }
     
     //Method actionPerformed for ExitStuButton
