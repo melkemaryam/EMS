@@ -59,7 +59,7 @@ public class LogInForm extends JFrame {
         contentPane.setPreferredSize(new Dimension(500,400));
         contentPane.setBackground(new Color(192,192,192));
 
-
+	// create new label
         LogIn = new JLabel();
         LogIn.setBounds(201,24,90,35);
         LogIn.setBackground(new Color(214,217,223));
@@ -68,7 +68,8 @@ public class LogInForm extends JFrame {
         LogIn.setFont(new Font("SansSerif",0,20));
         LogIn.setText("Log In");
         LogIn.setVisible(true);
-
+	
+	// create new button
         LogInButton = new JButton();
         LogInButton.setBounds(199,244,90,35);
         LogInButton.setBackground(new Color(214,217,223));
@@ -85,7 +86,7 @@ public class LogInForm extends JFrame {
             }
         });
 
-
+	// create new label
         NewUserLabel = new JLabel();
         NewUserLabel.setBounds(188,286,132,28);
         NewUserLabel.setBackground(new Color(214,217,223));
@@ -95,6 +96,7 @@ public class LogInForm extends JFrame {
         NewUserLabel.setText("Are you a new user?");
         NewUserLabel.setVisible(true);
 
+	// create new field
         PassFieldLogIn = new JPasswordField();
         PassFieldLogIn.setBounds(259,136,90,35);
         PassFieldLogIn.setBackground(new Color(214,217,223));
@@ -103,6 +105,7 @@ public class LogInForm extends JFrame {
         PassFieldLogIn.setFont(new Font("sansserif",0,12));
         PassFieldLogIn.setVisible(true);
 
+	// create new label
         PasswordLabel = new JLabel();
         PasswordLabel.setBounds(120,140,90,35);
         PasswordLabel.setBackground(new Color(214,217,223));
@@ -112,6 +115,7 @@ public class LogInForm extends JFrame {
         PasswordLabel.setText("Password");
         PasswordLabel.setVisible(true);
 
+	// create new button
         RegisterButton = new JButton();
         RegisterButton.setBounds(201,325,90,35);
         RegisterButton.setBackground(new Color(214,217,223));
@@ -130,7 +134,7 @@ public class LogInForm extends JFrame {
             }
         });
                         
-
+	// create new field
         StudentID = new JTextField();
         StudentID.setBounds(257,91,90,35);
         StudentID.setBackground(new Color(255,255,255));
@@ -139,7 +143,8 @@ public class LogInForm extends JFrame {
         StudentID.setFont(new Font("sansserif",0,12));
         StudentID.setText("");
         StudentID.setVisible(true);
-
+	
+	// create new label
         StudentIDLabel = new JLabel();
         StudentIDLabel.setBounds(123,92,90,35);
         StudentIDLabel.setBackground(new Color(214,217,223));
@@ -148,7 +153,8 @@ public class LogInForm extends JFrame {
         StudentIDLabel.setFont(new Font("sansserif",0,12));
         StudentIDLabel.setText("Student ID");
         StudentIDLabel.setVisible(true);
-        
+       
+	// create new combobox
         UserTypeBox = new JComboBox();
         UserTypeBox.setBounds(265,191,90,35);
         UserTypeBox.setBackground(new Color(214,217,223));
@@ -158,6 +164,7 @@ public class LogInForm extends JFrame {
         UserTypeBox.setVisible(true);
         UserTypeBox.setModel(new DefaultComboBoxModel<>(new String[] {"Student","Event Organiser","Administrator"} ));
 
+	// create new label
         UserTypeLabel = new JLabel();
         UserTypeLabel.setBounds(117,193,90,35);
         UserTypeLabel.setBackground(new Color(214,217,223));
