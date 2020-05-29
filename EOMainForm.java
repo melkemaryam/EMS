@@ -77,7 +77,7 @@ public class EOMainForm extends JFrame {
         contentPane.setPreferredSize(new Dimension(717,444));
         contentPane.setBackground(new Color(192,192,192));
 
-
+	//create new button
         BookEOButton = new JButton();
         BookEOButton.setBounds(30,390,90,35);
         BookEOButton.setBackground(new Color(214,217,223));
@@ -94,7 +94,7 @@ public class EOMainForm extends JFrame {
             }
         });
 
-
+	//create new checkbox
         BookReqBoxEO = new JCheckBox();
         BookReqBoxEO.setBounds(524,203,90,35);
         BookReqBoxEO.setBackground(new Color(214,217,223));
@@ -104,6 +104,7 @@ public class EOMainForm extends JFrame {
         BookReqBoxEO.setText("");
         BookReqBoxEO.setVisible(true);
 
+	//create new label
         BookReqLabel = new JLabel();
         BookReqLabel.setBounds(379,206,117,34);
         BookReqLabel.setBackground(new Color(214,217,223));
@@ -113,7 +114,7 @@ public class EOMainForm extends JFrame {
         BookReqLabel.setText("Booking Required");
         BookReqLabel.setVisible(true);
 
-
+	//create new button
         CancelEOButton = new JButton();
         CancelEOButton.setBounds(150,371,90,35);
         CancelEOButton.setBackground(new Color(214,217,223));
@@ -131,7 +132,7 @@ public class EOMainForm extends JFrame {
         });
 
 
-
+	//create new combobox
         CatEOBox = new JComboBox();
         CatEOBox.setBounds(527,239,90,35);
         CatEOBox.setBackground(new Color(214,217,223));
@@ -141,7 +142,7 @@ public class EOMainForm extends JFrame {
         CatEOBox.setVisible(true);
         CatEOBox.setModel(new DefaultComboBoxModel<>(new String[] {"online","physical"} ));
 
-
+	//create new label
         Category = new JLabel();
         Category.setBounds(379,240,90,35);
         Category.setBackground(new Color(214,217,223));
@@ -151,7 +152,7 @@ public class EOMainForm extends JFrame {
         Category.setText("Category");
         Category.setVisible(true);
 
-        
+      	//create new button  
         ChooseOrSearchEventEOButton = new JButton();
 	ChooseOrSearchEventEOButton.setBounds(506,395,170,33);
 	ChooseOrSearchEventEOButton.setBackground(new Color(214,217,223));
@@ -168,7 +169,7 @@ public class EOMainForm extends JFrame {
 		}
 	});
 
-
+	//create new button
         CreateEventEOButton = new JButton();
         CreateEventEOButton.setBounds(31,155,139,34);
         CreateEventEOButton.setBackground(new Color(214,217,223));
@@ -186,7 +187,7 @@ public class EOMainForm extends JFrame {
         });
 
 
-
+	//create new LABEL
         DateLabel = new JLabel();
         DateLabel.setBounds(376,136,90,35);
         DateLabel.setBackground(new Color(214,217,223));
@@ -195,7 +196,8 @@ public class EOMainForm extends JFrame {
         DateLabel.setFont(new Font("sansserif",0,12));
         DateLabel.setText("Date");
         DateLabel.setVisible(true);
-
+	
+	//create new FIELD
         DayEOField = new JTextField();
         DayEOField.setBounds(445,142,78,23);
         DayEOField.setBackground(new Color(255,255,255));
@@ -205,7 +207,7 @@ public class EOMainForm extends JFrame {
         DayEOField.setText("");
         DayEOField.setVisible(true);
 
-
+	//create new field
         DescEOField = new JTextField();
         DescEOField.setBounds(534,103,90,35);
         DescEOField.setBackground(new Color(255,255,255));
@@ -215,6 +217,7 @@ public class EOMainForm extends JFrame {
         DescEOField.setText("");
         DescEOField.setVisible(true);
 
+	//create new label
         DescLabel = new JLabel();
         DescLabel.setBounds(377,101,90,35);
         DescLabel.setBackground(new Color(214,217,223));
@@ -224,6 +227,7 @@ public class EOMainForm extends JFrame {
         DescLabel.setText("Description");
         DescLabel.setVisible(true);
 
+	//create new button
         ExitEOButton = new JButton();
         ExitEOButton.setBounds(33,252,90,35);
         ExitEOButton.setBackground(new Color(214,217,223));
@@ -240,7 +244,7 @@ public class EOMainForm extends JFrame {
             }
         });
 
-
+	//create new field
         HourEOField = new JTextField();
         HourEOField.setBounds(469,174,84,24);
         HourEOField.setBackground(new Color(255,255,255));
@@ -250,6 +254,7 @@ public class EOMainForm extends JFrame {
         HourEOField.setText("");
         HourEOField.setVisible(true);
 
+	//create new field
         LocationEOFIeld = new JTextField();
         LocationEOFIeld.setBounds(505,277,140,25);
         LocationEOFIeld.setBackground(new Color(255,255,255));
@@ -259,6 +264,7 @@ public class EOMainForm extends JFrame {
         LocationEOFIeld.setText("");
         LocationEOFIeld.setVisible(true);
 
+	//create new label
         LocationLabel = new JLabel();
         LocationLabel.setBounds(379,272,90,35);
         LocationLabel.setBackground(new Color(214,217,223));
@@ -268,6 +274,7 @@ public class EOMainForm extends JFrame {
         LocationLabel.setText("Location");
         LocationLabel.setVisible(true);
 
+	//create new button
         LogOutEOButton = new JButton();
         LogOutEOButton.setBounds(33,212,90,35);
         LogOutEOButton.setBackground(new Color(214,217,223));
@@ -284,7 +291,7 @@ public class EOMainForm extends JFrame {
             }
         });
 
-
+	//create new field
         MinutesEOField = new JTextField();
         MinutesEOField.setBounds(576,175,71,24);
         MinutesEOField.setBackground(new Color(255,255,255));
@@ -293,7 +300,8 @@ public class EOMainForm extends JFrame {
         MinutesEOField.setFont(new Font("sansserif",0,12));
         MinutesEOField.setText("");
         MinutesEOField.setVisible(true);
-
+	
+	//create new button
         ModifyEOButton = new JButton();
         ModifyEOButton.setBounds(29,347,90,35);
         ModifyEOButton.setBackground(new Color(214,217,223));
@@ -310,7 +318,7 @@ public class EOMainForm extends JFrame {
             }
         });
 
-
+	//create new field
         MonthEOField = new JTextField();
         MonthEOField.setBounds(531,142,68,24);
         MonthEOField.setBackground(new Color(255,255,255));
@@ -319,7 +327,8 @@ public class EOMainForm extends JFrame {
         MonthEOField.setFont(new Font("sansserif",0,12));
         MonthEOField.setText("");
         MonthEOField.setVisible(true);
-
+	
+	//create new button
         MyEventsEOButton = new JButton();
         MyEventsEOButton.setBounds(29,113,128,32);
         MyEventsEOButton.setBackground(new Color(214,217,223));
@@ -348,7 +357,7 @@ public class EOMainForm extends JFrame {
             }
         });
 
-
+	//create new field
         PlacesEOField = new JTextField();
         PlacesEOField.setBounds(529,346,90,35);
         PlacesEOField.setBackground(new Color(255,255,255));
@@ -357,7 +366,8 @@ public class EOMainForm extends JFrame {
         PlacesEOField.setFont(new Font("sansserif",0,12));
         PlacesEOField.setText("");
         PlacesEOField.setVisible(true);
-
+	
+	//create new label
         PlacesLabel = new JLabel();
         PlacesLabel.setBounds(378,346,90,35);
         PlacesLabel.setBackground(new Color(214,217,223));
@@ -366,7 +376,8 @@ public class EOMainForm extends JFrame {
         PlacesLabel.setFont(new Font("sansserif",0,12));
         PlacesLabel.setText("Places");
         PlacesLabel.setVisible(true);
-
+	
+	//create new combobox
         RoomNoEOBox = new JComboBox();
 	RoomNoEOBox.setBounds(530,306,90,35);
 	RoomNoEOBox.setBackground(new Color(214,217,223));
@@ -375,6 +386,7 @@ public class EOMainForm extends JFrame {
 	RoomNoEOBox.setFont(new Font("sansserif",0,12));
 	RoomNoEOBox.setVisible(true);
 
+	//create new label
         RoomNoLabel = new JLabel();
         RoomNoLabel.setBounds(378,307,90,35);
         RoomNoLabel.setBackground(new Color(214,217,223));
@@ -383,7 +395,8 @@ public class EOMainForm extends JFrame {
         RoomNoLabel.setFont(new Font("sansserif",0,12));
         RoomNoLabel.setText("Room No.");
         RoomNoLabel.setVisible(true);
-        
+  
+	//create new button
         SaveEOButton = new JButton();
         SaveEOButton.setBounds(30,301,90,35);
         SaveEOButton.setBackground(new Color(214,217,223));
@@ -400,6 +413,7 @@ public class EOMainForm extends JFrame {
             }
         });
         
+	//create new button
         SeeAllBookEOButton = new JButton();
         SeeAllBookEOButton.setBounds(30,30,137,35);
         SeeAllBookEOButton.setBackground(new Color(214,217,223));
@@ -425,6 +439,7 @@ public class EOMainForm extends JFrame {
             }
         });
 
+	//create new button
         SeeAllEventsEOButton = new JButton();
         SeeAllEventsEOButton.setBounds(29,71,130,33);
         SeeAllEventsEOButton.setBackground(new Color(214,217,223));
@@ -449,7 +464,7 @@ public class EOMainForm extends JFrame {
             }
         });
 
-
+	//create new text area
         ShowEventsEO = new JTextArea();
         ShowEventsEO.setBounds(202,75,151,267);
         ShowEventsEO.setBackground(new Color(255,255,255));
@@ -466,6 +481,7 @@ public class EOMainForm extends JFrame {
         ShowEventsEO.setWrapStyleWord(true);
         Scroll.setBounds(202,75,151,267);
 
+	//create new label
         TimeLabel = new JLabel();
         TimeLabel.setBounds(379,170,90,35);
         TimeLabel.setBackground(new Color(214,217,223));
@@ -475,6 +491,7 @@ public class EOMainForm extends JFrame {
         TimeLabel.setText("Time");
         TimeLabel.setVisible(true);
 
+	//create new field
         TitleEOField = new JTextField();
         TitleEOField.setBounds(531,62,90,35);
         TitleEOField.setBackground(new Color(255,255,255));
@@ -484,6 +501,7 @@ public class EOMainForm extends JFrame {
         TitleEOField.setText("");
         TitleEOField.setVisible(true);
 
+	//create new label
         TitleLabel = new JLabel();
         TitleLabel.setBounds(380,69,90,35);
         TitleLabel.setBackground(new Color(214,217,223));
@@ -494,6 +512,7 @@ public class EOMainForm extends JFrame {
         TitleLabel.setVisible(true);
 	
 
+	 //create new label
         Welcomelabel = new JLabel();
         Welcomelabel.setBounds(306,28,90,35);
         Welcomelabel.setBackground(new Color(214,217,223));
@@ -503,7 +522,7 @@ public class EOMainForm extends JFrame {
         Welcomelabel.setText("Welcome");
         Welcomelabel.setVisible(true);
 
-
+	//create new field
         YearEOField = new JTextField();
         YearEOField.setBounds(611,142,67,25);
         YearEOField.setBackground(new Color(255,255,255));
