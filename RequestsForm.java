@@ -53,7 +53,7 @@ public class RequestsForm extends JFrame {
             }
         });
 
-
+	// create new button
         GrantPermissionButton = new JButton();
         GrantPermissionButton.setBounds(318,93,136,33);
         GrantPermissionButton.setBackground(new Color(214,217,223));
@@ -71,6 +71,7 @@ public class RequestsForm extends JFrame {
             }
         });
 
+	// create new text area
         RequestsArea = new JTextArea();
         RequestsArea.setBounds(59,81,209,290);
         RequestsArea.setBackground(new Color(255,255,255));
@@ -82,6 +83,7 @@ public class RequestsForm extends JFrame {
         RequestsArea.setVisible(true);
         RequestsArea.setEditable(false);
 
+	// create new label
         RequestsLabel = new JLabel();
         RequestsLabel.setBounds(83,25,377,35);
         RequestsLabel.setBackground(new Color(214,217,223));
@@ -91,6 +93,7 @@ public class RequestsForm extends JFrame {
         RequestsLabel.setText("Student Administration: Requests");
         RequestsLabel.setVisible(true);
 
+	// create new button
         RevokeRightsButton = new JButton();
         RevokeRightsButton.setBounds(321,139,132,34);
         RevokeRightsButton.setBackground(new Color(214,217,223));
@@ -107,6 +110,7 @@ public class RequestsForm extends JFrame {
             }
         });
         
+	// create new button
         ShowRequestsButton = new JButton();
 	ShowRequestsButton.setBounds(323,287,129,37);
 	ShowRequestsButton.setBackground(new Color(214,217,223));
