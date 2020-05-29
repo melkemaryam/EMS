@@ -174,7 +174,7 @@ public class StudentMainForm extends JFrame {
         Datelabel.setText("Date");
         Datelabel.setVisible(true);
         
-
+        // create new field
         DescFieldStu = new JTextField();
         DescFieldStu.setBounds(537,106,90,35);
         DescFieldStu.setBackground(new Color(255,255,255));
@@ -185,6 +185,7 @@ public class StudentMainForm extends JFrame {
         DescFieldStu.setVisible(true);
         DescFieldStu.setEditable(false);
 
+        // create new label
         DescLabel = new JLabel();
         DescLabel.setBounds(377,107,90,35);
         DescLabel.setBackground(new Color(214,217,223));
@@ -194,6 +195,7 @@ public class StudentMainForm extends JFrame {
         DescLabel.setText("Description");
         DescLabel.setVisible(true);
 
+        // create new button
         ExitStuButton = new JButton();
         ExitStuButton.setBounds(30,272,90,35);
         ExitStuButton.setBackground(new Color(214,217,223));
@@ -210,7 +212,7 @@ public class StudentMainForm extends JFrame {
             }
         });
 
-
+        // create new label
         LocLabel = new JLabel();
         LocLabel.setBounds(376,298,90,35);
         LocLabel.setBackground(new Color(214,217,223));
@@ -220,6 +222,7 @@ public class StudentMainForm extends JFrame {
         LocLabel.setText("Location");
         LocLabel.setVisible(true);
 
+        // create new field
         LocationFieldStu = new JTextField();
         LocationFieldStu.setBounds(537,299,90,35);
         LocationFieldStu.setBackground(new Color(255,255,255));
@@ -230,6 +233,7 @@ public class StudentMainForm extends JFrame {
         LocationFieldStu.setVisible(true);
         LocationFieldStu.setEditable(false);
 
+        // create new button
         LogOutStuButton = new JButton();
         LogOutStuButton.setBounds(29,226,90,35);
         LogOutStuButton.setBackground(new Color(214,217,223));
@@ -247,6 +251,7 @@ public class StudentMainForm extends JFrame {
         });
 
 
+        // create new field
         PlacesFieldStu = new JTextField();
         PlacesFieldStu.setBounds(540,373,90,35);
         PlacesFieldStu.setBackground(new Color(255,255,255));
@@ -257,6 +262,7 @@ public class StudentMainForm extends JFrame {
         PlacesFieldStu.setVisible(true);
         PlacesFieldStu.setEditable(false);
 
+        // create new label
         Placeslabel = new JLabel();
         Placeslabel.setBounds(380,371,90,35);
         Placeslabel.setBackground(new Color(214,217,223));
@@ -266,6 +272,7 @@ public class StudentMainForm extends JFrame {
         Placeslabel.setText("Places");
         Placeslabel.setVisible(true);
 
+        // create new button
         RightsStuButton = new JButton();
         RightsStuButton.setBounds(24,157,169,36);
         RightsStuButton.setBackground(new Color(214,217,223));
@@ -282,7 +289,7 @@ public class StudentMainForm extends JFrame {
             }
         });
 
-
+        // create new field
         RoomNoFieldStu = new JTextField();
         RoomNoFieldStu.setBounds(536,335,90,35);
         RoomNoFieldStu.setBackground(new Color(255,255,255));
@@ -293,6 +300,7 @@ public class StudentMainForm extends JFrame {
         RoomNoFieldStu.setVisible(true);
         RoomNoFieldStu.setEditable(false);
 
+        // create new label
         RoomNoLabel = new JLabel();
         RoomNoLabel.setBounds(381,332,90,35);
         RoomNoLabel.setBackground(new Color(214,217,223));
@@ -302,6 +310,7 @@ public class StudentMainForm extends JFrame {
         RoomNoLabel.setText("Room No.");
         RoomNoLabel.setVisible(true);
 
+        // create new button
         SeeAllBookStuButton = new JButton();
         SeeAllBookStuButton.setBounds(24,116,159,33);
         SeeAllBookStuButton.setBackground(new Color(214,217,223));
@@ -318,7 +327,7 @@ public class StudentMainForm extends JFrame {
             }
         });
 
-
+        // create new button
         SeeAllEventsStuButton = new JButton();
         SeeAllEventsStuButton.setBounds(23,74,127,37);
         SeeAllEventsStuButton.setBackground(new Color(214,217,223));
@@ -343,7 +352,7 @@ public class StudentMainForm extends JFrame {
             }
         });
 
-
+        // create new text area
         ShowEventsStuBox = new JTextArea();
         ShowEventsStuBox.setBounds(208,85,156,275);
         ShowEventsStuBox.setBackground(new Color(255,255,255));
@@ -360,6 +369,7 @@ public class StudentMainForm extends JFrame {
         ShowEventsStuBox.setWrapStyleWord(true);
         Scroll.setBounds(208,85,156,275);
 
+        // create new field
         TimeFieldStu = new JTextField();
         TimeFieldStu.setBounds(540,188,90,35);
         TimeFieldStu.setBackground(new Color(255,255,255));
@@ -370,6 +380,7 @@ public class StudentMainForm extends JFrame {
         TimeFieldStu.setVisible(true);
         TimeFieldStu.setEditable(false);
 
+        // create new label
         TimeLabel = new JLabel();
         TimeLabel.setBounds(380,189,90,35);
         TimeLabel.setBackground(new Color(214,217,223));
@@ -379,6 +390,7 @@ public class StudentMainForm extends JFrame {
         TimeLabel.setText("Time");
         TimeLabel.setVisible(true);
 
+        // create new field
         TitleFieldStu = new JTextField();
         TitleFieldStu.setBounds(535,64,90,35);
         TitleFieldStu.setBackground(new Color(255,255,255));
@@ -389,6 +401,7 @@ public class StudentMainForm extends JFrame {
         TitleFieldStu.setVisible(true);
         TitleFieldStu.setEditable(false);
 
+        // create new label
         TitleLabel = new JLabel();
         TitleLabel.setBounds(380,68,90,35);
         TitleLabel.setBackground(new Color(214,217,223));
@@ -398,6 +411,7 @@ public class StudentMainForm extends JFrame {
         TitleLabel.setText("Title");
         TitleLabel.setVisible(true);
 
+        // create new label
         Welcome = new JLabel();
         Welcome.setBounds(301,20,90,35);
         Welcome.setBackground(new Color(214,217,223));
