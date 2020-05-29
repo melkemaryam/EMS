@@ -59,7 +59,7 @@ public class RegisterForm extends JFrame {
         contentPane.setPreferredSize(new Dimension(500,444));
         contentPane.setBackground(new Color(192,192,192));
 
-
+	// create new label
         ConPassLabelReg = new JLabel();
         ConPassLabelReg.setBounds(97,179,117,32);
         ConPassLabelReg.setBackground(new Color(214,217,223));
@@ -69,6 +69,7 @@ public class RegisterForm extends JFrame {
         ConPassLabelReg.setText("Confirm Password");
         ConPassLabelReg.setVisible(true);
 
+	// create new field
         ConPassRegField = new JPasswordField();
         ConPassRegField.setBounds(266,177,90,35);
         ConPassRegField.setBackground(new Color(214,217,223));
@@ -76,7 +77,8 @@ public class RegisterForm extends JFrame {
         ConPassRegField.setEnabled(true);
         ConPassRegField.setFont(new Font("sansserif",0,12));
         ConPassRegField.setVisible(true);
-        
+       
+	// create new field
         EmailField = new JTextField();
 	EmailField.setBounds(263,350,150,25);
 	EmailField.setBackground(new Color(255,255,255));
@@ -86,6 +88,7 @@ public class RegisterForm extends JFrame {
 	EmailField.setText("");
 	EmailField.setVisible(true);
 
+	// create new label
 	EmailLabel = new JLabel();
 	EmailLabel.setBounds(92,347,90,35);
 	EmailLabel.setBackground(new Color(214,217,223));
@@ -95,6 +98,7 @@ public class RegisterForm extends JFrame {
 	EmailLabel.setText("Email");
 	EmailLabel.setVisible(true);
 
+	// create new label
         FNameLabel = new JLabel();
         FNameLabel.setBounds(96,223,90,35);
         FNameLabel.setBackground(new Color(214,217,223));
@@ -104,6 +108,7 @@ public class RegisterForm extends JFrame {
         FNameLabel.setText("First Name");
         FNameLabel.setVisible(true);
 
+	// create new field
         FNameRegField = new JTextField();
         FNameRegField.setBounds(264,220,90,35);
         FNameRegField.setBackground(new Color(255,255,255));
@@ -113,6 +118,7 @@ public class RegisterForm extends JFrame {
         FNameRegField.setText("");
         FNameRegField.setVisible(true);
 
+	// create new label
         IDLabelReg = new JLabel();
         IDLabelReg.setBounds(97,98,90,35);
         IDLabelReg.setBackground(new Color(214,217,223));
@@ -122,6 +128,7 @@ public class RegisterForm extends JFrame {
         IDLabelReg.setText("Student ID");
         IDLabelReg.setVisible(true);
 
+	// create new field
         LNameRegField = new JTextField();
         LNameRegField.setBounds(265,266,90,35);
         LNameRegField.setBackground(new Color(255,255,255));
@@ -131,6 +138,7 @@ public class RegisterForm extends JFrame {
         LNameRegField.setText("");
         LNameRegField.setVisible(true);
 
+	// create new label
         LNameRegLabel = new JLabel();
         LNameRegLabel.setBounds(95,268,90,35);
         LNameRegLabel.setBackground(new Color(214,217,223));
@@ -140,6 +148,7 @@ public class RegisterForm extends JFrame {
         LNameRegLabel.setText("Last Name");
         LNameRegLabel.setVisible(true);
 
+	// create new password field
         PassRegField = new JPasswordField();
         PassRegField.setBounds(264,135,90,35);
         PassRegField.setBackground(new Color(214,217,223));
@@ -148,6 +157,7 @@ public class RegisterForm extends JFrame {
         PassRegField.setFont(new Font("sansserif",0,12));
         PassRegField.setVisible(true);
 
+	// create new label
         PasswordLabelReg = new JLabel();
         PasswordLabelReg.setBounds(97,136,90,35);
         PasswordLabelReg.setBackground(new Color(214,217,223));
@@ -157,6 +167,7 @@ public class RegisterForm extends JFrame {
         PasswordLabelReg.setText("Password");
         PasswordLabelReg.setVisible(true);
 
+	// create new button
         RegRegisterButton = new JButton();
         RegRegisterButton.setBounds(205,392,90,35);
         RegRegisterButton.setBackground(new Color(214,217,223));
@@ -173,7 +184,7 @@ public class RegisterForm extends JFrame {
             }
         });
 
-
+	// create new label
         RegisterLabel = new JLabel();
         RegisterLabel.setBounds(193,32,90,35);
         RegisterLabel.setBackground(new Color(214,217,223));
@@ -183,6 +194,7 @@ public class RegisterForm extends JFrame {
         RegisterLabel.setText("Register");
         RegisterLabel.setVisible(true);
 
+	// create new field
         StuIDRegField = new JTextField();
         StuIDRegField.setBounds(262,93,90,35);
         StuIDRegField.setBackground(new Color(255,255,255));
@@ -192,6 +204,7 @@ public class RegisterForm extends JFrame {
         StuIDRegField.setText("");
         StuIDRegField.setVisible(true);
         
+	// create new combobox
         UserTypeBoxReg = new JComboBox();
         UserTypeBoxReg.setBounds(266,306,90,35);
         UserTypeBoxReg.setBackground(new Color(214,217,223));
@@ -201,7 +214,7 @@ public class RegisterForm extends JFrame {
         UserTypeBoxReg.setVisible(true);
         UserTypeBoxReg.setModel(new DefaultComboBoxModel<>(new String[] {"Student","Administrator"} ));
 
-
+	// create new label
         UserTypeLabelReg = new JLabel();
         UserTypeLabelReg.setBounds(91,310,90,35);
         UserTypeLabelReg.setBackground(new Color(214,217,223));
